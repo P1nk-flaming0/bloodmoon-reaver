@@ -1,0 +1,158 @@
+@1 = ~Shapeshifts Natural Form~
+@2 = ~Respawn Claws~
+@3 = ~Feral Rage~
+@4 = ~Shapeshifts Greater Werewolf~
+@5 = ~Howl~
+@6 = ~Shapeshifts Werewolf~
+@7 = ~Shapeshifts Wolf~
+@8 = ~Claws&Fangs +1~
+@9 = ~Claws&Fangs +2~
+@10 = ~Claws&Fangs +4~
+@11 = ~Claws&Fangs +6~
+@12 = ~Lycanthrope Warrior~
+@13 = ~LYCANTHROPE WARRIOR: Born with the "gift" or scarred by a fated encounter, this warrior has been afflicted with lycanthropy. Through discipline and rigorous training, <PRO_HESHE> progressively learns how to master <PRO_HISHER> curse. By honing the predator’s instincts alongside the soldier’s resolve, <PRO_HESHE> becomes apex hunter that blends the tactical mind of a man with the raw, terrifying power of the beast.
+
+Advantages:
+PREDATORY SENSES: The werewolf’s heightened instincts grant infravision and an increasing chance to detect invisible creatures. These senses sharpen as the warrior gains experience, eventually providing immunity to magical blindness.
+
+– May shapeshift into a wolf form once per day per 2 levels (begins with 1 use at 1st level). While in wolf form, the shapeshifter may use Howl at will.
+
+HOWL: A primal call to the wild, usable only in wolf form. When sounded in natural surroundings, the howl may summon 1–5 wolves to fight alongside the caller. These allies remain for 3 turns or until slain.
+
+– May shapeshift into a werewolf form once per day per 2 levels (gains first use at 4th level). While in werewolf form, the shapeshifter may use Growl at will.
+
+GROWL: A fearsome roar usable only in werewolf form. Enemies within 30 feet must save vs. Spell at +3 or flee in panic. At higher levels, the saving throw bonus is removed. Growl has a level-based, increasing chance to trigger automatically on a critical hit.
+
+– At 14th level, the werewolf form is upgraded to a greater werewolf form.
+– At 18th level, the warrior may freely alternate between natural, wolf, and werewolf forms at will.
+
+– While learning how to practice control over <PRO_HISHER> curse, the warrior runs the risk of losing <PRO_HISHER> humanity when faced with particularly stressful combat conditions. Under such circumstances, there is a chance of <PRO_HESHE> going berserk and transforming into an uncontrollable beast, blindly attacking friend or foe alike.
+
+As the warrior grows in experience and mental discipline, the likelihood of losing control steadily diminishes until it is mastered entirely at higher levels.
+
+Once the frenzy subsides, the toll on the warrior's body is severe; <PRO_HESHE> is forced back into human form, left briefly unconscious, and suffers from profound physical exhaustion and diminished morale.
+
+Disadvantages:
+– Cannot wear any armor.~
+@14 = ~The beast awakens...~
+@15 = ~The blood cools...~
+@16 = ~Wolf Prowess~
+@17 = ~Blood Frenzy~
+@18 = ~Growl~
+@19 = ~You have the power!!~
+@20 = ~You have at least 3 uses of the power!~
+@21 = ~Call of the Hunt~
+@22 = ~A terrifying growl is unleashed~
+@23 = ~Bloodmoon Stalker~
+@24 = ~Frenzied~
+@25 = ~Call of the Hunt
+(Conjuration/Summoning)
+
+Level: Quest
+Range: 0
+Duration: 3 turns
+Casting Time: Instant
+Area of Effect: Special
+Saving Throw: None
+
+Through a primal bond with the Beastlord’s realm, the character summons two Bloodmoon Stalkers — spirit-werewolves of savage strength and relentless speed. These hunters answer the call to spill blood in Malar’s name, striking as +4 creatures, possessing high magic resistance and immunity to mundane weapons. The Stalkers remain for 3 turns or until destroyed.~
+@26 = ~Blood Frenzy
+When the werewolf claims a kill, a surge of primal fury floods its body. For a short time, the beast moves with unnatural speed, strikes with greater ferocity, and its strength swells with predatory might. The frenzy lasts for 3 rounds after the last kill before fading.~
+@27 = ~Feral Rage
+Allowing himself to be consumed by his feral insticts, the werewolf enters a trance of animalistic rage. Can be selected up to 5 times.
+
+-  While enraged: Strenght rises by 2, claws hit as a +6 weapon and their damage increases.
+-  While enraged: Immune to charm, hold and fear, maze, imprisonment, stun and sleep.~
+@28 = ~^AWilderness^-~
+@29 = ~In Distress~
+@30 = ~^AYou hear a lone howl answering your call.^-~
+@31 = ~^AA solitary wolf emerges from the wild to aid you.^-~
+@32 = ~^AThe wilderness sends one wolf to your side.^-~
+@33 = ~^AA lone hunter answers your call.^-~
+@34 = ~^AYour howl is answered by the rising chorus of a pack.^-~
+@35 = ~^ASeveral wolves emerge from the wild to join the hunt.^-~
+@36 = ~^AShapes gather from the treeline as the pack answers your call.^-~
+@37 = ~^AMultiple howls echo in response from all directions.^-~
+@38 = ~^AThe wild remains silent to your summons.^-~
+@39 = ~^AYour howl echoes, but nothing answers.^-~
+@40 = ~^AYour howl fades into the forest, unanswered.^-~
+@41 = ~^AYour call is answered by the sound of distant howls.^-~
+@42 = ~^AA pair of hunting wolves is closing in on your side.^-~
+@43 = ~^AAs your howl fades away, no shapes stir in the distance.^-~
+@44 = ~Your bones snap and reform as the Beastlord's hunger takes hold...~
+@45 = ~The scent of marrow fills your senses. The hunt begins!~
+@46 = ~Reason flees before the rising tide of the blood-urge.~
+@47 = ~The human shell tears away. The Beast is unleashed.~
+@48 = ~The Moon's curse boils within; hunger overtakes you.~
+@49 = ~The crimson veil lifts, leaving only the ache of broken bone.~
+@50 = ~The fever breaks. You find yourself human once more.~
+@51 = ~The Beast retreats to the shadows of your mind. You are whole again.~
+@52 = ~The blood cools. The frenzy subsides.~
+@53 = ~Malar's favor wanes as the red mist clears from your eyes.~
+@54 = ~Thick-Skinned~
+@55 = ~Thick-Skinned
+The were-warrior’s body grows unnaturally dense and resistant to harm. Muscles knot, bone thickens, and the skin takes on a near-armored resilience. With each selection of this ability, the character becomes increasingly impervious to physical assault.
+
+Effect:  
+- +5% Slashing Resistance  
+- +5% Piercing Resistance  
+- +5% Crushing Resistance  
+- +5% Missile Resistance  
+
+(May be chosen up to two times.)
+~
+@56 = ~Base~
+@57 = ~5% physical dmg resistance added!~
+@58 = ~10% physical dmg resistance added!~
+@59 = ~Exhaustion~
+@60 = ~You regain your vigor.~
+@61 = ~Your strength returns to normal.~
+@62 = ~You shake off the fatigue~
+@63 = ~^AYour body refuses the change. You are too exhausted to shift.^-~
+@64 = ~Shapeshift: Wolf
+
+Strength: 18
+
+Base Armor Class: 5
+Number of Attacks: 2
+Attack Damage: 1d8 +1 (piercing), strikes as +1 weapon
+
+Special Abilities:
+– Cold Resistance: 100%
+– Electrical Resistance: 50%
+– Magic Cold Resistance: 100%
+– Increased movement rate~
+@65 = ~Shapeshift: Werewolf
+
+Strength: 19 
+Dexterity: 16
+Constitution: 18
+
+Base Armor Class: 1
+Number of Attacks: 2
+Attack Damage: 2d4 +4 (slashing), strikes as +2 weapon
+
+Special Abilities:
+– Magic Resistance: 20%~
+@66 = ~Shapeshift: Greater Werewolf
+
+Strength: 21
+Dexterity: 20
+Constitution: 25
+
+Base Armor Class: -6
+Number of Attacks: 3
+Attack Damage: 2d6 +6 (slashing), strikes as +4 weapon
+
+Special Abilities:
+– Fire Resistance: 50%
+– Cold Resistance: 50%
+– Electricity Resistance: 50%
+– Acid Resistance: 50%
+– Magic Resistance: 40%
+– Regenerates 1 HP every 2 sec~
+@67 = ~Shapeshift at Will~
+@68 = ~Howl
+A primal call to the wild, usable only in wolf form. When unleashed in natural surroundings, the howl may summon 1–5 wolves to fight at the caller’s side. These allies remain for 3 turns or until slain.~
+@69 = ~Growl
+A fearsome roar available while in werewolf form. Enemies within 30 feet must save vs. Spell at +4 or flee in panic; at higher levels, the growl carries no save bonus.~

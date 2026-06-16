@@ -8,7 +8,22 @@ THEN
         // 2. Spawn the wolves just outside the player's camera
         // The '0,0,0' parameters handle coordinates and orientation automatically
         CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)
-        
-        // 3. Remove the proxy so it doesn't take up a summon slot or clutter the map
+        SetGlobalTimer("PF_ProxyLifetime","LOCALS",20)
+        Continue()
+END
+
+// Self-destruct when the timer expires
+IF
+    GlobalTimerExpired("PF_ProxyLifetime","LOCALS")
+THEN
+    RESPONSE #100
         DestroySelf()
+END
+
+// March toward the True Master through the Fog of War
+IF
+    !Range(LastSummonerOf(Myself),3)
+THEN
+    RESPONSE #100
+        MoveToObject(LastSummonerOf(Myself))
 END

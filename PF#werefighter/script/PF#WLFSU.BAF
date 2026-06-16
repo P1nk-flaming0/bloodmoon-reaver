@@ -48,14 +48,187 @@ THEN
 
 END
 
+// ===================================================================
+// HANDSHAKE: Capture the master's slot ID locally on spawn
+// ===================================================================
+IF
+    Global("PF_MyMasterSlot","LOCALS",0)
+    Global("PF_CurrentSummoner","GLOBAL",1)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_MyMasterSlot","LOCALS",1)
+END
+
+IF
+    Global("PF_MyMasterSlot","LOCALS",0)
+    Global("PF_CurrentSummoner","GLOBAL",2)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_MyMasterSlot","LOCALS",2)
+END
+
+IF
+    Global("PF_MyMasterSlot","LOCALS",0)
+    Global("PF_CurrentSummoner","GLOBAL",3)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_MyMasterSlot","LOCALS",3)
+END
+
+IF
+    Global("PF_MyMasterSlot","LOCALS",0)
+    Global("PF_CurrentSummoner","GLOBAL",4)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_MyMasterSlot","LOCALS",4)
+END
+
+IF
+    Global("PF_MyMasterSlot","LOCALS",0)
+    Global("PF_CurrentSummoner","GLOBAL",5)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_MyMasterSlot","LOCALS",5)
+END
+
+IF
+    Global("PF_MyMasterSlot","LOCALS",0)
+    Global("PF_CurrentSummoner","GLOBAL",6)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_MyMasterSlot","LOCALS",6)
+END
+
+// ===================================================================
+// PHASE 1: Track Master through Fog of War using Explicit Slot Pointers
+// ===================================================================
 IF
     ActionListEmpty()
     !See([ENEMY])
-    !Range([PC.0.0.0.166],10) // Finds the nearest PC with Specifics ID 150
+    !See([PC.0.0.0.WOLF_SUMMONER]) // True Master is not visible yet
+    Global("PF_MyMasterSlot","LOCALS",1)
 THEN
     RESPONSE #100
-        // Move to a spot NEAR the master, not ON the master
-        FollowObjectFormation([PC.0.0.0.166],2,2) 
+        MoveToObject(Player1)
 END
 
-// TODO search for PF#werefighter
+IF
+    ActionListEmpty()
+    !See([ENEMY])
+    !See([PC.0.0.0.WOLF_SUMMONER])
+    Global("PF_MyMasterSlot","LOCALS",2)
+THEN
+    RESPONSE #100
+        MoveToObject(Player2)
+END
+
+IF
+    ActionListEmpty()
+    !See([ENEMY])
+    !See([PC.0.0.0.WOLF_SUMMONER])
+    Global("PF_MyMasterSlot","LOCALS",3)
+THEN
+    RESPONSE #100
+        MoveToObject(Player3)
+END
+
+IF
+    ActionListEmpty()
+    !See([ENEMY])
+    !See([PC.0.0.0.WOLF_SUMMONER])
+    Global("PF_MyMasterSlot","LOCALS",4)
+THEN
+    RESPONSE #100
+        MoveToObject(Player4)
+END
+
+IF
+    ActionListEmpty()
+    !See([ENEMY])
+    !See([PC.0.0.0.WOLF_SUMMONER])
+    Global("PF_MyMasterSlot","LOCALS",5)
+THEN
+    RESPONSE #100
+        MoveToObject(Player5)
+END
+
+IF
+    ActionListEmpty()
+    !See([ENEMY])
+    !See([PC.0.0.0.WOLF_SUMMONER])
+    Global("PF_MyMasterSlot","LOCALS",6)
+THEN
+    RESPONSE #100
+        MoveToObject(Player6)
+END
+
+// ===================================================================
+// PHASE 2: Fall into formation once Master is within Visual Range
+// ===================================================================
+IF
+    ActionListEmpty()
+    !See([ENEMY])
+    See([PC.0.0.0.WOLF_SUMMONER])  // Master found visually!
+    !Range([PC.0.0.0.WOLF_SUMMONER],10)
+THEN
+    RESPONSE #100
+        FollowObjectFormation([PC.0.0.0.WOLF_SUMMONER],2,2)
+END
+
+// ----------------------------------------------------------------------
+
+// // ===================================================================
+// // PHASE 1: Track the Proxy Beacon through the Fog of War
+// // ===================================================================
+// IF
+//     ActionListEmpty()
+//     !See([ENEMY])
+//     !See([PC.0.0.0.WOLF_SUMMONER]) // True Master is not visible yet
+//     Exists(LastSummonerOf(Myself))  // The Proxy Beacon is still alive
+//     !Range(LastSummonerOf(Myself),3)
+// THEN
+//     RESPONSE #100
+//         MoveToObject(LastSummonerOf(Myself)) // Run toward the proxy
+// END
+
+// // ===================================================================
+// // PHASE 2: Fall into formation once the Master is within Visual Range
+// // ===================================================================
+// IF
+//     ActionListEmpty()
+//     !See([ENEMY])
+//     See([PC.0.0.0.WOLF_SUMMONER])  // Master found visually!
+//     !Range([PC.0.0.0.WOLF_SUMMONER],10)
+// THEN
+//     RESPONSE #100
+//         FollowObjectFormation([PC.0.0.0.WOLF_SUMMONER],2,2)
+// END
+
+// IF
+//     ActionListEmpty()
+//     !See([ENEMY])
+//     Kit(Player1,PF#werefighter) // Check if P1 has your kit do for the rest of the party
+//     !Range(Player1,10)
+// THEN
+//     RESPONSE #100
+//         MoveToObject(Player1)
+// END
+
+// IF
+//     ActionListEmpty()
+//     !See([ENEMY])
+//     !Range([PC.0.0.0.166],10) // Finds the nearest PC with Specifics ID 166
+// THEN
+//     RESPONSE #100
+//         // Move to a spot NEAR the master, not ON the master
+//         FollowObjectFormation([PC.0.0.0.166],2,2) 
+// END
+
+// IF
+//     See([PC.0.0.0.WOLF_SUMMONER]) // The engine successfully scans for the specific object here
+//     Global("PF_MUF_MSG1","LOCALS",0)
+// THEN
+//     RESPONSE #100
+//         SetGlobal("PF_MUF_MSG1","LOCALS",1)
+//         DisplayStringHead(LastSeenBy(Myself),103784) // ~^RFound a wolf summoner!^-~
+// END 

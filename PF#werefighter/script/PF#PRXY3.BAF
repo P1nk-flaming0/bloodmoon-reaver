@@ -1,19 +1,102 @@
+// IF
+//     OnCreation()
+// THEN
+//     RESPONSE #100
+
+//         Wait(4)
+//         // 1. Play the "Call" sound so the player knows it worked
+//         PlaySound("PF#HWL7")
+        
+//         // 2. Spawn the wolves just outside the player's camera
+//         // The '0,0,0' parameters handle coordinates and orientation automatically
+//         CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)
+//         CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)
+//         CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)
+//         CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)
+//         SetGlobalTimer("PF_ProxyLifetime","LOCALS",20)
+//         Continue()
+// END
+
+// // Self-destruct when the timer expires
+// IF
+//     GlobalTimerExpired("PF_ProxyLifetime","LOCALS")
+// THEN
+//     RESPONSE #100
+//         DestroySelf()
+// END
+
+// // March toward the True Master through the Fog of War
+// IF
+//     !Range(LastSummonerOf(Myself),3)
+// THEN
+//     RESPONSE #100
+//         MoveToObject(LastSummonerOf(Myself))
+// END
+
+// PHASE 1: Detect exact master slot via tight coordinate overlap
+IF
+    OnCreation()
+    Range(Player1,1)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CurrentSummoner","GLOBAL",1)
+        Continue()
+END
+
+IF
+    OnCreation()
+    Range(Player2,1)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CurrentSummoner","GLOBAL",2)
+        Continue()
+END
+
+IF
+    OnCreation()
+    Range(Player3,1)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CurrentSummoner","GLOBAL",3)
+        Continue()
+END
+
+IF
+    OnCreation()
+    Range(Player4,1)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CurrentSummoner","GLOBAL",4)
+        Continue()
+END
+
+IF
+    OnCreation()
+    Range(Player5,1)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CurrentSummoner","GLOBAL",5)
+        Continue()
+END
+
+IF
+    OnCreation()
+    Range(Player6,1)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CurrentSummoner","GLOBAL",6)
+        Continue()
+END
+
+// PHASE 2: Spawn wolves and immediately vanish
 IF
     OnCreation()
 THEN
     RESPONSE #100
-
-        Wait(4)
-        // 1. Play the "Call" sound so the player knows it worked
         PlaySound("PF#HWL7")
-        
-        // 2. Spawn the wolves just outside the player's camera
-        // The '0,0,0' parameters handle coordinates and orientation automatically
-        CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)
-        CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)
-        CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)
-        CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)
-        
-        // 3. Remove the proxy so it doesn't take up a summon slot or clutter the map
+        CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)  // Dire Wolf
+        CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)  // Dire Wolf
+        CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)  // Dire Wolf
+        CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)  // Dire Wolf
         DestroySelf()
 END
