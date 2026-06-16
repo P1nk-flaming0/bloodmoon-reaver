@@ -1,0 +1,41 @@
+IF
+     // Detect the "tag" from the caster's spell
+    Global("PF_DOHWL","LOCALS",1)
+THEN
+    // 1 Second Delays (Approx 33% total)
+    RESPONSE #16
+        SetGlobal("PF_DOHWL","LOCALS",0) // Reset immediately so it doesn't loop
+        Wait(1)
+        PlaySound("PF#HWL5")
+    RESPONSE #17
+        SetGlobal("PF_DOHWL","LOCALS",0)
+        Wait(1)
+        PlaySound("PF#HWL6")
+
+    // 2 Second Delays (Approx 33% total)
+    RESPONSE #16
+        SetGlobal("PF_DOHWL","LOCALS",0)
+        Wait(2)
+        PlaySound("PF#HWL5")
+    RESPONSE #17
+        SetGlobal("PF_DOHWL","LOCALS",0)
+        Wait(2)
+        PlaySound("PF#HWL6")
+
+    // 3 Second Delay (Approx 34% total)
+    RESPONSE #34
+        SetGlobal("PF_DOHWL","LOCALS",0)
+        Wait(3)
+        PlaySound("PF#HWL7")
+END
+
+IF
+    ActionListEmpty()
+    !See([ENEMY])
+    !Range(Player1,10) // Targets the protagonist
+THEN
+    RESPONSE #100
+        MoveToObject(Player1)
+END
+
+// TODO search for PF#werefighter

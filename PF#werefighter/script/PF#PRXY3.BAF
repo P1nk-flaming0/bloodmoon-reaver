@@ -1,0 +1,19 @@
+IF
+    OnCreation()
+THEN
+    RESPONSE #100
+
+        Wait(4)
+        // 1. Play the "Call" sound so the player knows it worked
+        PlaySound("PF#HWL7")
+        
+        // 2. Spawn the wolves just outside the player's camera
+        // The '0,0,0' parameters handle coordinates and orientation automatically
+        CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)
+        CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)
+        CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)
+        CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)
+        
+        // 3. Remove the proxy so it doesn't take up a summon slot or clutter the map
+        DestroySelf()
+END

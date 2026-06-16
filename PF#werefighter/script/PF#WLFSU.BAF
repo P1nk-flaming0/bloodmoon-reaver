@@ -1,0 +1,61 @@
+IF
+     // Detect the "tag" from the caster's spell
+    Global("PF_DOHWL","LOCALS",1)
+THEN
+    // 1 Second Delays (Approx 50% total)
+    RESPONSE #10
+        SetGlobal("PF_DOHWL","LOCALS",0) // Reset immediately so it doesn't loop
+        Wait(1)
+        PlaySound("PF#HWL5")
+    RESPONSE #10
+        SetGlobal("PF_DOHWL","LOCALS",0)
+        Wait(1)
+        PlaySound("PF#HWL6")
+    RESPONSE #10
+        SetGlobal("PF_DOHWL","LOCALS",0)
+        Wait(1)
+        PlaySound("PF#HWL8")
+    RESPONSE #10
+        SetGlobal("PF_DOHWL","LOCALS",0)
+        Wait(1)
+        PlaySound("PF#HWL01")
+    RESPONSE #10
+        SetGlobal("PF_DOHWL","LOCALS",0)
+        Wait(1)
+        PlaySound("PF#HWL9")
+
+    // 2 Second Delays (Approx 50% total)
+    RESPONSE #16
+        SetGlobal("PF_DOHWL","LOCALS",0)
+        Wait(2)
+        PlaySound("PF#HWL5")
+    RESPONSE #17
+        SetGlobal("PF_DOHWL","LOCALS",0)
+        Wait(2)
+        PlaySound("PF#HWL6")
+    RESPONSE #10
+        SetGlobal("PF_DOHWL","LOCALS",0)
+        Wait(1)
+        PlaySound("PF#HWL8")
+    RESPONSE #10
+        SetGlobal("PF_DOHWL","LOCALS",0)
+        Wait(1)
+        PlaySound("PF#HWL01")
+    RESPONSE #10
+        SetGlobal("PF_DOHWL","LOCALS",0)
+        Wait(1)
+        PlaySound("PF#HWL9")
+
+END
+
+IF
+    ActionListEmpty()
+    !See([ENEMY])
+    !Range([PC.0.0.0.166],10) // Finds the nearest PC with Specifics ID 150
+THEN
+    RESPONSE #100
+        // Move to a spot NEAR the master, not ON the master
+        FollowObjectFormation([PC.0.0.0.166],2,2) 
+END
+
+// TODO search for PF#werefighter
