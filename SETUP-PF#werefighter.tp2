@@ -1,5 +1,6 @@
 BACKUP ~PF#werefighter/backup~
-AUTHOR ~Pink_Flamingo~
+AUTHOR ~P1nk-flaming0~
+AUTO_EVAL_STRINGS
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -7,6 +8,14 @@ ALWAYS
     OUTER_SPRINT BGFORGE_LIB_DIR "%MOD_FOLDER%/lib/bgforge"
     INCLUDE ~%BGFORGE_LIB_DIR%/main.tpa~
 END
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+/// Language options
+LANGUAGE 
+"English"  
+"english" 
+"PF#werefighter/lang/english/setup.tra"
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -112,32 +121,9 @@ ADD_KIT ~PF#werefighter~
 
 /* 25STWEAP.2DA */
 	~LEAT20 * HELM19 BAG27 RING06 RING31 CLCK02 BOOT01 AMUL19 BRAC14 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
-        SAY ~Fighter Werewolf~
-	SAY ~Fighter Werewolf~
-	SAY ~FIGHTER WEREWOLF: This warrior has allowed himself to become infected with Lycanthropy, but due to intense study and training he has the ability to control his affliction.  The creature he becomes is that of the Werewolf, the most famous of the lycanthrope shape changers.
-
-Advantages:
--  May shapeshift into a wolf once per day for every 2 levels  (starts at 1st level with one use)
--  May shapeshift into the form of a werewolf once per day for every 2 levels  (starts at 4th level with one use)
--  At 14th level gains the ability to change into a greater werewolf
--  At 16th level gains the ability to Howl 3 x day
-
-HOWL:
-While in hybrid form, the werewolf realeses a gruesome howl, striking fear in the hearts of nearby enemies. All opponents in a 30' radius must save vs spell with -6 penalty or flee in panic.
-
--  At 17th level gains the ability Feral Rage
-
-FERAL RAGE:
-Allowing himself to be consumed by his feral insticts, the werewolf enters a trance of animalistic rage.
-
--  While enraged: Strenght rises by 2, claws hit as a +6 weapon, movement and attack are increased.
--  While enraged: Immune to charm, hold and fear, maze, imprisonment, stun and sleep.
-
--  At 20th level gains an additional Feral Rage
--  At 23th level gains an additional Feral Rage
-
-Disadvantages:
--  Cannot wear ANY armor~
+    SAY @12
+	SAY @12
+	SAY @13
 //--------------------------------------------------------------------------
 
 LAF fl#add_kit_ee
