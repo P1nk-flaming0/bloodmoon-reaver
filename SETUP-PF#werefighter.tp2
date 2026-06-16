@@ -10,103 +10,71 @@ AT_INTERACTIVE_EXIT ~VIEW PF#werefighter\readme.txt~
 //REQUIRE_FILE ~Data/25Dialog.bif~ ~Requires BG2ToB~
 
 
-
-COPY ~PF#werefighter\spl\HLAFRG1.SPL~ ~override~
-SAY NAME1 ~Feral Rage~
-SAY UNIDENTIFIED_DESC ~Feral Rage
-Allowing himself to be consumed by his feral insticts, the werewolf enters a trance of animalistic rage.
-
--  While enraged: Strenght rises by 2, claws hit as a +6 weapon, movement and attack are increased.
--  While enraged: immune to charm, hold and fear, maze, imprisonment, stun and sleep.
-
-Requires: Howl~
-
-COPY ~PF#werefighter\spl\HLAFRG2.SPL~ ~override~
-SAY NAME1 ~Additional Rage #1~
-SAY UNIDENTIFIED_DESC ~Additional Rage #1
-Adds an extra rage attack
-
-Requires: Feral Rage~
-
-COPY ~PF#werefighter\spl\HLAFRG3.SPL~ ~override~
-SAY NAME1 ~Additional Rage #2~
-SAY UNIDENTIFIED_DESC ~Additional Rage #2
-Adds an extra rage attack
-
-Requires: Additional Rage #1~
-
-COPY ~PF#werefighter\spl\HLAGWW.SPL~ ~override~
-SAY NAME1 ~Shapeshifts Greater Werewolf~
-
-
-COPY ~PF#werefighter\spl\HLAHOWL.SPL~ ~override~
-SAY NAME1 ~Howl~
-SAY UNIDENTIFIED_DESC ~Howl
-While in hybrid form, the werewolf realeses a gruesome howl, striking fear in the hearts of nearby enemies. All opponents in a 30' radius must save vs spell with -6 penalty or flee in panic.~
-
-COPY ~PF#werefighter\spl\LI#NATF.SPL~ ~override~
+COPY ~PF#werefighter\spl\PF#NATF.SPL~ ~override~
 SAY NAME1 ~Shapeshifts Natural Form~
 
-COPY ~PF#werefighter\spl\RECLAW1.SPL~ ~override~
+COPY ~PF#werefighter\spl\PF#RCLW1.SPL~ ~override~
 SAY NAME1 ~Respawn Claws~
 
-COPY ~PF#werefighter\spl\RECLAW2.SPL~ ~override~
+COPY ~PF#werefighter\spl\PF#RCLW2.SPL~ ~override~
 SAY NAME1 ~Respawn Claws~
 
-COPY ~PF#werefighter\spl\RECLAW0.SPL~ ~override~
+COPY ~PF#werefighter\spl\PF#RCLW0.SPL~ ~override~
 SAY NAME1 ~Respawn Claws~
 
-COPY ~PF#werefighter\spl\SPLFRAG.SPL~ ~override~
+COPY ~PF#werefighter\spl\PF#SPLFR.SPL~ ~override~
 SAY NAME1 ~Feral Rage~
 
-COPY ~PF#werefighter\spl\SPLGWER.SPL~ ~override~
+COPY ~PF#werefighter\spl\PF#SPLGW.SPL~ ~override~
 SAY NAME1 ~Shapeshifts Greater Werewolf~
 
-COPY ~PF#werefighter\spl\SPLGWR1.SPL~ ~override~
+COPY ~PF#werefighter\spl\PF#SGWR1.SPL~ ~override~
 SAY NAME1 ~Shapeshifts Greater Werewolf~
 
-COPY ~PF#werefighter\spl\SPLGWR2.SPL~ ~override~
+COPY ~PF#werefighter\spl\PF#SGWR2.SPL~ ~override~
 SAY NAME1 ~Shapeshifts Greater Werewolf~
 
-COPY ~PF#werefighter\spl\SPLGWR3.SPL~ ~override~
+COPY ~PF#werefighter\spl\PF#SGWR3.SPL~ ~override~
 SAY NAME1 ~Shapeshifts Greater Werewolf~
 
-COPY ~PF#werefighter\spl\SPLGWWH.SPL~ ~override~
+COPY ~PF#werefighter\spl\PF#SGWHL.SPL~ ~override~
 SAY NAME1 ~Shapeshifts Greater Werewolf~
 
-COPY ~PF#werefighter\spl\SPLHOWL.SPL~ ~override~
+COPY ~PF#werefighter\spl\PF#HOWL1.SPL~ ~override~
 SAY NAME1 ~Howl~
 
-COPY ~PF#werefighter\spl\SPLWERE.SPL~ ~override~
+COPY ~PF#werefighter\spl\PF#SPLWR.SPL~ ~override~
 SAY NAME1 ~Shapeshifts Werewolf~
 
-COPY ~PF#werefighter\spl\SPLWOLF.SPL~ ~override~
+COPY ~PF#werefighter\spl\PF#SPLWO.SPL~ ~override~
 SAY NAME1 ~Shapeshifts Wolf~
 
 
 
-COPY ~PF#werefighter\itm\WOLFATT1.ITM~ ~override~
+COPY ~PF#werefighter\itm\PF#WATT0.ITM~ ~override~
 SAY NAME1 ~Claws&Fangs +1~
 SAY NAME2 ~Claws&Fangs +1~
 
-COPY ~PF#werefighter\itm\WEREATT1.ITM~ ~override~
+COPY ~PF#werefighter\itm\PF#WATT1.ITM~ ~override~
 SAY NAME1 ~Claws&Fangs +2~
 SAY NAME2 ~Claws&Fangs +2~
 
-COPY ~PF#werefighter\itm\WEREATT2.ITM~ ~override~
+COPY ~PF#werefighter\itm\PF#WATT2.ITM~ ~override~
 SAY NAME1 ~Claws&Fangs +4~
 SAY NAME2 ~Claws&Fangs +4~
 
-COPY ~PF#werefighter\itm\WEREATT3.ITM~ ~override~
+COPY ~PF#werefighter\itm\PF#WATT3.ITM~ ~override~
 SAY NAME1 ~Claws&Fangs +6~
 SAY NAME2 ~Claws&Fangs +6~
 
-COPY ~PF#werefighter\itm\LI#GWER.ITM~ ~override~
-COPY ~PF#werefighter\itm\LI#WERE.ITM~ ~override~
+COPY ~PF#werefighter\itm\PF#FGWER.ITM~ ~override~
+COPY ~PF#werefighter\itm\PF#FWERE.ITM~ ~override~
 
 COPY ~PF#werefighter\2da~ ~override~
 
 COPY ~PF#werefighter\media~ ~override~
+
+COPY ~PF#werefighter\eff~ ~override~
 
 
 /* Shapeshifter Werewolf Kit */
@@ -128,7 +96,7 @@ ADD_KIT ~PF#werefighter~
 /* DUALCLAS.2DA */
 	~PF#werefighter 0 1 1 1 1 0~
 /* The path of abilities 2DA file */
-	~PF#werefighter/2da/pf#clbfw.2da~
+	~PF#werefighter/2da/PF#CLBFW.2da~
 /* KITTABLE.2DA */
 	~K_F_H K_F_D K_F_G K_F_E K_F_HE K_F_HL K_F_HO~
 /* KITLIST.2DA */
