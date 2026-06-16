@@ -1,0 +1,289 @@
+// ------------------------------------------------------------------------------------------------
+// 1. Resting Logic
+// ------------------------------------------------------------------------------------------------
+IF
+    PartyRested()
+THEN
+    RESPONSE #100
+        SetGlobal("PF_R_USD","LOCALS",0)
+        SetGlobal("PF_USDSU","LOCALS",0)
+END
+
+// ------------------------------------------------------------------------------------------------
+// 2. Transformation: Back to Natural Form
+// ------------------------------------------------------------------------------------------------
+IF
+    Global("PF_IS_WW","LOCALS",0)
+    !Global("PF_WW_MSG_STATE","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_WW_MSG_STATE","LOCALS",0)
+        SetGlobal("PF_GAVE_FR","LOCALS",0)   // Reset gating for Ability 1
+        SetGlobal("PF_GAVE_SU","LOCALS",0)   // Reset gating for Ability 2
+        DisplayStringHead(Myself, 103729)    // "The blood cools..."
+        RemoveSpellRES("PF#SPLFR")
+        RemoveSpellRES("PF#SUWR")
+END
+
+// ------------------------------------------------------------------------------------------------
+// 3. Transformation: Initial Werewolf State
+// ------------------------------------------------------------------------------------------------
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    !Global("PF_WW_MSG_STATE","LOCALS",1)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_WW_MSG_STATE","LOCALS",1)
+        DisplayStringHead(Myself, 103728)    // "The beast awakens"
+        Continue()
+END
+
+// ------------------------------------------------------------------------------------------------
+// 4. Ability 2: PF#SUWR (The simple one)
+// ------------------------------------------------------------------------------------------------
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_SU","LOCALS",0)          // Not yet checked this transformation
+    Global("PF_SUMWR","LOCALS",1)            // Has the HLA
+    Global("PF_USDSU","LOCALS",0)            // Has not used it today
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_SU","LOCALS",1)   // Done checking this ability
+       
+        AddSpecialAbility("PF#SUWR")
+        Continue()
+END
+
+// Catch-all for Ability 2 if it's used or not owned
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_SU","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_SU","LOCALS",1)
+END
+
+// ------------------------------------------------------------------------------------------------
+// 5. Ability 1: PF#SPLFR (The "Math" Blocks)
+// ------------------------------------------------------------------------------------------------
+
+// CASE: 5 Charges (5 Max - 0 Used)
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+    CheckStat(Myself,5,203)
+    Global("PF_R_USD","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+       
+        AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+END
+
+// CASE: 4 Charges (5-1 OR 4-0)
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+    CheckStat(Myself,5,203) Global("PF_R_USD","LOCALS",1)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+       
+        AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+END
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+    CheckStat(Myself,4,203) Global("PF_R_USD","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+       
+        AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+END
+
+// CASE: 3 Charges (5-2 OR 4-1 OR 3-0)
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+    CheckStat(Myself,5,203) Global("PF_R_USD","LOCALS",2)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+       
+        AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+END
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+    CheckStat(Myself,4,203) Global("PF_R_USD","LOCALS",1)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+       
+        AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+END
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+    CheckStat(Myself,3,203) Global("PF_R_USD","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+       
+        AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+END
+
+// ------------------------------------------------------------------------------------------------
+// 5. Ability 1: PF#SPLFR (The "Math" Blocks) — rewritten OR(4) -> 4 separate IFs
+// ------------------------------------------------------------------------------------------------
+
+// CASE: 2 Charges (5-3)
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+    CheckStat(Myself,5,203)
+    Global("PF_R_USD","LOCALS",3)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+       
+        AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+END
+
+// CASE: 2 Charges (4-2)
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+    CheckStat(Myself,4,203)
+    Global("PF_R_USD","LOCALS",2)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+       
+        AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+END
+
+// CASE: 2 Charges (3-1)
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+    CheckStat(Myself,3,203)
+    Global("PF_R_USD","LOCALS",1)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+       
+        AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+END
+
+// CASE: 2 Charges (2-0)
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+    CheckStat(Myself,2,203)
+    Global("PF_R_USD","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+       
+        AddSpecialAbility("PF#SPLFR")
+         AddSpecialAbility("PF#SPLFR")
+END
+
+// ------------------------------------------------------------------------------------------------
+// 5. Ability 1: PF#SPLFR (The "Math" Blocks) — rewritten OR(5) -> 5 separate IFs
+// ------------------------------------------------------------------------------------------------
+
+// CASE: 1 Charge (5-4)
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+    CheckStat(Myself,5,203)
+    Global("PF_R_USD","LOCALS",4)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+       
+        AddSpecialAbility("PF#SPLFR")
+END
+
+// CASE: 1 Charge (4-3)
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+    CheckStat(Myself,4,203)
+    Global("PF_R_USD","LOCALS",3)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+       
+        AddSpecialAbility("PF#SPLFR")
+END
+
+// CASE: 1 Charge (3-2)
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+    CheckStat(Myself,3,203)
+    Global("PF_R_USD","LOCALS",2)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+       
+        AddSpecialAbility("PF#SPLFR")
+END
+
+// CASE: 1 Charge (2-1)
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+    CheckStat(Myself,2,203)
+    Global("PF_R_USD","LOCALS",1)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+       
+        AddSpecialAbility("PF#SPLFR")
+END
+
+// CASE: 1 Charge (1-0)
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+    CheckStat(Myself,1,203)
+    Global("PF_R_USD","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+       
+        AddSpecialAbility("PF#SPLFR")
+END
+
+// Catch-all for Ability 1
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_GAVE_FR","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_GAVE_FR","LOCALS",1)
+END

@@ -1,0 +1,130 @@
+// ------------------------------------------------------------------------------------------------
+// 1. Resting Logic: Replenish Expended Charges
+// ------------------------------------------------------------------------------------------------
+IF
+    PartyRested()
+THEN
+    RESPONSE #100
+        SetGlobal("PF_R_USD","LOCALS",0)
+END
+
+// ------------------------------------------------------------------------------------------------
+// 2. Transformation: Back to Natural Form
+// ------------------------------------------------------------------------------------------------
+IF
+    Global("PF_IS_WW","LOCALS",0)
+    !Global("PF_WW_MSG_STATE","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_WW_MSG_STATE","LOCALS",0)
+        SetGlobal("PF_CHARGES_GIVEN","LOCALS",0) // Reset charge state for next transformation
+        DisplayStringHead(Myself, 103729)        // "The blood cools..."
+        RemoveSpellRES("PF#SPLFR")               // Strip the ability
+END
+
+// ------------------------------------------------------------------------------------------------
+// 3. Transformation: Initial Werewolf State & Message
+// ------------------------------------------------------------------------------------------------
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    !Global("PF_WW_MSG_STATE","LOCALS",1)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_WW_MSG_STATE","LOCALS",1)
+        DisplayStringHead(Myself, 103728)        // "The beast awakens"
+        // We don't add the ability here yet; the blocks below will handle the "Math"
+END
+
+// ------------------------------------------------------------------------------------------------
+// 4. Charge Calculation Logic (Remaining = Max - Used)
+// ------------------------------------------------------------------------------------------------
+
+// CASE: 5 Charges Remaining
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_CHARGES_GIVEN","LOCALS",0)
+    CheckStat(Myself,5,203) // Max is 5
+    Global("PF_R_USD","LOCALS",0) // Used is 0
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CHARGES_GIVEN","LOCALS",1)
+        AddSpecialAbility("PF#SPLFR")
+        AddSpecialAbility("PF#SPLFR")
+        AddSpecialAbility("PF#SPLFR")
+        AddSpecialAbility("PF#SPLFR")
+        AddSpecialAbility("PF#SPLFR")
+END
+
+// CASE: 4 Charges Remaining
+// (Max 5 / Used 1) OR (Max 4 / Used 0)
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_CHARGES_GIVEN","LOCALS",0)
+    // OR(2)
+    //     IF_DIFF(CheckStat(Myself,5,203),Global("PF_R_USD","LOCALS",1))
+    //     IF_DIFF(CheckStat(Myself,4,203),Global("PF_R_USD","LOCALS",0))
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CHARGES_GIVEN","LOCALS",1)
+        AddSpecialAbility("PF#SPLFR")
+        AddSpecialAbility("PF#SPLFR")
+        AddSpecialAbility("PF#SPLFR")
+        AddSpecialAbility("PF#SPLFR")
+END
+
+// CASE: 3 Charges Remaining
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_CHARGES_GIVEN","LOCALS",0)
+    // OR(3)
+    //     IF_DIFF(CheckStat(Myself,5,203),Global("PF_R_USD","LOCALS",2))
+    //     IF_DIFF(CheckStat(Myself,4,203),Global("PF_R_USD","LOCALS",1))
+    //     IF_DIFF(CheckStat(Myself,3,203),Global("PF_R_USD","LOCALS",0))
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CHARGES_GIVEN","LOCALS",1)
+        AddSpecialAbility("PF#SPLFR")
+        AddSpecialAbility("PF#SPLFR")
+        AddSpecialAbility("PF#SPLFR")
+END
+
+// CASE: 2 Charges Remaining
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_CHARGES_GIVEN","LOCALS",0)
+    // OR(4)
+    //     IF_DIFF(CheckStat(Myself,5,203),Global("PF_R_USD","LOCALS",3))
+    //     IF_DIFF(CheckStat(Myself,4,203),Global("PF_R_USD","LOCALS",2))
+    //     IF_DIFF(CheckStat(Myself,3,203),Global("PF_R_USD","LOCALS",1))
+    //     IF_DIFF(CheckStat(Myself,2,203),Global("PF_R_USD","LOCALS",0))
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CHARGES_GIVEN","LOCALS",1)
+        AddSpecialAbility("PF#SPLFR")
+        AddSpecialAbility("PF#SPLFR")
+END
+
+// CASE: 1 Charge Remaining
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_CHARGES_GIVEN","LOCALS",0)
+    // OR(5)
+    //     IF_DIFF(CheckStat(Myself,5,203),Global("PF_R_USD","LOCALS",4))
+    //     IF_DIFF(CheckStat(Myself,4,203),Global("PF_R_USD","LOCALS",3))
+    //     IF_DIFF(CheckStat(Myself,3,203),Global("PF_R_USD","LOCALS",2))
+    //     IF_DIFF(CheckStat(Myself,2,203),Global("PF_R_USD","LOCALS",1))
+    //     IF_DIFF(CheckStat(Myself,1,203),Global("PF_R_USD","LOCALS",0))
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CHARGES_GIVEN","LOCALS",1)
+        AddSpecialAbility("PF#SPLFR")
+END
+
+// CASE: 0 Charges Remaining (Catch-all to stop the script from trying to check)
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_CHARGES_GIVEN","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CHARGES_GIVEN","LOCALS",1) // We gave nothing, but we mark it as "Handled"
+END

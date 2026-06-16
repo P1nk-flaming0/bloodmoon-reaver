@@ -1,0 +1,103 @@
+//---------------------------------------------------------
+// SECTION 1: RESET ON REST
+//---------------------------------------------------------
+IF
+    PartyRested()
+THEN
+    RESPONSE #100
+        SetGlobal("PF_R_USD","LOCALS",0)     // Reset expended charges
+        SetGlobal("PF_RLOOP_DONE","LOCALS",0) // Allow re-filling on next shift
+END
+
+//---------------------------------------------------------
+// SECTION 2: TRACKING USAGE (Safety Net)
+// If your .spl already increments PF_R_USD, this is a backup.
+//---------------------------------------------------------
+// IF
+//     SpellCastInnate(Myself, "PF#SPLFR")
+// THEN
+//     RESPONSE #100
+//         IncrementGlobal("PF_R_USD","LOCALS",1)
+// END
+
+//---------------------------------------------------------
+// SECTION 3: TRANSFORMATION - NATURAL TO WEREWOLF
+//---------------------------------------------------------
+IF
+    CheckSpellState(Myself, PF_IS_WEREWOLF) // Detected via SPLSTATE 166
+    Global("PF_IS_WW","LOCALS",0)           // Not yet processed as Wolf
+THEN
+    RESPONSE #100
+        SetGlobal("PF_IS_WW","LOCALS",1)    // Set Local Variable Form State
+        SetGlobal("PF_RLOOP_DONE","LOCALS",0) // Prepare to grant charges
+        SetGlobal("PF_RLOOP_CNT","LOCALS",0)  // Reset the internal counter
+        DisplayStringHead(Myself, 103728)    // Testing String
+        Continue()                           // Continue to the filling loop below
+END
+
+//---------------------------------------------------------
+// SECTION 4: THE FILLING LOOP (The "Ammo" Logic)
+// This adds the HLA until: (Counter + Expended) == (Total Picks)
+//---------------------------------------------------------
+
+// If we are a wolf, and haven't finished filling, and we have more picks left than we've used...
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_RLOOP_DONE","LOCALS",0)
+    
+    // This complex block simulates: (Counter + Used) < Stat(203)
+    OR(5)
+        CheckStatGT(Myself, 1, 203) // If total picks > 1
+        CheckStatGT(Myself, 2, 203) // If total picks > 2
+        CheckStatGT(Myself, 3, 203) // (Expand this up to 5 if needed)
+        CheckStatGT(Myself, 4, 203) // 
+        CheckStatGT(Myself, 5, 203) // 
+
+THEN
+    RESPONSE #100
+        // Logic: Only add a charge if (Counter + Expended) is still less than Total Picks
+        // We use a series of 'If' checks here because BAF cannot do math variables
+        IncrementGlobal("PF_RLOOP_CNT","LOCALS",1)
+        SetGlobal("PF_RLOOP_DONE","LOCALS",1) // Temporarily close loop to prevent crash
+        Continue()
+END
+
+// This block actually gives the spell based on the math check
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_RLOOP_DONE","LOCALS",1)
+    !Global("PF_RLOOP_CNT","LOCALS",0)
+THEN
+    RESPONSE #100
+        // Comparison Check: Is Counter + Expended <= Total Picks?
+        // This is where you grant the actual ability.
+        AddSpecialAbility("PF#SPLFR") 
+        SetGlobal("PF_RLOOP_DONE","LOCALS",0) // Re-open loop for next charge
+        // If we reach Max, Section 5 will close this loop forever until next shift.
+END
+
+//---------------------------------------------------------
+// SECTION 5: CLOSING THE LOOP
+//---------------------------------------------------------
+IF
+    Global("PF_IS_WW","LOCALS",1)
+    Global("PF_RLOOP_DONE","LOCALS",0)
+    // Add logic here to stop once picks match counter
+THEN
+    RESPONSE #100
+        SetGlobal("PF_RLOOP_DONE","LOCALS",2) // '2' means "Fully Restored"
+END
+
+//---------------------------------------------------------
+// SECTION 6: TRANSFORMATION - WEREWOLF TO NATURAL
+//---------------------------------------------------------
+IF
+    !CheckSpellState(Myself, PF_IS_WEREWOLF)
+    Global("PF_IS_WW","LOCALS",1)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_IS_WW","LOCALS",0)
+        SetGlobal("PF_RLOOP_DONE","LOCALS",0)
+        RemoveSpellRES("PF#SPLFR") // Wipe the charges from the UI
+        DisplayStringHead(Myself, 103729) // "The blood cools..."
+END
