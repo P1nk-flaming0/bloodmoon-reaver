@@ -1,0 +1,175 @@
+BACKUP ~PF#werefighter/backup~
+AUTHOR ~Pink_Flamingo~
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+BEGIN ~Fighter Werewolf Kit~
+INCLUDE ~PF#werefighter/lib/fl#add_kit_ee.tpa~
+AT_INTERACTIVE_EXIT ~VIEW PF#werefighter\readme.txt~
+//REQUIRE_FILE ~Data/25Dialog.bif~ ~Requires BG2ToB~
+
+
+
+COPY ~PF#werefighter\spl\HLAFRG1.SPL~ ~override~
+SAY NAME1 ~Feral Rage~
+SAY UNIDENTIFIED_DESC ~Feral Rage
+Allowing himself to be consumed by his feral insticts, the werewolf enters a trance of animalistic rage.
+
+-  While enraged: Strenght rises by 2, claws hit as a +6 weapon, movement and attack are increased.
+-  While enraged: immune to charm, hold and fear, maze, imprisonment, stun and sleep.
+
+Requires: Howl~
+
+COPY ~PF#werefighter\spl\HLAFRG2.SPL~ ~override~
+SAY NAME1 ~Additional Rage #1~
+SAY UNIDENTIFIED_DESC ~Additional Rage #1
+Adds an extra rage attack
+
+Requires: Feral Rage~
+
+COPY ~PF#werefighter\spl\HLAFRG3.SPL~ ~override~
+SAY NAME1 ~Additional Rage #2~
+SAY UNIDENTIFIED_DESC ~Additional Rage #2
+Adds an extra rage attack
+
+Requires: Additional Rage #1~
+
+COPY ~PF#werefighter\spl\HLAGWW.SPL~ ~override~
+SAY NAME1 ~Shapeshifts Greater Werewolf~
+
+
+COPY ~PF#werefighter\spl\HLAHOWL.SPL~ ~override~
+SAY NAME1 ~Howl~
+SAY UNIDENTIFIED_DESC ~Howl
+While in hybrid form, the werewolf realeses a gruesome howl, striking fear in the hearts of nearby enemies. All opponents in a 30' radius must save vs spell with -6 penalty or flee in panic.~
+
+COPY ~PF#werefighter\spl\LI#NATF.SPL~ ~override~
+SAY NAME1 ~Shapeshifts Natural Form~
+
+COPY ~PF#werefighter\spl\RECLAW1.SPL~ ~override~
+SAY NAME1 ~Respawn Claws~
+
+COPY ~PF#werefighter\spl\RECLAW2.SPL~ ~override~
+SAY NAME1 ~Respawn Claws~
+
+COPY ~PF#werefighter\spl\RECLAW0.SPL~ ~override~
+SAY NAME1 ~Respawn Claws~
+
+COPY ~PF#werefighter\spl\SPLFRAG.SPL~ ~override~
+SAY NAME1 ~Feral Rage~
+
+COPY ~PF#werefighter\spl\SPLGWER.SPL~ ~override~
+SAY NAME1 ~Shapeshifts Greater Werewolf~
+
+COPY ~PF#werefighter\spl\SPLGWR1.SPL~ ~override~
+SAY NAME1 ~Shapeshifts Greater Werewolf~
+
+COPY ~PF#werefighter\spl\SPLGWR2.SPL~ ~override~
+SAY NAME1 ~Shapeshifts Greater Werewolf~
+
+COPY ~PF#werefighter\spl\SPLGWR3.SPL~ ~override~
+SAY NAME1 ~Shapeshifts Greater Werewolf~
+
+COPY ~PF#werefighter\spl\SPLGWWH.SPL~ ~override~
+SAY NAME1 ~Shapeshifts Greater Werewolf~
+
+COPY ~PF#werefighter\spl\SPLHOWL.SPL~ ~override~
+SAY NAME1 ~Howl~
+
+COPY ~PF#werefighter\spl\SPLWERE.SPL~ ~override~
+SAY NAME1 ~Shapeshifts Werewolf~
+
+COPY ~PF#werefighter\spl\SPLWOLF.SPL~ ~override~
+SAY NAME1 ~Shapeshifts Wolf~
+
+
+
+COPY ~PF#werefighter\itm\WOLFATT1.ITM~ ~override~
+SAY NAME1 ~Claws&Fangs +1~
+SAY NAME2 ~Claws&Fangs +1~
+
+COPY ~PF#werefighter\itm\WEREATT1.ITM~ ~override~
+SAY NAME1 ~Claws&Fangs +2~
+SAY NAME2 ~Claws&Fangs +2~
+
+COPY ~PF#werefighter\itm\WEREATT2.ITM~ ~override~
+SAY NAME1 ~Claws&Fangs +4~
+SAY NAME2 ~Claws&Fangs +4~
+
+COPY ~PF#werefighter\itm\WEREATT3.ITM~ ~override~
+SAY NAME1 ~Claws&Fangs +6~
+SAY NAME2 ~Claws&Fangs +6~
+
+COPY ~PF#werefighter\itm\LI#GWER.ITM~ ~override~
+COPY ~PF#werefighter\itm\LI#WERE.ITM~ ~override~
+
+COPY ~PF#werefighter\2da~ ~override~
+
+COPY ~PF#werefighter\media~ ~override~
+
+
+/* Shapeshifter Werewolf Kit */
+ADD_KIT ~PF#werefighter~
+/* CLASWEAP.2DA */
+	~PF#werefighter 1 1 1 1 1 1 1 1~
+/* WEAPPROF.2DA */
+	~PF#werefighter 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+/* ABCLASRQ.2DA */
+	~PF#werefighter 9 0 0 0 0 0~
+/* ABCLSMOD.2DA */
+	~PF#werefighter 0 0 0 0 0 0~
+/* ABDCDSRQ.2DA */
+	~PF#werefighter 17 0 0 0 0 0~
+/* ABDCSCRQ.2DA */
+	~PF#werefighter 15 0 0 0 0 0~
+/* ALIGNMNT.2DA */
+	~PF#werefighter 0 1 1 0 1 1 0 1 1~
+/* DUALCLAS.2DA */
+	~PF#werefighter 0 1 1 1 1 0~
+/* The path of abilities 2DA file */
+	~PF#werefighter/2da/pf#clbfw.2da~
+/* KITTABLE.2DA */
+	~K_F_H K_F_D K_F_G K_F_E K_F_HE K_F_HL K_F_HO~
+/* KITLIST.2DA */
+	~0x10000000 2~
+/* LUABBR.2DA */
+	~Fi0~
+/* 25STWEAP.2DA */
+	~LEAT20 * HELM19 BAG27 RING06 RING31 CLCK02 BOOT01 AMUL19 BRAC14 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+        SAY ~Fighter Werewolf~
+	SAY ~Fighter Werewolf~
+	SAY ~FIGHTER WEREWOLF: This warrior has allowed himself to become infected with Lycanthropy, but due to intense study and training he has the ability to control his affliction.  The creature he becomes is that of the Werewolf, the most famous of the lycanthrope shape changers.
+
+Advantages:
+-  May shapeshift into a wolf once per day for every 2 levels  (starts at 1st level with one use)
+-  May shapeshift into the form of a werewolf once per day for every 2 levels  (starts at 4th level with one use)
+-  At 14th level gains the ability to change into a greater werewolf
+-  At 16th level gains the ability to Howl 3 x day
+
+HOWL:
+While in hybrid form, the werewolf realeses a gruesome howl, striking fear in the hearts of nearby enemies. All opponents in a 30' radius must save vs spell with -6 penalty or flee in panic.
+
+-  At 17th level gains the ability Feral Rage
+
+FERAL RAGE:
+Allowing himself to be consumed by his feral insticts, the werewolf enters a trance of animalistic rage.
+
+-  While enraged: Strenght rises by 2, claws hit as a +6 weapon, movement and attack are increased.
+-  While enraged: Immune to charm, hold and fear, maze, imprisonment, stun and sleep.
+
+-  At 20th level gains an additional Feral Rage
+-  At 23th level gains an additional Feral Rage
+
+Disadvantages:
+-  Cannot wear ANY armor~
+//--------------------------------------------------------------------------
+
+LAF fl#add_kit_ee
+STR_VAR
+  kit_name = PF#werefighter
+  clascolr = ~24 182 144 2 25~
+END
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
