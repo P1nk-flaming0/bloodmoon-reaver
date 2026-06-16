@@ -27,8 +27,8 @@ GROWL: A fearsome roar usable only in werewolf form. Enemies within 30 feet must
 – At 18th level, the warrior may freely alternate between natural, wolf, and werewolf forms at will.
 
 BEAST WITHIN: While learning how to practice control over <PRO_HISHER> curse, the warrior runs the risk of losing <PRO_HISHER> humanity when faced with particularly stressful combat conditions. Under such circumstances, there is a chance of <PRO_HESHE> going berserk and transforming into an uncontrollable beast, blindly attacking friend or foe alike.
-As the warrior grows in experience and mental discipline, the likelihood of losing control steadily diminishes until it is mastered entirely at higher levels.
-Once the frenzy subsides, the toll on the warrior's body is severe; <PRO_HESHE> is forced back into human form, left briefly unconscious, and suffers from profound physical exhaustion and diminished morale.
+– As the warrior grows in experience and mental discipline, the likelihood of losing control steadily diminishes until it is mastered entirely at higher levels.
+– Once the frenzy subsides, the toll on the warrior's body is severe; <PRO_HESHE> is forced back into human form, left briefly unconscious, and suffers from profound physical exhaustion and diminished morale.
 
 Disadvantages:
 – Cannot wear any armor.~
@@ -53,14 +53,16 @@ Casting Time: Instant
 Area of Effect: Special
 Saving Throw: None
 
-Through a primal bond with the Beastlord’s realm, the character summons two Bloodmoon Stalkers — spirit-werewolves of savage strength and relentless speed. These hunters answer the call to spill blood in Malar’s name, striking as +4 creatures, possessing high magic resistance and immunity to mundane weapons. The Stalkers remain for 3 turns or until destroyed.~
+Through a primal bond with the Beastlord’s realm, the character summons two Bloodmoon Stalkers – spirit-werewolves of savage strength and unbridled ferocity. These hunters answer the call to spill blood in Malar’s name, striking as +4 creatures, possessing high magic resistance and immunity to mundane weapons. The Stalkers remain for 3 turns or until destroyed.~
 @103740 = ~Blood Frenzy
 When the werewolf claims a kill, a surge of primal fury floods its body. For a short time, the beast moves with unnatural speed, strikes with greater ferocity, and its strength swells with predatory might. The frenzy lasts for 3 rounds after the last kill before fading.~
 @103741 = ~Feral Rage
-Allowing to be consumed by ones feral insticts, the werewolf enters a trance of animalistic rage. Can be selected up to 5 times.
+Allowing to be consumed by its feral insticts, the werewolf enters a trance of animalistic rage.
 
--  While enraged: Strenght rises by 2, claws hit as a +6 weapon and their damage increases.
--  While enraged: Immune to charm, hold and fear, maze, imprisonment, stun and sleep.~
+– While enraged: Strength rises by 2, claws hit as a +6 weapon and their damage increases.
+– While enraged: Immune to charm, hold and fear, maze, imprisonment, stun and sleep.
+
+Can be selected up to 5 times.~
 @103742 = ~^AWilderness^-~
 @103743 = ~In Distress~
 @103744 = ~^AYou hear a lone howl answering your call.^-~
@@ -95,9 +97,9 @@ Effect:
   +5% Slashing Resistance  
   +5% Piercing Resistance  
   +5% Crushing Resistance  
-  +5% Missile Resistance  
+  +5% Missile Resistance
 
-(May be chosen up to two times.)
+May be chosen up to two times.
 ~
 @103770 = ~Base~
 @103771 = ~5% physical dmg resistance added!~
@@ -151,6 +153,12 @@ Special Abilities:
 – Regenerates 1 HP every 2 sec~
 @103781 = ~Shapeshift at Will~
 @103782 = ~Howl
-A primal call to the wild, usable only in wolf form. When unleashed in natural surroundings, the howl may summon 1–5 wolves to fight at the caller’s side. These allies remain for 3 turns or until slain.~
+A primal call to the wild, usable only in wolf form. When unleashed in natural surroundings, the howl may summon 1-5 wolves to fight at the caller’s side. These allies remain for 3 turns or until slain.~
 @103783 = ~Growl
-A fearsome roar available while in werewolf form. Enemies within 30 feet must save vs. Spell at +4 or flee in panic; at higher levels, the growl carries no save bonus.~
+A fearsome roar available while in werewolf form. Enemies within 30 feet must save vs. Spell at +4 or flee in panic. At higher levels, the growl carries no save bonus.~
+@103784 = ~^RFound a wolf summoner!^-~
+@103785 = ~Feral Rage
+Allowing to be consumed by its feral insticts, the werewolf enters a trance of animalistic rage.
+
+– While enraged: Strength rises by 2, claws hit as a +6 weapon and their damage increases.
+– While enraged: Immune to charm, hold and fear, maze, imprisonment, stun and sleep.~
