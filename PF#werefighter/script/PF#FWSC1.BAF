@@ -63,32 +63,27 @@ THEN
     RESPONSE #20
         SetGlobal("PF_WW_MSG_STATE","LOCALS",1)
         DisplayStringHead(Myself, 103758)    // "The beast awakens"
-        Wait(1)                              // 1-second delay
-        ReallyForceSpellRES("PF#GRWL0",Myself) // Casts growl at character level
+        ReallyForceSpellRES("PF#FWGR9",Myself) // Casts growl at character level
         Continue()
     RESPONSE #20
         SetGlobal("PF_WW_MSG_STATE","LOCALS",1)
         DisplayStringHead(Myself, 103759)    // "The beast awakens"
-        Wait(1)                              // 1-second delay
-        ReallyForceSpellRES("PF#GRWL0",Myself) // Casts growl at character level
+        ReallyForceSpellRES("PF#FWGR9",Myself) // Casts growl at character level
         Continue()
     RESPONSE #20
         SetGlobal("PF_WW_MSG_STATE","LOCALS",1)
         DisplayStringHead(Myself, 103760)    // "The beast awakens"
-        Wait(1)                              // 1-second delay
-        ReallyForceSpellRES("PF#GRWL0",Myself) // Casts growl at character level
+        ReallyForceSpellRES("PF#FWGR9",Myself) // Casts growl at character level
         Continue()
     RESPONSE #20
         SetGlobal("PF_WW_MSG_STATE","LOCALS",1)
         DisplayStringHead(Myself, 103761)    // "The beast awakens"
-        Wait(1)                              // 1-second delay
-        ReallyForceSpellRES("PF#GRWL0",Myself) // Casts growl at character level
+        ReallyForceSpellRES("PF#FWGR9",Myself) // Casts growl at character level
         Continue()
     RESPONSE #20
         SetGlobal("PF_WW_MSG_STATE","LOCALS",1)
         DisplayStringHead(Myself, 103762)    // "The beast awakens"
-        Wait(1)                              // 1-second delay
-        ReallyForceSpellRES("PF#GRWL0",Myself) // Casts growl at character level
+        ReallyForceSpellRES("PF#FWGR9",Myself) // Casts growl at character level
         Continue()
 END
 

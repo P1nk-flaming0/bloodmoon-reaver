@@ -25,11 +25,11 @@ THEN
         PlaySound("PF#HWL9")
 
     // 2 Second Delays (Approx 50% total)
-    RESPONSE #16
+    RESPONSE #10
         SetGlobal("PF_DOHWL","LOCALS",0)
         Wait(2)
         PlaySound("PF#HWL5")
-    RESPONSE #17
+    RESPONSE #10
         SetGlobal("PF_DOHWL","LOCALS",0)
         Wait(2)
         PlaySound("PF#HWL6")
