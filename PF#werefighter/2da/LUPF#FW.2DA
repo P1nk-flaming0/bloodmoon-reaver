@@ -11,10 +11,10 @@
 8       GA_SPCL909     *          *         1         99         1            GA_SPCL905   *             *
 9       GA_SPCL908     *          *         1         99         20           *            *             *
 10      GA_SPCL907     *          *         1         99         20           *            *             *
-11      AP_PF#HLABF    *          *         1         99         1            *            *             *
-12      AP_PF#HLAFR    *          *         1         99         5            *            *             *
-13      AP_PF#HLASU    *          *         1         99         1            *            *             *
-14      AP_PF#HLATS    *          *         1         99         2            *            *             *
+11      AP_PF#FWABF    *          *         1         99         1            *            *             *
+12      AP_PF#FWAFR    *          *         1         99         5            *            *             *
+13      AP_PF#FWASU    *          *         1         99         1            *            *             *
+14      AP_PF#FWATS    *          *         1         99         2            *            *             *
 15         *           *          *         *         *          *            *            *             *
 16         *           *          *         *         *          *            *            *             *
 17         *           *          *         *         *          *            *            *             *
