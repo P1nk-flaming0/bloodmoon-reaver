@@ -6,45 +6,45 @@ THEN
     RESPONSE #10
         SetGlobal("PF_DOHWL","LOCALS",0) // Reset immediately so it doesn't loop
         Wait(1)
-        PlaySound("PF#HWL5")
+        PlaySound("PF#FWHL5")
     RESPONSE #10
         SetGlobal("PF_DOHWL","LOCALS",0)
         Wait(1)
-        PlaySound("PF#HWL6")
+        PlaySound("PF#FWHL6")
     RESPONSE #10
         SetGlobal("PF_DOHWL","LOCALS",0)
         Wait(1)
-        PlaySound("PF#HWL8")
+        PlaySound("PF#FWHL8")
     RESPONSE #10
         SetGlobal("PF_DOHWL","LOCALS",0)
         Wait(1)
-        PlaySound("PF#HWL01")
+        PlaySound("PF#FWHL1")
     RESPONSE #10
         SetGlobal("PF_DOHWL","LOCALS",0)
         Wait(1)
-        PlaySound("PF#HWL9")
+        PlaySound("PF#FWHL9")
 
     // 2 Second Delays (Approx 50% total)
     RESPONSE #10
         SetGlobal("PF_DOHWL","LOCALS",0)
         Wait(2)
-        PlaySound("PF#HWL5")
+        PlaySound("PF#FWHL5")
     RESPONSE #10
         SetGlobal("PF_DOHWL","LOCALS",0)
         Wait(2)
-        PlaySound("PF#HWL6")
+        PlaySound("PF#FWHL6")
     RESPONSE #10
         SetGlobal("PF_DOHWL","LOCALS",0)
         Wait(1)
-        PlaySound("PF#HWL8")
+        PlaySound("PF#FWHL8")
     RESPONSE #10
         SetGlobal("PF_DOHWL","LOCALS",0)
         Wait(1)
-        PlaySound("PF#HWL01")
+        PlaySound("PF#FWHL1")
     RESPONSE #10
         SetGlobal("PF_DOHWL","LOCALS",0)
         Wait(1)
-        PlaySound("PF#HWL9")
+        PlaySound("PF#FWHL9")
 
 END
 

@@ -1,30 +1,83 @@
 IF
     OnCreation()
+    Range(Player1,3) // Wider range ensures it catches the overlapping caster
 THEN
     RESPONSE #100
-        // 1. Play the "Call" sound so the player knows it worked
-        PlaySound("PF#HWL6")
-        
-        // 2. Spawn the wolves just outside the player's camera
-        // The '0,0,0' parameters handle coordinates and orientation automatically
-        CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)
-        CreateCreatureObjectOffScreen("PF#WLFSU",Myself,0,0,0)
-        SetGlobalTimer("PF_ProxyLifetime","LOCALS",20)
-        Continue()
-END
-
-// Self-destruct when the timer expires
-IF
-    GlobalTimerExpired("PF_ProxyLifetime","LOCALS")
-THEN
-    RESPONSE #100
+        SetGlobal("PF_CurrentSummoner","GLOBAL",1)
+        PlaySound("PF#FWHL6")
+        CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
+        CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
         DestroySelf()
 END
 
-// March toward the True Master through the Fog of War
 IF
-    !Range(LastSummonerOf(Myself),3)
+    OnCreation()
+    Range(Player2,3)
 THEN
     RESPONSE #100
-        MoveToObject(LastSummonerOf(Myself))
+        SetGlobal("PF_CurrentSummoner","GLOBAL",2)
+        PlaySound("PF#FWHL6")
+        CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
+        CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
+        DestroySelf()
+END
+
+IF
+    OnCreation()
+    Range(Player3,3)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CurrentSummoner","GLOBAL",3)
+        PlaySound("PF#FWHL6")
+        CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
+        CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
+        DestroySelf()
+END
+
+IF
+    OnCreation()
+    Range(Player4,3)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CurrentSummoner","GLOBAL",4)
+        PlaySound("PF#FWHL6")
+        CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
+        CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
+        DestroySelf()
+END
+
+IF
+    OnCreation()
+    Range(Player5,3)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CurrentSummoner","GLOBAL",5)
+        PlaySound("PF#FWHL6")
+        CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
+        CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
+        CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
+END
+
+IF
+    OnCreation()
+    Range(Player6,3)
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CurrentSummoner","GLOBAL",6)
+        PlaySound("PF#FWHL6")
+        CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
+        CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
+        DestroySelf()
+END
+
+// Fallback safety block in case of an engine anomaly
+IF
+    OnCreation()
+THEN
+    RESPONSE #100
+        SetGlobal("PF_CurrentSummoner","GLOBAL",1) // Default to Player 1
+        PlaySound("PF#FWHL6")
+        CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
+        CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
+        DestroySelf()
 END
