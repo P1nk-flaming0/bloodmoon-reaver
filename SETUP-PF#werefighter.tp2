@@ -19,80 +19,22 @@ LANGUAGE
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-BEGIN ~Fighter Werewolf Kit~
+BEGIN ~Bloodmoon Reaver Kit~
 INCLUDE ~PF#werefighter/lib/fl#add_kit_ee.tpa~
 AT_INTERACTIVE_EXIT ~VIEW PF#werefighter\readme.txt~
 //REQUIRE_FILE ~Data/25Dialog.bif~ ~Requires BG2ToB~
 
+// Cursor here you do your magic
 
-COPY ~PF#werefighter\spl\PF#NATF.SPL~ ~override~
-SAY NAME1 ~Shapeshifts Natural Form~
-
-COPY ~PF#werefighter\spl\PF#RCLW1.SPL~ ~override~
-SAY NAME1 ~Respawn Claws~
-
-COPY ~PF#werefighter\spl\PF#RCLW2.SPL~ ~override~
-SAY NAME1 ~Respawn Claws~
-
-COPY ~PF#werefighter\spl\PF#RCLW0.SPL~ ~override~
-SAY NAME1 ~Respawn Claws~
-
-COPY ~PF#werefighter\spl\PF#SPLFR.SPL~ ~override~
-SAY NAME1 ~Feral Rage~
-
-COPY ~PF#werefighter\spl\PF#SPLGW.SPL~ ~override~
-SAY NAME1 ~Shapeshifts Greater Werewolf~
-
-COPY ~PF#werefighter\spl\PF#SGWR1.SPL~ ~override~
-SAY NAME1 ~Shapeshifts Greater Werewolf~
-
-COPY ~PF#werefighter\spl\PF#SGWR2.SPL~ ~override~
-SAY NAME1 ~Shapeshifts Greater Werewolf~
-
-COPY ~PF#werefighter\spl\PF#SGWR3.SPL~ ~override~
-SAY NAME1 ~Shapeshifts Greater Werewolf~
-
-COPY ~PF#werefighter\spl\PF#SGWHL.SPL~ ~override~
-SAY NAME1 ~Shapeshifts Greater Werewolf~
-
-COPY ~PF#werefighter\spl\PF#HOWL1.SPL~ ~override~
-SAY NAME1 ~Howl~
-
-COPY ~PF#werefighter\spl\PF#SPLWR.SPL~ ~override~
-SAY NAME1 ~Shapeshifts Werewolf~
-
-COPY ~PF#werefighter\spl\PF#SPLWO.SPL~ ~override~
-SAY NAME1 ~Shapeshifts Wolf~
-
-
-
-COPY ~PF#werefighter\itm\PF#WATT0.ITM~ ~override~
-SAY NAME1 ~Claws&Fangs +1~
-SAY NAME2 ~Claws&Fangs +1~
-
-COPY ~PF#werefighter\itm\PF#WATT1.ITM~ ~override~
-SAY NAME1 ~Claws&Fangs +2~
-SAY NAME2 ~Claws&Fangs +2~
-
-COPY ~PF#werefighter\itm\PF#WATT2.ITM~ ~override~
-SAY NAME1 ~Claws&Fangs +4~
-SAY NAME2 ~Claws&Fangs +4~
-
-COPY ~PF#werefighter\itm\PF#WATT3.ITM~ ~override~
-SAY NAME1 ~Claws&Fangs +6~
-SAY NAME2 ~Claws&Fangs +6~
-
-COPY ~PF#werefighter\itm\PF#FGWER.ITM~ ~override~
-COPY ~PF#werefighter\itm\PF#FWERE.ITM~ ~override~
-
+/*
 COPY ~PF#werefighter\2da~ ~override~
 
 COPY ~PF#werefighter\media~ ~override~
 
 COPY ~PF#werefighter\eff~ ~override~
+*/
 
-
-/* Shapeshifter Werewolf Kit */
+/* Bloodmoon Reaver Kit */
 ADD_KIT ~PF#werefighter~
 /* CLASWEAP.2DA */
 	~PF#werefighter 1 1 1 1 1 1 1 1~

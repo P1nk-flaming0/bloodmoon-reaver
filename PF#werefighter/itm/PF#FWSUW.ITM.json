@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "format": "itm",
+  "formatName": "Infinity Engine ITM v1",
+  "document": {
+    "header": {
+      "signature": "ITM ",
+      "version": "V1  ",
+      "unidentifiedName": -1,
+      "identifiedName": 8777,
+      "replacement": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
+      "flags": [
+        "cannotBeScribed",
+        "magical"
+      ],
+      "type": 0,
+      "usabilityFlags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "animation": "  ",
+      "minLevel": 0,
+      "minStrength": 0,
+      "minStrengthBonus": 0,
+      "kitUsability1": [],
+      "minIntelligence": 0,
+      "kitUsability2": [],
+      "minDexterity": 0,
+      "kitUsability3": [],
+      "minWisdom": 0,
+      "kitUsability4": [],
+      "minConstitution": 0,
+      "weaponProficiency": 0,
+      "minCharisma": 0,
+      "price": 0,
+      "stackAmount": 1,
+      "inventoryIcon": "IWOLF\u0000\u0000\u0000",
+      "loreToId": 0,
+      "groundIcon": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
+      "weight": 0,
+      "unidentifiedDesc": -1,
+      "identifiedDesc": -1,
+      "descriptionIcon": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
+      "enchantment": 4,
+      "extendedHeadersOffset": 114,
+      "extendedHeadersCount": 1,
+      "featureBlocksOffset": 170,
+      "featureBlocksIndex": 0,
+      "featureBlocksCount": 2
+    },
+    "abilities": [
+      {
+        "attackType": 1,
+        "idRequired": [],
+        "location": 1,
+        "alternativeDiceSides": 0,
+        "useIcon": "IWOLF\u0000\u0000\u0000",
+        "target": 1,
+        "targetCount": 0,
+        "range": 1,
+        "projectileType": 0,
+        "alternativeDiceThrown": 0,
+        "speed": 0,
+        "alternativeDamageBonus": 0,
+        "thac0Bonus": 0,
+        "diceSides": 8,
+        "primaryType": 0,
+        "diceThrown": 2,
+        "secondaryType": 0,
+        "damageBonus": 0,
+        "damageType": 3,
+        "featureBlockCount": 0,
+        "featureBlockIndex": 2,
+        "maxCharges": 0,
+        "depletion": 1,
+        "flags": [
+          "addStrengthBonus"
+        ],
+        "projectileAnimation": 1,
+        "meleeAnimation": [
+          34,
+          33,
+          33
+        ],
+        "isArrow": 0,
+        "isBolt": 0,
+        "isBullet": 0
+      }
+    ],
+    "effects": [
+      {
+        "opcode": 341,
+        "target": 1,
+        "power": 0,
+        "parameter1": 0,
+        "parameter2": 1,
+        "timing": 2,
+        "resistance": [],
+        "duration": 0,
+        "probability1": 100,
+        "probability2": 0,
+        "resource": "PF#FWGRL",
+        "maxLevel": 0,
+        "minLevel": 0,
+        "saveType": [],
+        "saveBonus": 0,
+        "stackingIdEx": 0
+      },
+      {
+        "opcode": 232,
+        "target": 1,
+        "power": 0,
+        "parameter1": 0,
+        "parameter2": 12,
+        "timing": 2,
+        "resistance": [],
+        "duration": 0,
+        "probability1": 50,
+        "probability2": 0,
+        "resource": "PF#FWBF3",
+        "maxLevel": 0,
+        "minLevel": 0,
+        "saveType": [],
+        "saveBonus": 0,
+        "stackingIdEx": 0
+      }
+    ]
+  }
+}
