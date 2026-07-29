@@ -24,15 +24,191 @@ INCLUDE ~PF#werefighter/lib/fl#add_kit_ee.tpa~
 AT_INTERACTIVE_EXIT ~VIEW PF#werefighter\readme.txt~
 //REQUIRE_FILE ~Data/25Dialog.bif~ ~Requires BG2ToB~
 
-// Cursor here you do your magic
+///////////////////////////////////////////////////////////////////////////////////////////
+//  Shared helper functions
+///////////////////////////////////////////////////////////////////////////////////////////
 
-/*
-COPY ~PF#werefighter\2da~ ~override~
+// Idempotent, cross-mod-safe SPLPROT.2DA row append. Appends the row only if a
+// row with this label doesn't already exist (UNLESS), then always re-reads the
+// table to find and return the row's 0-based index, whether it pre-existed
+// (installed by us on a previous run, or by another mod) or was just added.
+DEFINE_ACTION_FUNCTION pf#add_splprot_row
+STR_VAR
+  label    = ""
+  stat     = ""
+  value    = ""
+  relation = ""
+RET
+  row_index
+BEGIN
+  APPEND ~SPLPROT.2DA~ ~%label% %stat% %value% %relation%~ UNLESS ~%label%~
 
-COPY ~PF#werefighter\media~ ~override~
+  OUTER_SET row_index = 0 - 1
+  COPY_EXISTING ~SPLPROT.2DA~ ~override~
+    COUNT_2DA_COLS pf_num_col
+    READ_2DA_ENTRIES_NOW pf_rows pf_num_col
+    FOR (pf_i = 0; pf_i < pf_rows; ++pf_i) BEGIN
+      READ_2DA_ENTRY_FORMER pf_rows pf_i 0 pf_label
+      PATCH_IF "%pf_label%" STRING_EQUAL_CASE "%label%" BEGIN
+        SET row_index = pf_i
+      END
+    END
+  BUT_ONLY
+END
 
-COPY ~PF#werefighter\eff~ ~override~
-*/
+// Rewrites a single strref (dword) at `offset` in the file currently being
+// patched, but only if its current value falls inside our legacy dev-tra
+// range [103715,103785]. Live/already-migrated values fall outside this
+// range and are left untouched, which is what makes the whole migration
+// naturally idempotent across reinstalls.
+DEFINE_PATCH_FUNCTION pf#fix_strref_at
+INT_VAR
+  offset = 0
+BEGIN
+  READ_LONG offset pf_old_ref
+  PATCH_IF (pf_old_ref >= 103715) AND (pf_old_ref <= 103785) BEGIN
+    SET pf_new_idx = pf_old_ref - 103714
+    WRITE_LONG offset RESOLVE_STR_REF (~@%pf_new_idx%~)
+  END
+END
+
+// Generic legacy-strref migration. Operates on whatever resource is currently
+// open via COPY_EXISTING. Dispatches on the file signature:
+//  - SPL: header Unidentified Name (0x08) + Description (0x50), plus every
+//    opcode 139 (Display String) / 330 (Float Text) feature-block parameter1,
+//    discovered by walking every extended header's own feature-block range
+//    (per IESDP: ext. header = 40 bytes, feature block = 48 bytes).
+//  - ITM / CRE: header Unidentified/Long Name (0x08) + Identified/Short Name
+//    (0x0C) only -- confirmed against every shipped .itm/.cre JSON dump that
+//    none of our feature blocks on those resource types carry a legacy
+//    strref, so there is nothing else to scan there.
+DEFINE_PATCH_FUNCTION pf#fix_legacy_strrefs
+BEGIN
+  READ_ASCII 0x0 pf_sig (4)
+  PATCH_IF ("%pf_sig%" STRING_EQUAL_CASE "SPL ") BEGIN
+    LPF pf#fix_strref_at INT_VAR offset = 0x08 END
+    LPF pf#fix_strref_at INT_VAR offset = 0x50 END
+
+    READ_LONG  0x64 pf_ext_off
+    READ_SHORT 0x68 pf_ext_cnt
+    READ_LONG  0x6a pf_feat_off
+    FOR (pf_h = 0; pf_h < pf_ext_cnt; ++pf_h) BEGIN
+      READ_SHORT (pf_ext_off + (pf_h * 40) + 0x1e) pf_blk_cnt
+      READ_SHORT (pf_ext_off + (pf_h * 40) + 0x20) pf_blk_idx
+      FOR (pf_b = 0; pf_b < pf_blk_cnt; ++pf_b) BEGIN
+        SET pf_abs = pf_feat_off + ((pf_blk_idx + pf_b) * 48)
+        READ_SHORT pf_abs pf_opcode
+        PATCH_IF (pf_opcode = 139) OR (pf_opcode = 330) BEGIN
+          LPF pf#fix_strref_at INT_VAR offset = (pf_abs + 4) END
+        END
+      END
+    END
+  END ELSE PATCH_IF ("%pf_sig%" STRING_EQUAL_CASE "ITM ") BEGIN
+    LPF pf#fix_strref_at INT_VAR offset = 0x08 END
+    LPF pf#fix_strref_at INT_VAR offset = 0x0c END
+  END ELSE PATCH_IF ("%pf_sig%" STRING_EQUAL_CASE "CRE ") BEGIN
+    LPF pf#fix_strref_at INT_VAR offset = 0x08 END
+    LPF pf#fix_strref_at INT_VAR offset = 0x0c END
+  END
+END
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//  Phase 1 -- Resource deployment
+///////////////////////////////////////////////////////////////////////////////////////////
+// Deployed per-file (not per-folder) so that dev-only `.json` structural dumps
+// living alongside the binaries in spl/, itm/, cre/ and eff/ never end up in
+// the game's override folder. SPCL905.SPL is deliberately NOT copied here --
+// it is a shared vanilla resource used by many other kit mods, and is instead
+// safely extended in Phase 5 below via ADD_SPELL_EFFECT.
+
+COPY
+  ~PF#werefighter/spl/PF#FWAA0.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWAA1.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWAA2.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWABF.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWAFR.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWAGW.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWAPF.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWAPS.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWASU.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWATS.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWBF1.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWBF2.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWBF3.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWBR0.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWBR1.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWBRS.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWDIV.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWEVL.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWEX0.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWEX1.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWEXH.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWGR9.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWGRL.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWGWU.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWHWL.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWLFR.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWLG0.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWLGW.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWLSS.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWLW0.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWLWO.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWLWR.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWMSG.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWNAT.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWNF0.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWPAY.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWPGR.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWPRD.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWRMB.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWRPL.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWSCR.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWSLP.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWSMS.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWSR1.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWSUF.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWSUO.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWSUW.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWSWR.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWWER.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWWOU.SPL~   ~override~
+  ~PF#werefighter/spl/PF#FWWR0.SPL~   ~override~
+
+COPY
+  ~PF#werefighter/itm/PF#FWAT0.ITM~   ~override~
+  ~PF#werefighter/itm/PF#FWAT1.ITM~   ~override~
+  ~PF#werefighter/itm/PF#FWAT2.ITM~   ~override~
+  ~PF#werefighter/itm/PF#FWAT3.ITM~   ~override~
+  ~PF#werefighter/itm/PF#FWERE.ITM~   ~override~
+  ~PF#werefighter/itm/PF#FWGT1.ITM~   ~override~
+  ~PF#werefighter/itm/PF#FWGT2.ITM~   ~override~
+  ~PF#werefighter/itm/PF#FWGWR.ITM~   ~override~
+  ~PF#werefighter/itm/PF#FWSUH.ITM~   ~override~
+  ~PF#werefighter/itm/PF#FWSUR.ITM~   ~override~
+  ~PF#werefighter/itm/PF#FWSUW.ITM~   ~override~
+
+COPY
+  ~PF#werefighter/cre/PF#FWFSU.CRE~   ~override~
+  ~PF#werefighter/cre/PF#FWLF0.CRE~   ~override~
+  ~PF#werefighter/cre/PF#FWPX1.CRE~   ~override~
+  ~PF#werefighter/cre/PF#FWPX2.CRE~   ~override~
+  ~PF#werefighter/cre/PF#FWPX3.CRE~   ~override~
+  ~PF#werefighter/cre/PF#FWWSU.CRE~   ~override~
+
+COPY
+  ~PF#werefighter/eff/PF#FWDIV.EFF~   ~override~
+  ~PF#werefighter/eff/PF#FWGRL.VVC~   ~override~
+  ~PF#werefighter/eff/PF#FWSW1.EFF~   ~override~
+  ~PF#werefighter/eff/PF#FWSW2.EFF~   ~override~
+  ~PF#werefighter/eff/PF#FWSW3.EFF~   ~override~
+  ~PF#werefighter/eff/PF#FWSWR.EFF~   ~override~
+
+// 2da/ and media/ contain only genuine game resources (no .json siblings),
+// so a straight folder copy is safe here.
+COPY ~PF#werefighter/2da~   ~override~
+COPY ~PF#werefighter/media~ ~override~
+
+COMPILE ~PF#werefighter/script~
 
 /* Bloodmoon Reaver Kit */
 ADD_KIT ~PF#werefighter~
@@ -74,5 +250,204 @@ STR_VAR
   clascolr = ~24 182 144 2 25~
 END
 
+///////////////////////////////////////////////////////////////////////////////////////////
+//  Phase 2 -- SPLPROT.2DA rows (idempotent, cross-mod-safe row appends)
+///////////////////////////////////////////////////////////////////////////////////////////
+
+LAF pf#add_splprot_row STR_VAR label=~PF_AREA_BIT_LT~  stat=~0x106~ value=~-1~  relation=~11~ RET row_index = pf_row_area_bit_lt  END
+LAF pf#add_splprot_row STR_VAR label=~PF_AREA_BIT_EQ~  stat=~0x106~ value=~-1~  relation=~8~  RET row_index = pf_row_area_bit_eq  END
+LAF pf#add_splprot_row STR_VAR label=~PF_HAS_WOLF_SU~  stat=~0x112~ value=~167~ relation=~1~  RET row_index = pf_row_has_wolf_su  END
+LAF pf#add_splprot_row STR_VAR label=~PF_CHECK_TRACK~  stat=~33~    value=~-1~  relation=~1~  RET row_index = pf_row_check_track  END
+LAF pf#add_splprot_row STR_VAR label=~PF_!=_WEREWOLF~  stat=~0x112~ value=~166~ relation=~5~  RET row_index = pf_row_ne_werewolf  END
+LAF pf#add_splprot_row STR_VAR label=~PF_=_WEREWOLF~   stat=~0x112~ value=~166~ relation=~1~  RET row_index = pf_row_eq_werewolf  END
+LAF pf#add_splprot_row STR_VAR label=~PF_!=BERSERK~    stat=~0x112~ value=~168~ relation=~5~  RET row_index = pf_row_ne_berserk   END
+LAF pf#add_splprot_row STR_VAR label=~PF_=_EXHAUSTED~  stat=~0x112~ value=~169~ relation=~1~  RET row_index = pf_row_eq_exhausted END
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//  Phase 3 -- STATDESC.2DA rows (portrait status-icon descriptions)
+///////////////////////////////////////////////////////////////////////////////////////////
+// PF#FRG3i / PF#BLD2i are the "Feral Rage" / "Blood Frenzy" persistent
+// portrait-icon rows driven by opcode 233 in PF#FWAFR.SPL / PF#FWABF.SPL.
+// Their legacy dev-tra name-strrefs were 103717 ("Feral Rage") and 103731
+// ("Blood Frenzy"), which map 1:1 onto our live @3 / @17 tokens.
+
+OUTER_SET pf_frg_strref = RESOLVE_STR_REF (@3)
+OUTER_SET pf_bld_strref = RESOLVE_STR_REF (@17)
+
+APPEND ~STATDESC.2DA~ ~PF#FRG3i %pf_frg_strref% PF#FRG3i~ UNLESS ~PF#FRG3i~
+APPEND ~STATDESC.2DA~ ~PF#BLD2i %pf_bld_strref% PF#BLD2i~ UNLESS ~PF#BLD2i~
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//  Phase 4 -- SPECIFIC.IDS / SPLSTATE.IDS + PF#FWWSU.CRE specific-byte fix
+///////////////////////////////////////////////////////////////////////////////////////////
+
+APPEND ~SPECIFIC.IDS~ ~166 WOLF_SUMMONER~ UNLESS ~WOLF_SUMMONER~
+
+APPEND ~SPLSTATE.IDS~ ~166 PF_IS_WEREWOLF~          UNLESS ~PF_IS_WEREWOLF~
+APPEND ~SPLSTATE.IDS~ ~167 PF_HAS_WOLF_SU_SPLSTATE~ UNLESS ~PF_HAS_WOLF_SU_SPLSTATE~
+APPEND ~SPLSTATE.IDS~ ~168 PF_BERSERK_LOCKOUT~      UNLESS ~PF_BERSERK_LOCKOUT~
+APPEND ~SPLSTATE.IDS~ ~169 PF_EXHAUSTED~            UNLESS ~PF_EXHAUSTED~
+
+// PF#FWWSU.CRE ships with a stale SPECIFIC.IDS value (250); it must read 166
+// to match the WOLF_SUMMONER entry above and the SPLPROT PF_HAS_WOLF_SU row.
+COPY_EXISTING ~PF#FWWSU.CRE~ ~override~
+  WRITE_BYTE 0x274 166
+BUT_ONLY_IF_IT_CHANGES
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//  Phase 5 -- SPCL905.SPL safe injection (shared vanilla "innates" carrier spell)
+///////////////////////////////////////////////////////////////////////////////////////////
+// Uses ADD_SPELL_EFFECT rather than a raw file copy so this stays compatible
+// with any other mod that also extends SPCL905.SPL. A manual duplicate scan
+// guards against adding the same effect twice on reinstall.
+
+COPY_EXISTING ~SPCL905.SPL~ ~override~
+  SET pf_spcl_found = 0
+  READ_LONG  0x64 pf_ext_off
+  READ_SHORT 0x68 pf_ext_cnt
+  READ_LONG  0x6a pf_feat_off
+  FOR (pf_h = 0; pf_h < pf_ext_cnt; ++pf_h) BEGIN
+    READ_SHORT (pf_ext_off + (pf_h * 40) + 0x1e) pf_blk_cnt
+    READ_SHORT (pf_ext_off + (pf_h * 40) + 0x20) pf_blk_idx
+    FOR (pf_b = 0; pf_b < pf_blk_cnt; ++pf_b) BEGIN
+      SET pf_abs = pf_feat_off + ((pf_blk_idx + pf_b) * 48)
+      READ_SHORT pf_abs pf_opcode
+      READ_ASCII (pf_abs + 0x14) pf_resource (8)
+      PATCH_IF (pf_opcode = 206) AND ("%pf_resource%" STRING_EQUAL_CASE "PF#FWPGR") BEGIN
+        SET pf_spcl_found = 1
+      END
+    END
+  END
+  PATCH_IF (pf_spcl_found = 0) BEGIN
+    LPF ADD_SPELL_EFFECT
+      INT_VAR
+        opcode        = 206
+        target        = 1
+        power         = 0
+        timing        = 0
+        resist_dispel  = 0
+        duration      = 6
+        probability1  = 100
+        probability2  = 0
+      STR_VAR
+        resource = ~PF#FWPGR~
+    END
+  END
+BUT_ONLY_IF_IT_CHANGES
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//  Phase 6 -- Legacy string-reference migration
+///////////////////////////////////////////////////////////////////////////////////////////
+// Every custom .spl/.itm/.cre we just deployed to override in Phase 1 is
+// scanned once and any lingering local dev-environment strrefs
+// (setup.tra.bak range 103715-103785) are rewritten to their modern
+// setup.tra @token via pf#fix_legacy_strrefs. Safe to rerun: values already
+// migrated fall outside the legacy range and are skipped.
+
+ACTION_FOR_EACH pf_resref IN
+  PF#FWAA0 PF#FWAA1 PF#FWAA2 PF#FWABF PF#FWAFR PF#FWAGW PF#FWAPF PF#FWAPS
+  PF#FWASU PF#FWATS PF#FWBF1 PF#FWBF2 PF#FWBF3 PF#FWBR0 PF#FWBR1 PF#FWBRS
+  PF#FWDIV PF#FWEVL PF#FWEX0 PF#FWEX1 PF#FWEXH PF#FWGR9 PF#FWGRL PF#FWGWU
+  PF#FWHWL PF#FWLFR PF#FWLG0 PF#FWLGW PF#FWLSS PF#FWLW0 PF#FWLWO PF#FWLWR
+  PF#FWMSG PF#FWNAT PF#FWNF0 PF#FWPAY PF#FWPGR PF#FWPRD PF#FWRMB PF#FWRPL
+  PF#FWSCR PF#FWSLP PF#FWSMS PF#FWSR1 PF#FWSUF PF#FWSUO PF#FWSUW PF#FWSWR
+  PF#FWWER PF#FWWOU PF#FWWR0
+BEGIN
+  COPY_EXISTING ~%pf_resref%.SPL~ ~override~
+    LPF pf#fix_legacy_strrefs END
+  BUT_ONLY_IF_IT_CHANGES
+END
+
+ACTION_FOR_EACH pf_resref IN
+  PF#FWAT0 PF#FWAT1 PF#FWAT2 PF#FWAT3 PF#FWERE PF#FWGT1 PF#FWGT2 PF#FWGWR
+  PF#FWSUH PF#FWSUR PF#FWSUW
+BEGIN
+  COPY_EXISTING ~%pf_resref%.ITM~ ~override~
+    LPF pf#fix_legacy_strrefs END
+  BUT_ONLY_IF_IT_CHANGES
+END
+
+ACTION_FOR_EACH pf_resref IN
+  PF#FWFSU PF#FWLF0 PF#FWPX1 PF#FWPX2 PF#FWPX3 PF#FWWSU
+BEGIN
+  COPY_EXISTING ~%pf_resref%.CRE~ ~override~
+    LPF pf#fix_legacy_strrefs END
+  BUT_ONLY_IF_IT_CHANGES
+END
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////////////////////////
+//  Phase 7 -- Optional Subcomponent: Dynamic Werewolf Portrait Switching
+///////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION pf#add_portrait_switch
+STR_VAR
+  small = ""
+  large = ""
+BEGIN
+  LPF ADD_SPELL_EFFECT
+    INT_VAR opcode = 107 target = 2 timing = 1 probability1 = 100 parameter2 = 0
+    STR_VAR resource = ~%small%~
+  END
+  LPF ADD_SPELL_EFFECT
+    INT_VAR opcode = 107 target = 2 timing = 1 probability1 = 100 parameter2 = 1
+    STR_VAR resource = ~%large%~
+  END
+END
+
+BEGIN ~Do not install portrait switching~
+SUBCOMPONENT ~Dynamic Werewolf Portrait Switching~
+// Intentionally empty -- choosing this component skips the feature entirely.
+
+BEGIN ~Install Portrait Switching (Requires custom user portraits)~
+SUBCOMPONENT ~Dynamic Werewolf Portrait Switching~
+
+PRINT ~
+========================================================================
+OPTIONAL FEATURE: DYNAMIC PORTRAIT SWITCHING
+========================================================================
+This feature allows your character's portrait to change automatically
+when shapeshifting between human, wolf, and werewolf forms.
+
+To use this feature, you MUST provide your own custom portrait files and
+name them exactly as follows in your game's "Portraits" folder:
+
+  - Human/Natural form: pffwn0L.bmp (Large) and pffwn0M.bmp (Medium)
+
+If you do not have these portrait files ready, you can still install this
+component now and place the files in your "Portraits" folder later.
+========================================================================
+~
+
+COPY ~PF#werefighter/portraits~ ~%USER_DIRECTORY%/portraits~
+
+COPY_EXISTING ~PF#FWGWU.SPL~ ~override~
+  LPF pf#add_portrait_switch STR_VAR small=~PFFWB0M~ large=~PFFWB0L~ END
+BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~PF#FWLG0.SPL~ ~override~
+  LPF pf#add_portrait_switch STR_VAR small=~PFFWB0M~ large=~PFFWB0L~ END
+BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~PF#FWLW0.SPL~ ~override~
+  LPF pf#add_portrait_switch STR_VAR small=~PFFWB0M~ large=~PFFWB0L~ END
+BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~PF#FWWER.SPL~ ~override~
+  LPF pf#add_portrait_switch STR_VAR small=~PFFWB0M~ large=~PFFWB0L~ END
+BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~PF#FWLWO.SPL~ ~override~
+  LPF pf#add_portrait_switch STR_VAR small=~PFFWW0M~ large=~PFFWW0L~ END
+BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~PF#FWWOU.SPL~ ~override~
+  LPF pf#add_portrait_switch STR_VAR small=~PFFWW0M~ large=~PFFWW0L~ END
+BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~PF#FWNAT.SPL~ ~override~
+  LPF pf#add_portrait_switch STR_VAR small=~PFFWN0M~ large=~PFFWN0L~ END
+BUT_ONLY_IF_IT_CHANGES
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
