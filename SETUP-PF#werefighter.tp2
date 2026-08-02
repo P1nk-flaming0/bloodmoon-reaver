@@ -364,25 +364,29 @@ BUT_ONLY_IF_IT_CHANGES
 ///////////////////////////////////////////////////////////////////////////////////////////
 // SPLSTATE.IDS appends + IDS_OF_SYMBOL resolution now live in Phase 2 (must
 // precede SPLPROT rows). This phase remaps local-dev placeholder indices in
-// shipped .SPL feature blocks to the live pf_row_* / pf_state_* variables:
+// shipped .SPL feature blocks to the live pf_row_* / pf_state_* variables.
+//
+// Placeholders use a private high band so they can never collide with live
+// "next free row" SPLPROT indices (~100-300) during serial ALTER_EFFECT passes.
 //
 //   Local SPLPROT rows (opcode 318/326 parameter2)     Live variable
 //   -------------------------------------------------  ----------------------
-//   148  AREATYPE bit_eq                               pf_row_area_bit_eq
-//   149  SPLSTATE = PF_HAS_WOLF_SU_SPLSTATE            pf_row_has_wolf_su
-//   150  STAT TRACKING                                 pf_row_check_track
-//   151  SPLSTATE != PF_IS_WEREWOLF                    pf_row_ne_werewolf
-//   152  SPLSTATE =  PF_IS_WEREWOLF                    pf_row_eq_werewolf
-//   153  SPLSTATE != PF_BERSERK_LOCKOUT                pf_row_ne_berserk
-//   154  SPLSTATE =  PF_EXHAUSTED                      pf_row_eq_exhausted
+//   9100 PF_AREA_BIT_LT                                pf_row_area_bit_lt
+//   9101 AREATYPE bit_eq                               pf_row_area_bit_eq
+//   9102 SPLSTATE = PF_HAS_WOLF_SU_SPLSTATE            pf_row_has_wolf_su
+//   9103 STAT TRACKING                                 pf_row_check_track
+//   9104 SPLSTATE != PF_IS_WEREWOLF                    pf_row_ne_werewolf
+//   9105 SPLSTATE =  PF_IS_WEREWOLF                    pf_row_eq_werewolf
+//   9106 SPLSTATE != PF_BERSERK_LOCKOUT                pf_row_ne_berserk
+//   9107 SPLSTATE =  PF_EXHAUSTED                      pf_row_eq_exhausted
 //
 //   Local SPLSTATE ids (opcode 328 parameter2, and
 //   opcode 326 parameter1 when it supplies the value)  Live variable
 //   -------------------------------------------------  ----------------------
-//   166  PF_IS_WEREWOLF                                pf_state_werewolf
-//   167  PF_HAS_WOLF_SU_SPLSTATE                       pf_state_wolf_su
-//   168  PF_BERSERK_LOCKOUT                            pf_state_berserk_lock
-//   169  PF_EXHAUSTED                                  pf_state_exhausted
+//   9200 PF_IS_WEREWOLF                                pf_state_werewolf
+//   9201 PF_HAS_WOLF_SU_SPLSTATE                       pf_state_wolf_su
+//   9202 PF_BERSERK_LOCKOUT                            pf_state_berserk_lock
+//   9203 PF_EXHAUSTED                                  pf_state_exhausted
 
 // APPEND ~SPECIFIC.IDS~ ~166 WOLF_SUMMONER~ UNLESS ~WOLF_SUMMONER~
 
@@ -400,13 +404,13 @@ COPY_EXISTING
   ~PF#FWATS.SPL~ ~override~
   ~PF#FWNAT.SPL~ ~override~
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 326 match_parameter2 = 152 parameter2 = pf_row_eq_werewolf silent = 1
+    INT_VAR match_opcode = 326 match_parameter2 = 9105 parameter2 = pf_row_eq_werewolf silent = 1
   END
 BUT_ONLY_IF_IT_CHANGES
 
 COPY_EXISTING ~PF#FWBR0.SPL~ ~override~
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 326 match_parameter2 = 153 parameter2 = pf_row_ne_berserk silent = 1
+    INT_VAR match_opcode = 326 match_parameter2 = 9106 parameter2 = pf_row_ne_berserk silent = 1
   END
 BUT_ONLY_IF_IT_CHANGES
 
@@ -414,60 +418,60 @@ COPY_EXISTING
   ~PF#FWLGW.SPL~ ~override~
   ~PF#FWLWR.SPL~ ~override~
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 326 match_parameter2 = 154 parameter2 = pf_row_eq_exhausted silent = 1
+    INT_VAR match_opcode = 326 match_parameter2 = 9107 parameter2 = pf_row_eq_exhausted silent = 1
   END
 BUT_ONLY_IF_IT_CHANGES
 
 COPY_EXISTING ~PF#FWEVL.SPL~ ~override~
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 326 match_parameter2 = 152 parameter2 = pf_row_eq_werewolf silent = 1
+    INT_VAR match_opcode = 326 match_parameter2 = 9105 parameter2 = pf_row_eq_werewolf silent = 1
   END
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 326 match_parameter2 = 151 parameter2 = pf_row_ne_werewolf silent = 1
+    INT_VAR match_opcode = 326 match_parameter2 = 9104 parameter2 = pf_row_ne_werewolf silent = 1
   END
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 328 match_parameter2 = 168 parameter2 = pf_state_berserk_lock silent = 1
+    INT_VAR match_opcode = 328 match_parameter2 = 9202 parameter2 = pf_state_berserk_lock silent = 1
   END
 BUT_ONLY_IF_IT_CHANGES
 
 COPY_EXISTING ~PF#FWGWU.SPL~ ~override~
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 326 match_parameter2 = 154 parameter2 = pf_row_eq_exhausted silent = 1
+    INT_VAR match_opcode = 326 match_parameter2 = 9107 parameter2 = pf_row_eq_exhausted silent = 1
   END
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 326 match_parameter2 = 150 parameter2 = pf_row_check_track silent = 1
+    INT_VAR match_opcode = 326 match_parameter2 = 9103 parameter2 = pf_row_check_track silent = 1
   END
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 328 match_parameter2 = 166 parameter2 = pf_state_werewolf silent = 1
+    INT_VAR match_opcode = 328 match_parameter2 = 9200 parameter2 = pf_state_werewolf silent = 1
   END
 BUT_ONLY_IF_IT_CHANGES
 
 COPY_EXISTING ~PF#FWSUW.SPL~ ~override~
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 326 match_parameter2 = 149 parameter2 = pf_row_has_wolf_su silent = 1
+    INT_VAR match_opcode = 326 match_parameter2 = 9102 parameter2 = pf_row_has_wolf_su silent = 1
   END
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 318 match_parameter2 = 149 parameter2 = pf_row_has_wolf_su silent = 1
+    INT_VAR match_opcode = 318 match_parameter2 = 9102 parameter2 = pf_row_has_wolf_su silent = 1
   END
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 326 match_parameter2 = 148 parameter2 = pf_row_area_bit_eq silent = 1
+    INT_VAR match_opcode = 326 match_parameter2 = 9101 parameter2 = pf_row_area_bit_eq silent = 1
   END
 BUT_ONLY_IF_IT_CHANGES
 
 COPY_EXISTING ~PF#FWSUO.SPL~ ~override~
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 318 match_parameter2 = 148 parameter2 = pf_row_area_bit_eq silent = 1
+    INT_VAR match_opcode = 318 match_parameter2 = 9101 parameter2 = pf_row_area_bit_eq silent = 1
   END
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 328 match_parameter2 = 167 parameter2 = pf_state_wolf_su silent = 1
+    INT_VAR match_opcode = 328 match_parameter2 = 9201 parameter2 = pf_state_wolf_su silent = 1
   END
 BUT_ONLY_IF_IT_CHANGES
 
 // PF#FWBF1: SPLPROT row 110 takes its comparison VALUE from parameter1
-// (local-dev used 166 = PF_IS_WEREWOLF).
+// (local-dev placeholder 9200 = PF_IS_WEREWOLF).
 COPY_EXISTING ~PF#FWBF1.SPL~ ~override~
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 326 match_parameter1 = 166 parameter1 = pf_state_werewolf silent = 1
+    INT_VAR match_opcode = 326 match_parameter1 = 9200 parameter1 = pf_state_werewolf silent = 1
   END
 BUT_ONLY_IF_IT_CHANGES
 
@@ -475,13 +479,13 @@ BUT_ONLY_IF_IT_CHANGES
 
 COPY_EXISTING ~PF#FWEXH.SPL~ ~override~
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 328 match_parameter2 = 169 parameter2 = pf_state_exhausted silent = 1
+    INT_VAR match_opcode = 328 match_parameter2 = 9203 parameter2 = pf_state_exhausted silent = 1
   END
 BUT_ONLY_IF_IT_CHANGES
 
 COPY_EXISTING ~PF#FWSUF.SPL~ ~override~
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 328 match_parameter2 = 167 parameter2 = pf_state_wolf_su silent = 1
+    INT_VAR match_opcode = 328 match_parameter2 = 9201 parameter2 = pf_state_wolf_su silent = 1
   END
 BUT_ONLY_IF_IT_CHANGES
 
@@ -490,7 +494,7 @@ COPY_EXISTING
   ~PF#FWLW0.SPL~ ~override~
   ~PF#FWWER.SPL~ ~override~
   LPF ALTER_EFFECT
-    INT_VAR match_opcode = 328 match_parameter2 = 166 parameter2 = pf_state_werewolf silent = 1
+    INT_VAR match_opcode = 328 match_parameter2 = 9200 parameter2 = pf_state_werewolf silent = 1
   END
 BUT_ONLY_IF_IT_CHANGES
 
