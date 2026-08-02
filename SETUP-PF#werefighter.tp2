@@ -591,7 +591,7 @@ END
 // SUBCOMPONENT ~Dynamic Werewolf Portrait Switching~
 // // Intentionally empty -- choosing this component skips the feature entirely.
 
-BEGIN ~Install Portrait Switching (Requires custom user portraits)~
+BEGIN ~Install Dynamic Portrait Switching (Requires custom user portraits)~
 // SUBCOMPONENT ~Dynamic Werewolf Portrait Switching~
 
 DEFINE_PATCH_FUNCTION pf#add_portrait_switch
@@ -611,7 +611,7 @@ END
 
 PRINT ~
 ========================================================================
-OPTIONAL FEATURE: DYNAMIC PORTRAIT SWITCHING
+            OPTIONAL FEATURE: DYNAMIC PORTRAIT SWITCHING
 ========================================================================
 This feature allows your character's portrait to change automatically
 when shapeshifting between human, wolf, and werewolf forms.
