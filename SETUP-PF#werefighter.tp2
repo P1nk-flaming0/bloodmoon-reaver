@@ -580,6 +580,15 @@ END
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  Phase 7 -- Optional Subcomponent: Dynamic Werewolf Portrait Switching
 ///////////////////////////////////////////////////////////////////////////////////////////
+// DEFINE_*_FUNCTION is component-scoped in WeiDU. This helper MUST be defined
+// inside the portrait component below (not in the kit component above).
+
+// BEGIN ~Do not install portrait switching~
+// SUBCOMPONENT ~Dynamic Werewolf Portrait Switching~
+// // Intentionally empty -- choosing this component skips the feature entirely.
+
+BEGIN ~Install Portrait Switching (Requires custom user portraits)~
+// SUBCOMPONENT ~Dynamic Werewolf Portrait Switching~
 
 DEFINE_PATCH_FUNCTION pf#add_portrait_switch
 STR_VAR
@@ -595,13 +604,6 @@ BEGIN
     STR_VAR resource = ~%large%~
   END
 END
-
-BEGIN ~Do not install portrait switching~
-SUBCOMPONENT ~Dynamic Werewolf Portrait Switching~
-// Intentionally empty -- choosing this component skips the feature entirely.
-
-BEGIN ~Install Portrait Switching (Requires custom user portraits)~
-SUBCOMPONENT ~Dynamic Werewolf Portrait Switching~
 
 PRINT ~
 ========================================================================
