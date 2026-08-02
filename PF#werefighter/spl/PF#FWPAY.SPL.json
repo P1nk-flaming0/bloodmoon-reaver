@@ -885,7 +885,7 @@
         "opcode": 1,
         "target": 1,
         "power": 0,
-        "parameter1": 1,
+        "parameter1": 6,
         "parameter2": 0,
         "timing": 0,
         "resistance": [
