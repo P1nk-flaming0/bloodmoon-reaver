@@ -1,6 +1,70 @@
 *.json
 
+
+
 tmp-work/
+
 bak/
 
+
+
 node_modules/
+
+
+
+# WeiDU install / debug logs
+
+*.debug
+
+weidu.log
+
+WeiDU.log
+
+WeiDU.ini
+
+weidu.ini
+
+weidu.conf
+
+
+
+# OS junk
+
+.DS_Store
+
+Thumbs.db
+
+ehthumbs.db
+
+Desktop.ini
+
+
+
+# Local editor / IDE settings
+
+.vscode/
+
+.cursor/
+
+
+
+# WeiDU and local test backups
+
+backup/
+
+*.bak
+
+
+
+# User/test portrait overrides outside the mod distribution
+
+# (keep shipped assets under PF#werefighter/)
+
+/portraits/
+
+/characters/
+
+/override/
+
+/*.bmp
+

@@ -1,0 +1,152 @@
+# Bloodmoon Reaver release workflow
+# Packages the mod with AL|EN's Infinity Auto Packager (CreateIEModPackage)
+# and publishes a GitHub Release when a v* tag is pushed.
+
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing git tag to release (e.g. v1.0.0)'
+        required: true
+        type: string
+      draft:
+        description: 'Create the GitHub Release as a draft'
+        required: false
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  create-release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.meta.outputs.tag }}
+    steps:
+      - name: Resolve tag
+        id: meta
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG="${{ inputs.tag }}"
+          else
+            TAG="${GITHUB_REF_NAME}"
+          fi
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          echo "Resolved tag: ${TAG}"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: refs/tags/${{ steps.meta.outputs.tag }}
+
+      - name: Build release notes
+        run: |
+          set -euo pipefail
+          TAG="${{ steps.meta.outputs.tag }}"
+          {
+            echo "## Bloodmoon Reaver ${TAG}"
+            echo
+          } > release-notes.md
+
+          if [ -f CHANGELOG.md ]; then
+            # Prefer the first top-level section from CHANGELOG.md (latest entry).
+            awk '
+              BEGIN { printing = 0 }
+              /^## / {
+                if (printing) exit
+                printing = 1
+                print
+                next
+              }
+              printing { print }
+            ' CHANGELOG.md >> release-notes.md
+          elif [ -f README.md ]; then
+            # Fall back to the README Overview section.
+            awk '
+              BEGIN { printing = 0 }
+              /^## Overview/ {
+                printing = 1
+                print
+                next
+              }
+              printing && /^## / { exit }
+              printing { print }
+            ' README.md >> release-notes.md
+          else
+            echo "No CHANGELOG.md or README.md found; using generated notes." >> release-notes.md
+          fi
+
+          echo "----- release-notes.md -----"
+          cat release-notes.md
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.meta.outputs.tag }}
+        run: |
+          set -euo pipefail
+
+          DRAFT_ARGS=()
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.draft }}" = "true" ]; then
+            DRAFT_ARGS+=(--draft)
+          fi
+
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release for ${TAG} already exists; leaving it in place."
+          else
+            gh release create "$TAG" \
+              --title "Bloodmoon Reaver ${TAG}" \
+              --notes-file release-notes.md \
+              --verify-tag \
+              "${DRAFT_ARGS[@]}"
+          fi
+
+  package:
+    name: Package (${{ matrix.type }})
+    needs: create-release
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Infinity Auto Packager outputs:
+        # - iemod: Project Infinity package (all platforms)
+        # - zip:   cross-platform zip with Windows + macOS WeiDU binaries
+        #          (Linux installs via .iemod / system WeiDU)
+        type: [iemod, zip]
+    steps:
+      - name: Initial setup
+        run: |
+          git lfs uninstall || true
+          git config --global core.autocrlf false
+          git config --global core.ignorecase true
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: refs/tags/${{ needs.create-release.outputs.tag }}
+
+      # AL|EN's Infinity Auto Packager action
+      # (same action used by ALIENQuake/InfinityAutoPackagerGlobal)
+      - name: Create ${{ matrix.type }} package
+        id: CreateIEModPackage
+        uses: ALIENQuake/CreateIEModPackage@master
+        with:
+          type: ${{ matrix.type }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload ${{ matrix.type }} package to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ steps.CreateIEModPackage.outputs.PackageBaseName }}.${{ matrix.type }}
+          asset_name: ${{ steps.CreateIEModPackage.outputs.PackageBaseName }}.${{ matrix.type }}
+          tag: ${{ needs.create-release.outputs.tag }}
+          overwrite: true
