@@ -38,8 +38,11 @@ jobs:
           else
             TAG="${GITHUB_REF_NAME}"
           fi
+          # Strip leading "v" so we match Keep a Changelog headings like ## [1.0.0]
+          VERSION="${TAG#v}"
           echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
-          echo "Resolved tag: ${TAG}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "Resolved tag: ${TAG} (version ${VERSION})"
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -47,67 +50,71 @@ jobs:
           fetch-depth: 0
           ref: refs/tags/${{ steps.meta.outputs.tag }}
 
-      - name: Build release notes
+      - name: Extract release notes from CHANGELOG.md
+        id: changelog
+        env:
+          VERSION: ${{ steps.meta.outputs.version }}
+          TAG: ${{ steps.meta.outputs.tag }}
         run: |
           set -euo pipefail
-          TAG="${{ steps.meta.outputs.tag }}"
-          {
-            echo "## Bloodmoon Reaver ${TAG}"
-            echo
-          } > release-notes.md
 
-          if [ -f CHANGELOG.md ]; then
-            # Prefer the first top-level section from CHANGELOG.md (latest entry).
-            awk '
-              BEGIN { printing = 0 }
-              /^## / {
-                if (printing) exit
+          FALLBACK="See [CHANGELOG.md](./CHANGELOG.md) for details about release ${TAG}."
+
+          if [ ! -f CHANGELOG.md ]; then
+            echo "CHANGELOG.md not found; using fallback body."
+            printf '%s\n' "$FALLBACK" > release-notes.md
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Extract only the section for this version from Keep a Changelog format:
+          #   ## [1.0.0] - YYYY-MM-DD
+          # Stop at the next ## [version] heading or the reference-link footer.
+          awk -v version="$VERSION" '
+            BEGIN { printing = 0; found = 0 }
+            /^## \[/ {
+              if (printing) exit
+              header = $0
+              sub(/^## \[/, "", header)
+              sub(/\].*$/, "", header)
+              if (header == version) {
                 printing = 1
+                found = 1
                 print
                 next
               }
-              printing { print }
-            ' CHANGELOG.md >> release-notes.md
-          elif [ -f README.md ]; then
-            # Fall back to the README Overview section.
-            awk '
-              BEGIN { printing = 0 }
-              /^## Overview/ {
-                printing = 1
-                print
-                next
-              }
-              printing && /^## / { exit }
-              printing { print }
-            ' README.md >> release-notes.md
+            }
+            printing {
+              if ($0 ~ /^## \[/) exit
+              if ($0 ~ /^\[[Uu]nreleased\]:/) exit
+              if ($0 ~ /^\[[0-9]+\.[0-9].*\]:/) exit
+              print
+            }
+            END { exit found ? 0 : 1 }
+          ' CHANGELOG.md > release-notes.md 2>/dev/null || true
+
+          if [ ! -s release-notes.md ]; then
+            echo "No changelog entry for version ${VERSION}; using fallback body."
+            printf '%s\n' "$FALLBACK" > release-notes.md
+            echo "found=false" >> "$GITHUB_OUTPUT"
           else
-            echo "No CHANGELOG.md or README.md found; using generated notes." >> release-notes.md
+            echo "Extracted changelog entry for version ${VERSION}."
+            echo "found=true" >> "$GITHUB_OUTPUT"
           fi
 
           echo "----- release-notes.md -----"
           cat release-notes.md
 
       - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          name: Bloodmoon Reaver ${{ steps.meta.outputs.tag }}
+          body_path: release-notes.md
+          draft: ${{ github.event_name == 'workflow_dispatch' && inputs.draft || false }}
+          fail_on_unmatched_files: false
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: ${{ steps.meta.outputs.tag }}
-        run: |
-          set -euo pipefail
-
-          DRAFT_ARGS=()
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.draft }}" = "true" ]; then
-            DRAFT_ARGS+=(--draft)
-          fi
-
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "Release for ${TAG} already exists; leaving it in place."
-          else
-            gh release create "$TAG" \
-              --title "Bloodmoon Reaver ${TAG}" \
-              --notes-file release-notes.md \
-              --verify-tag \
-              "${DRAFT_ARGS[@]}"
-          fi
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   package:
     name: Package (${{ matrix.type }})
@@ -132,8 +139,51 @@ jobs:
         with:
           ref: refs/tags/${{ needs.create-release.outputs.tag }}
 
+      # Prepare a clean tree for Infinity Auto Packager:
+      # IAP packages only the mod folder next to the .tp2 (PF#werefighter/)
+      # plus generated WeiDU launchers at the archive root.
+      - name: Prepare clean package contents
+        run: |
+          set -euo pipefail
+
+          MOD_DIR='PF#werefighter'
+
+          # Ship README inside the mod folder (repo-root README stays for GitHub).
+          cp -f README.md "${MOD_DIR}/README.md"
+
+          # PI metadata must sit beside the .tp2 for naming + inclusion.
+          # Prefer exact ModID casing expected by CreateIEModPackage.
+          if [ -f 'pf#werefighter.ini' ]; then
+            cp -f 'pf#werefighter.ini' "${MOD_DIR}/PF#werefighter.ini"
+          elif [ -f 'PF#werefighter.ini' ]; then
+            cp -f 'PF#werefighter.ini' "${MOD_DIR}/PF#werefighter.ini"
+          else
+            echo 'ERROR: pf#werefighter.ini not found at repository root' >&2
+            exit 1
+          fi
+
+          # Explicitly drop root development / tooling files so they cannot
+          # leak into archives if packaging scope ever widens.
+          rm -rf \
+            lib \
+            .github \
+            .gitmodules \
+            node_modules \
+            tmp-work \
+            bak \
+            dump-2-json.ps1 \
+            package.json \
+            package-lock.json \
+            'SETUP-PF#werefighter.exe' \
+            || true
+
+          # Keep only the distributable mod folder (+ metadata/readme we just copied).
+          # WeiDU launchers are injected by CreateIEModPackage into the archive.
+          echo 'Package tree after cleanup:'
+          find . -maxdepth 2 \( -name .git -prune \) -o -print | sort
+
       # AL|EN's Infinity Auto Packager action
-      # (same action used by ALIENQuake/InfinityAutoPackagerGlobal)
+      # Packages: PF#werefighter/ (+ ini & README) and generated SETUP-PF#werefighter.* launchers
       - name: Create ${{ matrix.type }} package
         id: CreateIEModPackage
         uses: ALIENQuake/CreateIEModPackage@master

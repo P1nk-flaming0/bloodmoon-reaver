@@ -1,0 +1,7 @@
+# Exclude development-only paths from GitHub source ZIP / archive downloads
+lib/ export-ignore
+dump-2-json.ps1 export-ignore
+package.json export-ignore
+package-lock.json export-ignore
+.gitmodules export-ignore
+.github/ export-ignore
