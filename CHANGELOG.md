@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.0] - 2026-08-05
+---
+
+## [1.0.1] - 2026-08-05
+
+### Fixed
+
+- **Beast Within Balance (`PF#FWPAY.SPL`):** Fixed an issue where berserk attacks per round were scaling too high; reduced character Attacks Per Round (APR) by 1 while under the berserk condition.
+
+---
+
+## [1.0.0] - 2026-08-03
 
 ### Added
 
