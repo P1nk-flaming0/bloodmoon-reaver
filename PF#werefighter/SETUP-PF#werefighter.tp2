@@ -1,6 +1,7 @@
 BACKUP ~PF#werefighter/backup~
 AUTHOR ~P1nk-flaming0~
-VERSION ~v1.0.1~
+VERSION ~v1.0.2~
+README ~PF#werefighter/README.md~
 AUTO_EVAL_STRINGS
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -15,7 +16,7 @@ LANGUAGE
 
 BEGIN ~Bloodmoon Reaver Kit~
 INCLUDE ~PF#werefighter/lib/fl#add_kit_ee.tpa~
-// AT_INTERACTIVE_EXIT ~VIEW PF#werefighter\README.md~
+// AT_INTERACTIVE_EXIT ~VIEW PF#werefighter/README.md~
 //REQUIRE_FILE ~Data/25Dialog.bif~ ~Requires BG2ToB~
 
 ///////////////////////////////////////////////////////////////////////////////////////////

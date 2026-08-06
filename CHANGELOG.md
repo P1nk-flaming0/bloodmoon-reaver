@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.2] - 2026-08-06
+
+### Changed
+
+- **Updated** `README.md`, `pf#werefighter.ini` and `SETUP-PF#werefighter.tp2` with author and mod details & information. `README.md` is displayed upon WeiDU start-up.
+
+---
+
 ## [1.0.1] - 2026-08-05
 
 ### Fixed
@@ -35,5 +43,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - N/A — initial public release.
 
-[unreleased]: https://github.com/[USER]/[REPO]/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/[USER]/[REPO]/releases/tag/v1.0.0
+[unreleased]: https://github.com/USER/REPO/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/USER/REPO/releases/tag/v1.0.0

@@ -6,9 +6,9 @@
 
 A **Fighter** kit for _Baldur's Gate II: Enhanced Edition_ and _Enhanced Edition Trilogy_ that masters lycanthropy through steel discipline — shifting between wolf and werewolf forms, hunting with predatory senses, and risking the Beast Within.
 
-**Author:** [AUTHOR_NAME]  
-**Download:** [DOWNLOAD_URL] · **Forum Thread:** [FORUM_THREAD_URL] · **Source:** [GITHUB_REPO_URL]  
-**Contact:** [CONTACT_INFO]
+**Author:** [P1nk-flaming0](https://github.com/P1nk-flaming0)
+**Download:** https://github.com/P1nk-flaming0/bloodmoon-reaver/releases · **Forum Thread:** - · **Source:** https://github.com/P1nk-flaming0/bloodmoon-reaver  
+**Contact:** [p1nk-flaming0@mail.com](mailto:p1nk-flaming0@mail.com)
 
 ---
 
