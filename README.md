@@ -1,8 +1,4 @@
----
-layout: default
-title: "Bloodmoon Reaver"
-description: "A Fighter kit for BG2EE & EET mastering lycanthropy through steel discipline."
----
+# Bloodmoon Reaver
 
 [![Version](https://img.shields.io/badge/version-v1.0-blue.svg)](https://github.com/P1nk-flaming0/bloodmoon-reaver)
 [![Engine](https://img.shields.io/badge/engine-BG2EE%20%7C%20EET-informational.svg)](#compatibility--prerequisites)
@@ -11,7 +7,7 @@ description: "A Fighter kit for BG2EE & EET mastering lycanthropy through steel 
 A **Fighter** kit for _Baldur's Gate II: Enhanced Edition_ and _Enhanced Edition Trilogy_ that masters lycanthropy through steel discipline — shifting between wolf and werewolf forms, hunting with predatory senses, and risking the <span class="werewolf-accent">Beast Within</span>.
 
 **Author:** [P1nk-flaming0](https://github.com/P1nk-flaming0)
-**Download:** [*latest release*](https://github.com/P1nk-flaming0/bloodmoon-reaver/releases) · **Forum Thread:** *To be updated...* · **Source:** [GitHub Repo](https://github.com/P1nk-flaming0/bloodmoon-reaver)  
+**Download:** [_latest release_](https://github.com/P1nk-flaming0/bloodmoon-reaver/releases) · **Forum Thread:** _To be updated..._ · **Source:** [GitHub Repo](https://github.com/P1nk-flaming0/bloodmoon-reaver)  
 **Contact:** [p1nk-flaming0@mail.com](mailto:p1nk-flaming0@mail.com)
 
 ---
@@ -93,19 +89,19 @@ Born with the "gift," or scarred by a fated encounter, this warrior has been aff
 
 <div class="table-wrapper" markdown="1">
 
-| Attribute / Perk        |               Wolf Form                |  Werewolf Form   |                Greater Werewolf Form                |
-| :---------------------- | :------------------------------------: | :--------------: | :-------------------------------------------------: |
-| **Unlocked At**         |                Level 1                 |     Level 4      |                Level 14 _(Upgrade)_                 |
-| **Strength**            |                   18                   |        19        |                         21                          |
-| **Dexterity**           |                   —                    |        16        |                         20                          |
-| **Constitution**        |                   —                    |        18        |                         25                          |
-| **Base AC**             |                   5                    |        1         |                         −6                          |
-| **Attacks / Round**     |                   2                    |        2         |                          3                          |
-| **Base Damage**         |            1d8+1 (Piercing)            | 2d4+4 (Slashing) |                  2d6+6 (Slashing)                   |
-| **Weapon Enchantment**  |                   +1                   |        +2        |                         +4                          |
-| **Magic Resistance**    |                   —                    |       20%        |                         40%                         |
-| **Elemental / Special** | Cold 100%, Elec 50%<br>+Movement Speed |        —         | Fire/Cold/Elec/Acid 50%<br>Regenerates 1 HP / 2 sec |
-| **Unique Ability**      | <span class="werewolf-accent">Howl</span> | <span class="werewolf-accent">Growl</span> | <span class="werewolf-accent">Growl</span> |
+| Attribute / Perk        |                 Wolf Form                 |               Werewolf Form                |                Greater Werewolf Form                |
+| :---------------------- | :---------------------------------------: | :----------------------------------------: | :-------------------------------------------------: |
+| **Unlocked At**         |                  Level 1                  |                  Level 4                   |                Level 14 _(Upgrade)_                 |
+| **Strength**            |                    18                     |                     19                     |                         21                          |
+| **Dexterity**           |                     —                     |                     16                     |                         20                          |
+| **Constitution**        |                     —                     |                     18                     |                         25                          |
+| **Base AC**             |                     5                     |                     1                      |                         −6                          |
+| **Attacks / Round**     |                     2                     |                     2                      |                          3                          |
+| **Base Damage**         |             1d8+1 (Piercing)              |              2d4+4 (Slashing)              |                  2d6+6 (Slashing)                   |
+| **Weapon Enchantment**  |                    +1                     |                     +2                     |                         +4                          |
+| **Magic Resistance**    |                     —                     |                    20%                     |                         40%                         |
+| **Elemental / Special** |  Cold 100%, Elec 50%<br>+Movement Speed   |                     —                      | Fire/Cold/Elec/Acid 50%<br>Regenerates 1 HP / 2 sec |
+| **Unique Ability**      | <span class="werewolf-accent">Howl</span> | <span class="werewolf-accent">Growl</span> |     <span class="werewolf-accent">Growl</span>      |
 
 </div>
 
@@ -117,21 +113,21 @@ _Note: At Level 18, all daily usage limits on shapeshifting are removed (Shapesh
 
 <div class="table-wrapper" markdown="1">
 
-|  Level  | Ability / Perk Granted                                                                            |
-| :-----: | :------------------------------------------------------------------------------------------------ |
+|  Level  | Ability / Perk Granted                                                                                                             |
+| :-----: | :--------------------------------------------------------------------------------------------------------------------------------- |
 |  **1**  | Gain **Shapeshift: Wolf** (1 use/day), **Predatory Senses**, and <span class="werewolf-accent">Beast Within</span> controller/risk |
-|  **3**  | +1 Wolf use/day                                                                                   |
-|  **4**  | Gain **Shapeshift: Werewolf** (1 use/day)                                                         |
-|  **5**  | +1 Wolf use/day                                                                                   |
-|  **6**  | +1 Werewolf use/day                                                                               |
-|  **7**  | +1 Wolf use/day                                                                                   |
-|  **8**  | +1 Werewolf use/day                                                                               |
-|  **9**  | +1 Wolf use/day                                                                                   |
-| **10**  | +1 Werewolf use/day                                                                               |
-| **12**  | +1 Werewolf use/day                                                                               |
-| **14**  | **Greater Werewolf Form** upgrade                                                                 |
-| **18**  | **Shapeshift at Will** (unlimited uses) & <span class="werewolf-accent">Beast Within</span> Mastery (berserk risk removed) |
-| **20+** | High-Level Abilities (HLAs) unlocked                                                              |
+|  **3**  | +1 Wolf use/day                                                                                                                    |
+|  **4**  | Gain **Shapeshift: Werewolf** (1 use/day)                                                                                          |
+|  **5**  | +1 Wolf use/day                                                                                                                    |
+|  **6**  | +1 Werewolf use/day                                                                                                                |
+|  **7**  | +1 Wolf use/day                                                                                                                    |
+|  **8**  | +1 Werewolf use/day                                                                                                                |
+|  **9**  | +1 Wolf use/day                                                                                                                    |
+| **10**  | +1 Werewolf use/day                                                                                                                |
+| **12**  | +1 Werewolf use/day                                                                                                                |
+| **14**  | **Greater Werewolf Form** upgrade                                                                                                  |
+| **18**  | **Shapeshift at Will** (unlimited uses) & <span class="werewolf-accent">Beast Within</span> Mastery (berserk risk removed)         |
+| **20+** | High-Level Abilities (HLAs) unlocked                                                                                               |
 
 </div>
 
