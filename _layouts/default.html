@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if page.description %}
+  <meta name="description" content="{{ page.description }}">
+  {% elsif site.description %}
+  <meta name="description" content="{{ site.description }}">
+  {% endif %}
+  <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+
+  <!-- Cinzel: headers · Lora: body · MedievalSharp: subheaders -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=MedievalSharp&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ "/assets/css/pffw-theme.css" | relative_url }}">
+</head>
+<body>
+  <header class="site-banner" role="banner">
+    <div class="site-banner__ornament site-banner__ornament--left" aria-hidden="true"></div>
+    <div class="site-banner__inner">
+      <!-- <p class="site-banner__eyebrow">Baldur&rsquo;s Gate II: Enhanced Edition</p> -->
+       <p class="site-banner__eyebrow">Bloodmoon Reaver</p>
+      <h1 class="site-banner__title">
+        <a href="{{ "/" | relative_url }}">{{ site.title }}</a>
+      </h1>
+      {% if site.description %}
+      <p class="site-banner__tagline">{{ site.description }}</p>
+      {% endif %}
+    </div>
+    <div class="site-banner__ornament site-banner__ornament--right" aria-hidden="true"></div>
+  </header>
+
+  <main class="site-main" id="content" role="main">
+    <div class="site-main__container">
+      {{ content }}
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p class="site-footer__brand">Bloodmoon Reaver</p>
+      <p class="site-footer__links">
+        <a href="https://github.com/P1nk-flaming0/bloodmoon-reaver">GitHub</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="https://github.com/P1nk-flaming0/bloodmoon-reaver/releases">Releases</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="https://github.com/WeiDUorg/weidu">WeiDU</a>
+      </p>
+      <p class="site-footer__credits">
+        Built with
+        <a href="https://weidu.org/">WeiDU</a>
+        by Wes Weimer, the bigg &amp; Wisp.
+        Unofficial fan mod — not affiliated with Beamdog, BioWare, or Wizards of the Coast.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

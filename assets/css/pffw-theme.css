@@ -1,0 +1,591 @@
+/* =============================================================================
+   Bloodmoon Reaver — BG2EE / Infinity Engine theme
+   assets/css/pffw-theme.css
+   ============================================================================= */
+
+:root {
+  --pffw-stone: #121110;
+  --pffw-parchment-bg: #1a1612;
+  --pffw-record: #0f0e0c;
+  --pffw-row-alt: #221d18;
+  --pffw-gold: #c5a059;
+  --pffw-gold-dim: #785e2b;
+  --pffw-gold-bright: #f3e5ab;
+  --pffw-link: #eab308;
+  --pffw-text: #d4c29d;
+  --pffw-text-muted: #a8946e;
+  --pffw-crimson: #991b1b;
+  --pffw-crimson-deep: #7f1d1d;
+  --pffw-glow: rgba(197, 160, 89, 0.2);
+  --pffw-font-display: "Cinzel", "MedievalSharp", "Times New Roman", serif;
+  --pffw-font-subhead: "MedievalSharp", "Cinzel", serif;
+  --pffw-font-body: "Lora", "Georgia", "Times New Roman", serif;
+  --pffw-font-mono: "Consolas", "Courier New", monospace;
+  --pffw-max: 52rem;
+  --pffw-gutter: clamp(0.85rem, 3vw, 1.75rem);
+}
+
+/* -----------------------------------------------------------------------------
+   Base / carved stone backdrop
+   ----------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--pffw-text);
+  font-family: var(--pffw-font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  background-color: var(--pffw-stone);
+  background-image:
+    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(0, 0, 0, 0.55) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(0, 0, 0, 0.65) 0%, transparent 65%),
+    linear-gradient(180deg, #1a1714 0%, var(--pffw-stone) 35%, #0c0b0a 100%);
+  background-attachment: fixed;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* -----------------------------------------------------------------------------
+   Typography
+   ----------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--pffw-font-display);
+  font-weight: 600;
+  color: var(--pffw-gold-bright);
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  text-shadow: 0 1px 0 #3a2e14, 0 0 12px rgba(197, 160, 89, 0.25);
+  margin: 1.6em 0 0.55em;
+}
+
+h1 {
+  font-size: clamp(1.65rem, 4vw, 2.35rem);
+  border-bottom: 1px solid var(--pffw-gold-dim);
+  padding-bottom: 0.35em;
+}
+
+h2 {
+  font-family: var(--pffw-font-subhead), var(--pffw-font-display);
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  border-bottom: 1px solid rgba(120, 94, 43, 0.55);
+  padding-bottom: 0.3em;
+}
+
+h3 {
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+  color: #e8d9a8;
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 1em;
+}
+
+li + li {
+  margin-top: 0.25em;
+}
+
+blockquote {
+  margin: 1.25em 0;
+  padding: 0.75em 1em 0.75em 1.1em;
+  color: var(--pffw-text-muted);
+  font-style: italic;
+  background: rgba(15, 14, 12, 0.65);
+  border-left: 3px solid var(--pffw-crimson);
+  border-right: 1px solid var(--pffw-gold-dim);
+  border-top: 1px solid rgba(120, 94, 43, 0.35);
+  border-bottom: 1px solid rgba(120, 94, 43, 0.35);
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  margin: 2em 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--pffw-gold-dim) 20%,
+    var(--pffw-gold) 50%,
+    var(--pffw-gold-dim) 80%,
+    transparent
+  );
+}
+
+strong {
+  color: #e8dcc0;
+  font-weight: 600;
+}
+
+a {
+  color: var(--pffw-link);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease, text-shadow 0.15s ease;
+}
+
+a:hover,
+a:focus-visible {
+  color: #facc15;
+  border-bottom-color: rgba(234, 179, 8, 0.7);
+  text-shadow: 0 0 8px rgba(234, 179, 8, 0.35);
+  outline: none;
+}
+
+/* -----------------------------------------------------------------------------
+   Site banner (BG2 title plate)
+   ----------------------------------------------------------------------------- */
+
+.site-banner {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.5rem var(--pffw-gutter) 1.35rem;
+  background:
+    linear-gradient(180deg, #2a2218 0%, #1a1510 45%, #12100c 100%);
+  border-bottom: 2px solid var(--pffw-gold);
+  box-shadow:
+    inset 0 -1px 0 var(--pffw-gold-dim),
+    inset 0 1px 0 rgba(197, 160, 89, 0.35),
+    0 8px 24px rgba(0, 0, 0, 0.55);
+}
+
+.site-banner__inner {
+  text-align: center;
+  max-width: var(--pffw-max);
+  flex: 1;
+}
+
+.site-banner__eyebrow {
+  margin: 0 0 0.35rem;
+  font-family: var(--pffw-font-subhead);
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pffw-crimson);
+  text-shadow: 0 0 10px rgba(153, 27, 27, 0.45);
+}
+
+.site-banner__title {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-size: clamp(1.4rem, 4.5vw, 2.1rem);
+}
+
+.site-banner__title a {
+  color: var(--pffw-gold-bright);
+  border: 0;
+  text-decoration: none;
+}
+
+.site-banner__title a:hover,
+.site-banner__title a:focus-visible {
+  color: #fff4cc;
+  border: 0;
+  text-shadow: 0 0 14px rgba(197, 160, 89, 0.55);
+}
+
+.site-banner__tagline {
+  margin: 0.55rem 0 0;
+  font-size: 0.95rem;
+  color: var(--pffw-text-muted);
+  font-style: italic;
+}
+
+.site-banner__ornament {
+  width: 12px;
+  flex-shrink: 0;
+  margin: 0.35rem 0;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--pffw-gold-dim) 15%,
+    var(--pffw-gold) 50%,
+    var(--pffw-gold-dim) 85%,
+    transparent
+  );
+  opacity: 0.85;
+}
+
+/* -----------------------------------------------------------------------------
+   Main frame — ornate parchment panel
+   ----------------------------------------------------------------------------- */
+
+.site-main {
+  padding: clamp(1.25rem, 4vw, 2.5rem) var(--pffw-gutter) 2.5rem;
+}
+
+.site-main__container,
+.pffw-frame {
+  max-width: var(--pffw-max);
+  margin: 0 auto;
+  padding: clamp(1.1rem, 3.5vw, 2rem) clamp(1rem, 3vw, 1.85rem);
+  background-color: var(--pffw-parchment-bg);
+  background-image:
+    linear-gradient(180deg, rgba(255, 230, 180, 0.03), transparent 40%),
+    radial-gradient(ellipse at 50% 0%, rgba(197, 160, 89, 0.06), transparent 55%);
+  /* Double ornate gold border via outline + border + inset ring */
+  border: 1px solid var(--pffw-gold-dim);
+  outline: 2px solid var(--pffw-gold);
+  outline-offset: 4px;
+  box-shadow:
+    0 0 15px var(--pffw-glow),
+    inset 0 0 0 1px rgba(120, 94, 43, 0.45),
+    inset 0 0 40px rgba(0, 0, 0, 0.35),
+    0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.site-main__container > :first-child,
+.pffw-frame > :first-child {
+  margin-top: 0;
+}
+
+.site-main__container > :last-child,
+.pffw-frame > :last-child {
+  margin-bottom: 0;
+}
+
+/* -----------------------------------------------------------------------------
+   Werewolf / blood accents
+   ----------------------------------------------------------------------------- */
+
+.werewolf-accent,
+h2.werewolf-title {
+  color: #fecaca;
+  text-shadow: 0 0 10px rgba(153, 27, 27, 0.45), 0 1px 0 #2a0a0a;
+}
+
+h2.werewolf-title {
+  border-bottom-color: var(--pffw-crimson);
+}
+
+.werewolf-accent {
+  font-weight: 600;
+}
+
+.werewolf-accent--warn,
+.pffw-warn {
+  color: #fecaca;
+  background: rgba(127, 29, 29, 0.25);
+  border: 1px solid var(--pffw-crimson-deep);
+  border-left: 3px solid var(--pffw-crimson);
+  padding: 0.65em 0.9em;
+  display: block;
+  margin: 1em 0;
+}
+
+/* -----------------------------------------------------------------------------
+   BG2 Character Record–style stat card
+   ----------------------------------------------------------------------------- */
+
+.pffw-stat-card {
+  position: relative;
+  margin: 1.25em 0;
+  padding: 0.9em 1em 0.9em 1.15em;
+  background: var(--pffw-record);
+  border: 1px solid var(--pffw-gold-dim);
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+
+.pffw-stat-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(
+    180deg,
+    var(--pffw-crimson) 0%,
+    var(--pffw-crimson-deep) 100%
+  );
+  box-shadow: 0 0 10px rgba(153, 27, 27, 0.5);
+}
+
+.pffw-stat-card h3,
+.pffw-stat-card h4 {
+  margin-top: 0;
+  font-size: 1.05rem;
+}
+
+.pffw-stat-card dl {
+  display: grid;
+  grid-template-columns: minmax(7rem, 38%) 1fr;
+  gap: 0.35em 1em;
+  margin: 0;
+}
+
+.pffw-stat-card dt {
+  font-family: var(--pffw-font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--pffw-gold);
+}
+
+.pffw-stat-card dd {
+  margin: 0;
+  color: var(--pffw-text);
+}
+
+/* -----------------------------------------------------------------------------
+   Tables — spell / kit progression charts
+   ----------------------------------------------------------------------------- */
+
+.table-wrapper,
+.pffw-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.25em 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  background: var(--pffw-record);
+  border: 1px solid var(--pffw-gold-dim);
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+thead th {
+  font-family: var(--pffw-font-display);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--pffw-gold-bright);
+  background: linear-gradient(180deg, #2a2418 0%, #1a1612 100%);
+  border-bottom: 2px solid var(--pffw-gold);
+  border-right: 1px solid var(--pffw-gold-dim);
+  padding: 0.65em 0.75em;
+  text-align: left;
+  text-shadow: 0 1px 0 #2a220f;
+}
+
+thead th:last-child {
+  border-right: 0;
+}
+
+tbody td {
+  padding: 0.55em 0.75em;
+  border-bottom: 1px solid rgba(120, 94, 43, 0.35);
+  border-right: 1px solid rgba(120, 94, 43, 0.2);
+  vertical-align: top;
+}
+
+tbody td:last-child {
+  border-right: 0;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--pffw-parchment-bg);
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--pffw-row-alt);
+}
+
+tbody tr:hover {
+  background-color: #2c241c;
+}
+
+/* -----------------------------------------------------------------------------
+   Code / WeiDU log panels
+   ----------------------------------------------------------------------------- */
+
+code {
+  font-family: var(--pffw-font-mono);
+  font-size: 0.88em;
+  color: #e8d9a8;
+  background: #0c0b09;
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  border-radius: 2px;
+  padding: 0.1em 0.35em;
+}
+
+pre {
+  margin: 1.25em 0;
+  padding: 0.9em 1em;
+  overflow-x: auto;
+  background: #0a0908;
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  box-shadow:
+    inset 0 0 20px rgba(0, 0, 0, 0.65),
+    0 0 8px rgba(197, 160, 89, 0.08);
+  color: #c8b88a;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  -webkit-overflow-scrolling: touch;
+}
+
+pre code {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  border-radius: 0;
+}
+
+/* -----------------------------------------------------------------------------
+   Footer
+   ----------------------------------------------------------------------------- */
+
+.site-footer {
+  margin-top: auto;
+  padding: 1.5rem var(--pffw-gutter) 2rem;
+  border-top: 1px solid var(--pffw-gold-dim);
+  background: linear-gradient(180deg, #161310 0%, #0c0b0a 100%);
+  box-shadow: inset 0 1px 0 rgba(197, 160, 89, 0.2);
+}
+
+.site-footer__inner {
+  max-width: var(--pffw-max);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.site-footer__brand {
+  margin: 0 0 0.4rem;
+  font-family: var(--pffw-font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pffw-gold);
+}
+
+.site-footer__links {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+}
+
+.site-footer__sep {
+  margin: 0 0.4em;
+  color: var(--pffw-gold-dim);
+}
+
+.site-footer__credits {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--pffw-text-muted);
+  line-height: 1.5;
+}
+
+/* -----------------------------------------------------------------------------
+   Misc markdown helpers
+   ----------------------------------------------------------------------------- */
+
+.site-main__container ul,
+.pffw-frame ul {
+  padding-left: 1.35em;
+}
+
+.site-main__container li::marker,
+.pffw-frame li::marker {
+  color: var(--pffw-gold);
+}
+
+/* -----------------------------------------------------------------------------
+   Responsive — keep ornate borders intact on small screens
+   ----------------------------------------------------------------------------- */
+
+@media (max-width: 720px) {
+  body {
+    font-size: 1rem;
+  }
+
+  .site-banner {
+    padding: 1.1rem var(--pffw-gutter) 1rem;
+  }
+
+  .site-banner__ornament {
+    width: 6px;
+  }
+
+  .site-banner__eyebrow {
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+  }
+
+  .site-main {
+    padding: 1rem var(--pffw-gutter) 1.75rem;
+  }
+
+  .site-main__container,
+  .pffw-frame {
+    padding: 1rem 0.85rem;
+    outline-width: 2px;
+    outline-offset: 3px;
+  }
+
+  thead th,
+  tbody td {
+    padding: 0.45em 0.5em;
+    font-size: 0.85rem;
+  }
+
+  .pffw-stat-card dl {
+    grid-template-columns: 1fr;
+    gap: 0.15em 0;
+  }
+
+  .pffw-stat-card dt {
+    margin-top: 0.45em;
+  }
+
+  .pffw-stat-card dt:first-child {
+    margin-top: 0;
+  }
+
+  pre {
+    padding: 0.75em;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-main__container,
+  .pffw-frame {
+    outline-offset: 2px;
+  }
+
+  .site-banner__ornament {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  a {
+    transition: none;
+  }
+}
