@@ -5,6 +5,7 @@ THEN
     RESPONSE #100
         SetGlobal("PF_CurrentSummoner","GLOBAL",1)
         PlaySound("PF#FWHL6")
+        Wait(2)
         CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
         CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
         DestroySelf()
@@ -17,6 +18,7 @@ THEN
     RESPONSE #100
         SetGlobal("PF_CurrentSummoner","GLOBAL",2)
         PlaySound("PF#FWHL6")
+        Wait(2)
         CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
         CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
         DestroySelf()
@@ -29,6 +31,7 @@ THEN
     RESPONSE #100
         SetGlobal("PF_CurrentSummoner","GLOBAL",3)
         PlaySound("PF#FWHL6")
+        Wait(2)
         CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
         CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
         DestroySelf()
@@ -41,6 +44,7 @@ THEN
     RESPONSE #100
         SetGlobal("PF_CurrentSummoner","GLOBAL",4)
         PlaySound("PF#FWHL6")
+        Wait(2)
         CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
         CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
         DestroySelf()
@@ -53,6 +57,7 @@ THEN
     RESPONSE #100
         SetGlobal("PF_CurrentSummoner","GLOBAL",5)
         PlaySound("PF#FWHL6")
+        Wait(2)
         CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
         CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
         CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
@@ -65,6 +70,7 @@ THEN
     RESPONSE #100
         SetGlobal("PF_CurrentSummoner","GLOBAL",6)
         PlaySound("PF#FWHL6")
+        Wait(2)
         CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
         CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
         DestroySelf()
@@ -77,6 +83,7 @@ THEN
     RESPONSE #100
         SetGlobal("PF_CurrentSummoner","GLOBAL",1) // Default to Player 1
         PlaySound("PF#FWHL6")
+        Wait(2)
         CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
         CreateCreatureObjectOffScreen("PF#FWFSU",Myself,0,0,0)
         DestroySelf()

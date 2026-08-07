@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.3] - 2026-08-07
+
+### Fixed
+
+- **HOWL (`PF#FWPX-#.BAF`):** Increased the time lapse between a successful summoning call and the creature’s appearance by introducing an execution pause in the summoner’s script.
+
+---
+
 ## [1.0.2] - 2026-08-06
 
 ### Changed
