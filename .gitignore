@@ -68,3 +68,13 @@ backup/
 
 /*.bmp
 
+
+# Jekyll local build files
+
+_site/
+
+_cache/
+
+.jekyll-cache/
+
+Gemfile*

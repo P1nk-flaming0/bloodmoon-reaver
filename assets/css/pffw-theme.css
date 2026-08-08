@@ -47,19 +47,12 @@ body {
   font-size: 1.05rem;
   line-height: 1.7;
   background-color: var(--pffw-stone);
-  background-image:
-    radial-gradient(
-      ellipse 90% 60% at 50% 0%,
-      rgba(0, 0, 0, 0.55) 0%,
-      transparent 70%
-    ),
-    radial-gradient(
-      ellipse 80% 50% at 50% 100%,
-      rgba(0, 0, 0, 0.65) 0%,
-      transparent 65%
-    ),
-    linear-gradient(180deg, #1a1714 0%, var(--pffw-stone) 35%, #0c0b0a 100%);
+  /* Werewolf (left) + wolf (right), faded into stone; stays put while scrolling */
+  background-image: url("../img/site-background.jpg");
   background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 img {
@@ -472,6 +465,20 @@ pre code {
 }
 
 /* -----------------------------------------------------------------------------
+   GIF Wrapper
+   ----------------------------------------------------------------------------- */
+
+.pffw-gif-container {
+  width: 100%;
+}
+
+.pffw-gif-container img {
+  width: 100%;
+  height: auto; /* preserves aspect ratio (stretches only to fit width) */
+  display: block; /* avoids inline-image bottom whitespace */
+}
+
+/* -----------------------------------------------------------------------------
    Footer
    ----------------------------------------------------------------------------- */
 
@@ -536,6 +543,20 @@ pre code {
 @media (max-width: 720px) {
   body {
     font-size: 1rem;
+    /* Side portraits need desktop gutters; keep a simple stone wash on small screens */
+    background-attachment: scroll;
+    background-image:
+      radial-gradient(
+        ellipse 90% 60% at 50% 0%,
+        rgba(0, 0, 0, 0.55) 0%,
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 80% 50% at 50% 100%,
+        rgba(0, 0, 0, 0.65) 0%,
+        transparent 65%
+      ),
+      linear-gradient(180deg, #1a1714 0%, var(--pffw-stone) 35%, #0c0b0a 100%);
   }
 
   .site-banner {
