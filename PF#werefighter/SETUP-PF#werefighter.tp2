@@ -1,6 +1,6 @@
 BACKUP ~PF#werefighter/backup~
 AUTHOR ~P1nk-flaming0~
-VERSION ~v1.0.4~
+VERSION ~v1.0.5~
 README ~PF#werefighter/README.md~
 AUTO_EVAL_STRINGS
 
@@ -15,9 +15,12 @@ LANGUAGE
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 BEGIN ~Bloodmoon Reaver Kit~
+// REQUIRE_* must sit immediately after BEGIN (before INCLUDE/actions), or WeiDU
+// reports a GLR parse error. EE engines only; classic BG/IWD are not supported.
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @72
+
 INCLUDE ~PF#werefighter/lib/fl#add_kit_ee.tpa~
 // AT_INTERACTIVE_EXIT ~VIEW PF#werefighter/README.md~
-//REQUIRE_FILE ~Data/25Dialog.bif~ ~Requires BG2ToB~
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  Shared helper functions
@@ -117,8 +120,8 @@ END
 // Deployed per-file (not per-folder) so that dev-only `.json` structural dumps
 // living alongside the binaries in spl/, itm/, cre/ and eff/ never end up in
 // the game's override folder. SPCL905.SPL is deliberately NOT copied here --
-// it is a shared vanilla resource used by many other kit mods, and is instead
-// safely extended in Phase 5 below via ADD_SPELL_EFFECT.
+// it is a shared BG2EE/EET HLA carrier used by many kit mods, and is instead
+// safely extended in Phase 5 (skipped on BG1EE where the resource is absent).
 
 COPY
   ~PF#werefighter/spl/PF#FWAA0.SPL~   ~override~
@@ -214,37 +217,74 @@ APPEND ~SPECIFIC.IDS~ ~166 WOLF_SUMMONER~ UNLESS ~WOLF_SUMMONER~
 COMPILE ~PF#werefighter/script~
 
 /* Bloodmoon Reaver Kit */
-ADD_KIT ~PF#werefighter~
-/* CLASWEAP.2DA */
-	~PF#werefighter 1 1 1 1 1 1 1 1~
-/* WEAPPROF.2DA */
-	~PF#werefighter 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
-/* ABCLASRQ.2DA */
-	~PF#werefighter 9 0 0 0 0 0~
-/* ABCLSMOD.2DA */
-	~PF#werefighter 0 0 0 0 0 0~
-/* ABDCDSRQ.2DA */
-	~PF#werefighter 17 0 0 0 0 0~
-/* ABDCSCRQ.2DA */
-	~PF#werefighter 15 0 0 0 0 0~
-/* ALIGNMNT.2DA */
-	~PF#werefighter 0 1 1 0 1 1 0 1 1~
-/* DUALCLAS.2DA */
-	~PF#werefighter 0 1 1 1 1 0~
-/* The path of abilities 2DA file */
-	~PF#werefighter/2da/PF#CLBFW.2da~
-/* KITTABLE.2DA */
-	~K_F_H K_F_D K_F_G K_F_E K_F_HE K_F_HL K_F_HO~
-/* KITLIST.2DA */
-	~0x10000000 2~
-/* LUABBR.2DA */
-	~PF#FW~ // ~Fi0~
-
-/* 25STWEAP.2DA */
-	~LEAT20 * HELM19 BAG27 RING06 RING31 CLCK02 BOOT01 AMUL19 BRAC14 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
-    SAY @12
-	SAY @12
-	SAY @13
+// 25STWEAP.2DA exists on BG1EE/IWDEE as a 23-line stub. ADD_KIT always appends a
+// column when that file is present; an empty ~~ argument only supplies ~4 tokens
+// and fails. Variables in this ADD_KIT slot are also unreliable, so the gear
+// column is a literal: real ToB starting gear on BG2EE/EET, twenty * placeholders
+// elsewhere (same width as a normal fighter column).
+ACTION_IF GAME_IS ~bg2ee eet~ BEGIN
+  ADD_KIT ~PF#werefighter~
+  /* CLASWEAP.2DA */
+  	~PF#werefighter 1 1 1 1 1 1 1 1~
+  /* WEAPPROF.2DA */
+  	~PF#werefighter 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  /* ABCLASRQ.2DA */
+  	~PF#werefighter 9 0 0 0 0 0~
+  /* ABCLSMOD.2DA */
+  	~PF#werefighter 0 0 0 0 0 0~
+  /* ABDCDSRQ.2DA */
+  	~PF#werefighter 17 0 0 0 0 0~
+  /* ABDCSCRQ.2DA */
+  	~PF#werefighter 15 0 0 0 0 0~
+  /* ALIGNMNT.2DA */
+  	~PF#werefighter 0 1 1 0 1 1 0 1 1~
+  /* DUALCLAS.2DA */
+  	~PF#werefighter 0 1 1 1 1 0~
+  /* The path of abilities 2DA file */
+  	~PF#werefighter/2da/PF#CLBFW.2da~
+  /* KITTABLE.2DA */
+  	~K_F_H K_F_D K_F_G K_F_E K_F_HE K_F_HL K_F_HO~
+  /* KITLIST.2DA */
+  	~0x10000000 2~
+  /* LUABBR.2DA */
+  	~PF#FW~
+  /* 25STWEAP.2DA */
+  	~LEAT20 * HELM19 BAG27 RING06 RING31 CLCK02 BOOT01 AMUL19 BRAC14 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+      SAY @12
+  	SAY @12
+  	SAY @13
+END ELSE BEGIN
+  ADD_KIT ~PF#werefighter~
+  /* CLASWEAP.2DA */
+  	~PF#werefighter 1 1 1 1 1 1 1 1~
+  /* WEAPPROF.2DA */
+  	~PF#werefighter 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  /* ABCLASRQ.2DA */
+  	~PF#werefighter 9 0 0 0 0 0~
+  /* ABCLSMOD.2DA */
+  	~PF#werefighter 0 0 0 0 0 0~
+  /* ABDCDSRQ.2DA */
+  	~PF#werefighter 17 0 0 0 0 0~
+  /* ABDCSCRQ.2DA */
+  	~PF#werefighter 15 0 0 0 0 0~
+  /* ALIGNMNT.2DA */
+  	~PF#werefighter 0 1 1 0 1 1 0 1 1~
+  /* DUALCLAS.2DA */
+  	~PF#werefighter 0 1 1 1 1 0~
+  /* The path of abilities 2DA file */
+  	~PF#werefighter/2da/PF#CLBFW.2da~
+  /* KITTABLE.2DA */
+  	~K_F_H K_F_D K_F_G K_F_E K_F_HE K_F_HL K_F_HO~
+  /* KITLIST.2DA */
+  	~0x10000000 2~
+  /* LUABBR.2DA */
+  	~PF#FW~
+  /* 25STWEAP.2DA -- unused on BG1EE/IWDEE; blank column matching fighter width */
+  	~* * * * * * * * * * * * * * * * * * * *~
+      SAY @12
+  	SAY @12
+  	SAY @13
+END
 //--------------------------------------------------------------------------
 
 LAF fl#add_kit_ee
@@ -501,45 +541,48 @@ COPY_EXISTING
 BUT_ONLY_IF_IT_CHANGES
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-//  Phase 5 -- SPCL905.SPL safe injection (shared vanilla "innates" carrier spell)
+//  Phase 5 -- SPCL905.SPL safe injection (BG2EE / EET only)
 ///////////////////////////////////////////////////////////////////////////////////////////
-// Uses ADD_SPELL_EFFECT rather than a raw file copy so this stays compatible
-// with any other mod that also extends SPCL905.SPL. A manual duplicate scan
-// guards against adding the same effect twice on reinstall.
+// SPCL905 is the shared ToB/HLA "innates" carrier spell. It does not exist on
+// BG1EE, so this entire phase is skipped there. On BG2EE/EET we still use
+// ADD_SPELL_EFFECT (not a raw file copy) for cross-mod compatibility, with a
+// duplicate scan so reinstalls do not stack the same opcode-206 block.
 
-COPY_EXISTING ~SPCL905.SPL~ ~override~
-  SET pf_spcl_found = 0
-  READ_LONG  0x64 pf_ext_off
-  READ_SHORT 0x68 pf_ext_cnt
-  READ_LONG  0x6a pf_feat_off
-  FOR (pf_h = 0; pf_h < pf_ext_cnt; ++pf_h) BEGIN
-    READ_SHORT (pf_ext_off + (pf_h * 40) + 0x1e) pf_blk_cnt
-    READ_SHORT (pf_ext_off + (pf_h * 40) + 0x20) pf_blk_idx
-    FOR (pf_b = 0; pf_b < pf_blk_cnt; ++pf_b) BEGIN
-      SET pf_abs = pf_feat_off + ((pf_blk_idx + pf_b) * 48)
-      READ_SHORT pf_abs pf_opcode
-      READ_ASCII (pf_abs + 0x14) pf_resource (8)
-      PATCH_IF (pf_opcode = 206) AND ("%pf_resource%" STRING_EQUAL_CASE "PF#FWPGR") BEGIN
-        SET pf_spcl_found = 1
+ACTION_IF FILE_EXISTS_IN_GAME ~spcl905.spl~ BEGIN
+  COPY_EXISTING ~SPCL905.SPL~ ~override~
+    SET pf_spcl_found = 0
+    READ_LONG  0x64 pf_ext_off
+    READ_SHORT 0x68 pf_ext_cnt
+    READ_LONG  0x6a pf_feat_off
+    FOR (pf_h = 0; pf_h < pf_ext_cnt; ++pf_h) BEGIN
+      READ_SHORT (pf_ext_off + (pf_h * 40) + 0x1e) pf_blk_cnt
+      READ_SHORT (pf_ext_off + (pf_h * 40) + 0x20) pf_blk_idx
+      FOR (pf_b = 0; pf_b < pf_blk_cnt; ++pf_b) BEGIN
+        SET pf_abs = pf_feat_off + ((pf_blk_idx + pf_b) * 48)
+        READ_SHORT pf_abs pf_opcode
+        READ_ASCII (pf_abs + 0x14) pf_resource (8)
+        PATCH_IF (pf_opcode = 206) AND ("%pf_resource%" STRING_EQUAL_CASE "PF#FWPGR") BEGIN
+          SET pf_spcl_found = 1
+        END
       END
     END
-  END
-  PATCH_IF (pf_spcl_found = 0) BEGIN
-    LPF ADD_SPELL_EFFECT
-      INT_VAR
-        opcode        = 206
-        target        = 1
-        power         = 0
-        timing        = 0
-        resist_dispel  = 0
-        duration      = 6
-        probability1  = 100
-        probability2  = 0
-      STR_VAR
-        resource = ~PF#FWPGR~
+    PATCH_IF (pf_spcl_found = 0) BEGIN
+      LPF ADD_SPELL_EFFECT
+        INT_VAR
+          opcode        = 206
+          target        = 1
+          power         = 0
+          timing        = 0
+          resist_dispel  = 0
+          duration      = 6
+          probability1  = 100
+          probability2  = 0
+        STR_VAR
+          resource = ~PF#FWPGR~
+      END
     END
-  END
-BUT_ONLY_IF_IT_CHANGES
+  BUT_ONLY_IF_IT_CHANGES
+END
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  Phase 6 -- Legacy string-reference migration
@@ -595,6 +638,7 @@ END
 
 BEGIN ~Install Dynamic Portrait Switching (Requires custom user portraits)~
 // SUBCOMPONENT ~Dynamic Werewolf Portrait Switching~
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @72
 
 DEFINE_PATCH_FUNCTION pf#add_portrait_switch
 STR_VAR

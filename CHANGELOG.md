@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.5] - 2026-08-10
+
+### Fixed
+
+- **Install (BG1EE / IWDEE):** Guarded BG2-only `SPCL905.SPL` patching; fixed `ADD_KIT` / `25STWEAP.2DA` column-wise failure on stub tables; corrected `REQUIRE_PREDICATE` placement so WeiDU parses cleanly across EE games.
+- **Shapeshift: Greater Werewolf (`PF#FWAGW.SPL`):** Fixed the resource spl description to not refer to vanilla BG2EE string for intergame compatibility.
+
+### Changed
+
+- Declared support for BGEE, BG2EE, EET, and IWDEE in the installer predicate and README compatibility notes.
+
+---
+
 ## [1.0.4] - 2026-08-09
 
 ### Changed

@@ -1,10 +1,10 @@
 # Bloodmoon Reaver
 
 [![Version](https://img.shields.io/badge/version-v1.0.4-blue.svg)](https://github.com/P1nk-flaming0/bloodmoon-reaver)
-[![Engine](https://img.shields.io/badge/engine-BG2EE%20%7C%20EET-informational.svg)](#compatibility--prerequisites)
+[![Engine](https://img.shields.io/badge/engine-BGEE%20%7C%20BG2EE%20%7C%20EET%20%7C%20IWDEE-informational.svg)](#compatibility--prerequisites)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](#license--legal)
 
-A **Fighter** kit for _Baldur's Gate II: Enhanced Edition_ and _Enhanced Edition Trilogy_ that masters lycanthropy through sheer discipline — shifting between wolf and werewolf forms, hunting with predatory senses, and risking the <span class="werewolf-accent">Beast Within</span>.
+A **Fighter** kit for _Baldur's Gate: Enhanced Edition_, _Baldur's Gate II: Enhanced Edition_, _Enhanced Edition Trilogy_, and _Icewind Dale: Enhanced Edition_ that masters lycanthropy through sheer discipline — shifting between wolf and werewolf forms, hunting with predatory senses, and risking the <span class="werewolf-accent">Beast Within</span>.
 
 **Author:** [🦩 P1nk-flaming0](https://github.com/P1nk-flaming0) · **Download:** [_latest_](https://github.com/P1nk-flaming0/bloodmoon-reaver/releases) · **Forum Thread:** _To be updated..._ · **Source:** [GitHub](https://github.com/P1nk-flaming0/bloodmoon-reaver)  
 **Contact:** [✉️ ↴](https://p1nk-flaming0.github.io/bloodmoon-reaver/#contact)
@@ -159,7 +159,7 @@ In addition to standard martial HLAs (_Hardiness_, _Critical Strike_, _Power Att
 | **Baldur's Gate II: Enhanced Edition** (SoA / ToB)         | Direct Support  |
 | **Enhanced Edition Trilogy (EET)**                         | Fully Supported |
 | **Baldur's Gate: Enhanced Edition / Siege of Dragonspear** | Fully Supported |
-| **Icewind Dale: Enhanced Edition**                         |    Untested     |
+| **Icewind Dale: Enhanced Edition**                         | Fully Supported |
 
 </div>
 
@@ -215,4 +215,4 @@ _If you would like to submit a translation, feel free to open a Pull Request or 
 
 This mod is released under the **MIT License**.
 
-_Disclaimer: Bloodmoon Reaver is an unofficial, fan-made mod for Baldur's Gate II: Enhanced Edition. It is not affiliated with or endorsed by Beamdog, Wizards of the Coast, or BioWare._
+_Disclaimer: Bloodmoon Reaver is an unofficial, fan-made mod for Baldur's Gate Enhanced Edition games. It is not affiliated with or endorsed by Beamdog, Wizards of the Coast, or BioWare._
