@@ -1,10 +1,10 @@
 # Bloodmoon Reaver
 
-[![Version](https://img.shields.io/badge/version-v1.0-blue.svg)](https://github.com/P1nk-flaming0/bloodmoon-reaver)
+[![Version](https://img.shields.io/badge/version-v1.0.4-blue.svg)](https://github.com/P1nk-flaming0/bloodmoon-reaver)
 [![Engine](https://img.shields.io/badge/engine-BG2EE%20%7C%20EET-informational.svg)](#compatibility--prerequisites)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](#license--legal)
 
-A **Fighter** kit for _Baldur's Gate II: Enhanced Edition_ and _Enhanced Edition Trilogy_ that masters lycanthropy through steel discipline — shifting between wolf and werewolf forms, hunting with predatory senses, and risking the <span class="werewolf-accent">Beast Within</span>.
+A **Fighter** kit for _Baldur's Gate II: Enhanced Edition_ and _Enhanced Edition Trilogy_ that masters lycanthropy through sheer discipline — shifting between wolf and werewolf forms, hunting with predatory senses, and risking the <span class="werewolf-accent">Beast Within</span>.
 
 **Author:** [P1nk-flaming0](https://github.com/P1nk-flaming0)
 **Download:** [_latest release_](https://github.com/P1nk-flaming0/bloodmoon-reaver/releases) · **Forum Thread:** _To be updated..._ · **Source:** [GitHub](https://github.com/P1nk-flaming0/bloodmoon-reaver)  
@@ -30,7 +30,7 @@ A **Fighter** kit for _Baldur's Gate II: Enhanced Edition_ and _Enhanced Edition
 
 ## Overview
 
-**Bloodmoon Reaver** introduces a specialized fighter kit focused on controlled lycanthropy. Where a typical warrior relies purely on plate and steel, the Reaver trusts claw, fang, and sheer willpower — acting as a disciplined soldier who has learned to leash a lunar curse rather than deny it.
+**Bloodmoon Reaver** introduces a specialized fighter kit centered on controlled lycanthropy. Stripped of heavy plate, the Reaver relies instead on heightened instincts, overwhelming physical prowess, and unyielding focus — fighting as a tactical warrior who channels predatory fury into precise martial strength.
 
 <blockquote class="werewolf-accent--warn">
 "What the weak call a curse, the disciplined call an edge..."
@@ -63,7 +63,7 @@ A **Fighter** kit for _Baldur's Gate II: Enhanced Edition_ and _Enhanced Edition
 
 – **Wolf Form:** May shapeshift into a wolf form once per day per 2 levels (begins with 1 use at 1st level). While in wolf form, the warrior may use <span class="werewolf-accent">Howl</span> at will.
 
-> **HOWL:** Usable only in wolf form. When sounded in natural surroundings, the howl summons 1–5 wolves to fight alongside the caller for 3 turns.
+> **HOWL:** Usable only in wolf form. When sounded in natural surroundings, the howl may summon nearby wolves to fight alongside the caller for 3 turns.
 > <span class="pffw-gif-container"> 
 ![Howl](assets\gif\BaldursGateII-EnhancedEdition-v2.6.6.02026-08-0701-16-46-ezgif.com-video-to-gif-converter-howl-4w.gif)
 > </span>
@@ -92,19 +92,19 @@ A **Fighter** kit for _Baldur's Gate II: Enhanced Edition_ and _Enhanced Edition
 
 <div class="table-wrapper" markdown="1">
 
-| Attribute / Perk        |                 Wolf Form                 |               Werewolf Form                |                Greater Werewolf Form                |
-| :---------------------- | :---------------------------------------: | :----------------------------------------: | :-------------------------------------------------: |
-| **Unlocked At**         |                  Level 1                  |                  Level 4                   |                Level 14 _(Upgrade)_                 |
-| **Strength**            |                    18                     |                     19                     |                         21                          |
-| **Dexterity**           |                     —                     |                     16                     |                         20                          |
-| **Constitution**        |                     —                     |                     18                     |                         25                          |
-| **Base AC**             |                     5                     |                     1                      |                         −6                          |
-| **Attacks / Round**     |                     2                     |                     2                      |                          3                          |
-| **Base Damage**         |             1d8+1 (Piercing)              |              2d4+4 (Slashing)              |                  2d6+6 (Slashing)                   |
-| **Weapon Enchantment**  |                    +1                     |                     +2                     |                         +4                          |
-| **Magic Resistance**    |                     —                     |                    20%                     |                         40%                         |
-| **Elemental / Special** |  Cold 100%, Elec 50%<br>+Movement Speed   |                     —                      | Fire/Cold/Elec/Acid 50%<br>Regenerates 1 HP / 2 sec |
-| **Unique Ability**      | <span class="werewolf-accent">Howl</span> | <span class="werewolf-accent">Growl</span> |     <span class="werewolf-accent">Growl</span>      |
+| Attribute / Perk           |                 Wolf Form                 |               Werewolf Form                |                Greater Werewolf Form                |
+| :------------------------- | :---------------------------------------: | :----------------------------------------: | :-------------------------------------------------: |
+| **Unlocked At**            |                  Level 1                  |                  Level 4                   |                Level 14 _(Upgrade)_                 |
+| **Strength**               |                    18                     |                     19                     |                         21                          |
+| **Dexterity**              |                     —                     |                     16                     |                         20                          |
+| **Constitution**           |                     —                     |                     18                     |                         25                          |
+| **Base AC**                |                     5                     |                     1                      |                         −6                          |
+| **Attacks / Round** (base) |                     2                     |                     2                      |                          3                          |
+| **Base Damage**            |             1d8+1 (Piercing)              |              2d4+4 (Slashing)              |                  2d6+6 (Slashing)                   |
+| **Weapon Enchantment**     |                    +1                     |                     +2                     |                         +4                          |
+| **Magic Resistance**       |                     —                     |                    20%                     |                         40%                         |
+| **Elemental / Special**    |  Cold 100%, Elec 50%<br>+Movement Speed   |                     —                      | Fire/Cold/Elec/Acid 50%<br>Regenerates 1 HP / 2 sec |
+| **Unique Ability**         | <span class="werewolf-accent">Howl</span> | <span class="werewolf-accent">Growl</span> |     <span class="werewolf-accent">Growl</span>      |
 
 </div>
 
@@ -159,12 +159,12 @@ In addition to standard martial HLAs (_Hardiness_, _Critical Strike_, _Power Att
 
 <div class="table-wrapper" markdown="1">
 
-| Engine / Target                                            |       Compatibility        |
-| :--------------------------------------------------------- | :------------------------: |
-| **Baldur's Gate II: Enhanced Edition** (SoA / ToB)         |       Direct Support       |
-| **Enhanced Edition Trilogy (EET)**                         |      Fully Supported       |
-| **Baldur's Gate: Enhanced Edition / Siege of Dragonspear** | Untested / Not Recommended |
-| **Icewind Dale: Enhanced Edition**                         |          Untested          |
+| Engine / Target                                            |  Compatibility  |
+| :--------------------------------------------------------- | :-------------: |
+| **Baldur's Gate II: Enhanced Edition** (SoA / ToB)         | Direct Support  |
+| **Enhanced Edition Trilogy (EET)**                         | Fully Supported |
+| **Baldur's Gate: Enhanced Edition / Siege of Dragonspear** | Fully Supported |
+| **Icewind Dale: Enhanced Edition**                         |    Untested     |
 
 </div>
 
