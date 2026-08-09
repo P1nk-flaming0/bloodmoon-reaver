@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.4] - 2026-08-09
+
+### Changed
+
+- **Updated** `README.md` and changed Howl ability description.
+
+---
+
 ## [1.0.3] - 2026-08-07
 
 ### Fixed
