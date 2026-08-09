@@ -2,3 +2,6 @@ title: Bloodmoon Reaver
 description: "A custom Fighter kit mod for Baldur's Gate II: Enhanced Edition & EET"
 markdown: kramdown
 theme: null
+
+# Web3Forms access key (public client-side key for the contact form)
+web3forms_access_key: "cf7d8327-29c8-4709-bf98-48baad1fd1e0"

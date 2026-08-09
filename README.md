@@ -6,9 +6,8 @@
 
 A **Fighter** kit for _Baldur's Gate II: Enhanced Edition_ and _Enhanced Edition Trilogy_ that masters lycanthropy through sheer discipline — shifting between wolf and werewolf forms, hunting with predatory senses, and risking the <span class="werewolf-accent">Beast Within</span>.
 
-**Author:** [P1nk-flaming0](https://github.com/P1nk-flaming0)
-**Download:** [_latest release_](https://github.com/P1nk-flaming0/bloodmoon-reaver/releases) · **Forum Thread:** _To be updated..._ · **Source:** [GitHub](https://github.com/P1nk-flaming0/bloodmoon-reaver)  
-**Contact:** [p1nk-flaming0@fakemail.com](mailto:p1nk-flaming0@fakemail.com)
+**Author:** [🦩 P1nk-flaming0](https://github.com/P1nk-flaming0) · **Download:** [_latest_](https://github.com/P1nk-flaming0/bloodmoon-reaver/releases) · **Forum Thread:** _To be updated..._ · **Source:** [GitHub](https://github.com/P1nk-flaming0/bloodmoon-reaver)  
+**Contact:** [✉️ ↴](https://p1nk-flaming0.github.io/bloodmoon-reaver/#contact)
 
 ---
 
@@ -35,7 +34,6 @@ A **Fighter** kit for _Baldur's Gate II: Enhanced Edition_ and _Enhanced Edition
 <blockquote class="werewolf-accent--warn">
 "What the weak call a curse, the disciplined call an edge..."
 </blockquote>
-
 
 ### Mod Components
 
@@ -64,8 +62,8 @@ A **Fighter** kit for _Baldur's Gate II: Enhanced Edition_ and _Enhanced Edition
 – **Wolf Form:** May shapeshift into a wolf form once per day per 2 levels (begins with 1 use at 1st level). While in wolf form, the warrior may use <span class="werewolf-accent">Howl</span> at will.
 
 > **HOWL:** Usable only in wolf form. When sounded in natural surroundings, the howl may summon nearby wolves to fight alongside the caller for 3 turns.
-> <span class="pffw-gif-container"> 
-![Howl](assets\gif\BaldursGateII-EnhancedEdition-v2.6.6.02026-08-0701-16-46-ezgif.com-video-to-gif-converter-howl-4w.gif)
+> <span class="pffw-gif-container">
+> ![Howl](assets\gif\BaldursGateII-EnhancedEdition-v2.6.6.02026-08-0701-16-46-ezgif.com-video-to-gif-converter-howl-4w.gif)
 > </span>
 
 – **Werewolf Form:** May shapeshift into a werewolf form once per day per 2 levels (first use gained at 4th level). While in werewolf form, the warrior may use <span class="werewolf-accent">Growl</span> at will.
@@ -75,14 +73,14 @@ A **Fighter** kit for _Baldur's Gate II: Enhanced Edition_ and _Enhanced Edition
 – At 14th level, Werewolf Form upgrades to **Greater Werewolf Form**.  
 – At 18th level, gains **Shapeshift at Will** (unlimited alternation between natural, wolf, and werewolf forms).
 
->  <span class="werewolf-accent">**BEAST WITHIN:**</span> While mastering control over the curse, the warrior risks losing their humanity during intense combat. Under high stress, there is a chance of going berserk and transforming into an uncontrollable beast, attacking friend or foe alike.  
+> <span class="werewolf-accent">**BEAST WITHIN:**</span> While mastering control over the curse, the warrior risks losing their humanity during intense combat. Under high stress, there is a chance of going berserk and transforming into an uncontrollable beast, attacking friend or foe alike.  
 > – The risk diminishes as level increases, until full mastery is achieved at 18th level.  
 > – When the frenzy ends, the physical toll forces the warrior back into human form, leaving them briefly unconscious, fatigued, and with reduced morale. <span class="pffw-gif-container">![Berserk](assets/gif/BaldursGateII-EnhancedEdition-v2.6.6.02026-08-0701-32-21-ezgif.com-video-to-gif-converter-berserk.gif)</span>
 
 **DISADVANTAGES:**  
 – Cannot wear any physical armor.
 
-**Class & Race Restrictions:** Fighter kit. Available to Humans, Dwarves, Elves, Half-Elves, Gnomes, Halflings, and Half-Orcs. CANNOT be of GOOD alignment
+**Class & Race Restrictions:** Fighter kit. Available to Humans, Dwarves, Elves, Half-Elves, Gnomes, Halflings, and Half-Orcs. Cannot be of GOOD alignment.
 
 </div>
 
@@ -116,21 +114,21 @@ _Note: At Level 18, all daily usage limits on shapeshifting are removed (Shapesh
 
 <div class="table-wrapper" markdown="1">
 
-|  Level  | Ability / Perk Granted                                       |
-| :-----: | :----------------------------------------------------------- |
+|  Level  | Ability / Perk Granted                                                                                                            |
+| :-----: | :-------------------------------------------------------------------------------------------------------------------------------- |
 |  **1**  | Gain **Shapeshift: Wolf** (1 use/day), **Predatory Senses**, and <span class="werewolf-accent">Beast Within</span> passive traits |
-|  **3**  | +1 Wolf use/day                                              |
-|  **4**  | Gain **Shapeshift: Werewolf** (1 use/day)                    |
-|  **5**  | +1 Wolf use/day                                              |
-|  **6**  | +1 Werewolf use/day                                          |
-|  **7**  | +1 Wolf use/day                                              |
-|  **8**  | +1 Werewolf use/day                                          |
-|  **9**  | +1 Wolf use/day                                              |
-| **10**  | +1 Werewolf use/day                                          |
-| **12**  | +1 Werewolf use/day                                          |
-| **14**  | **Greater Werewolf Form** upgrade                            |
-| **18**  | **Shapeshift at Will** (unlimited uses) & <span class="werewolf-accent">Beast Within</span> Mastery (berserk risk removed) |
-| **20+** | High-Level Abilities (HLAs) unlocked                         |
+|  **3**  | +1 Wolf use/day                                                                                                                   |
+|  **4**  | Gain **Shapeshift: Werewolf** (1 use/day)                                                                                         |
+|  **5**  | +1 Wolf use/day                                                                                                                   |
+|  **6**  | +1 Werewolf use/day                                                                                                               |
+|  **7**  | +1 Wolf use/day                                                                                                                   |
+|  **8**  | +1 Werewolf use/day                                                                                                               |
+|  **9**  | +1 Wolf use/day                                                                                                                   |
+| **10**  | +1 Werewolf use/day                                                                                                               |
+| **12**  | +1 Werewolf use/day                                                                                                               |
+| **14**  | **Greater Werewolf Form** upgrade                                                                                                 |
+| **18**  | **Shapeshift at Will** (unlimited uses) & <span class="werewolf-accent">Beast Within</span> Mastery (berserk risk removed)        |
+| **20+** | High-Level Abilities (HLAs) unlocked                                                                                              |
 
 </div>
 

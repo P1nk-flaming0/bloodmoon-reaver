@@ -10,6 +10,11 @@
   {% endif %}
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
 
+  <link rel="icon" href="{{ "/assets/img/favicon.ico" | relative_url }}" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "/assets/img/favicon-32x32.png" | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ "/assets/img/favicon-16x16.png" | relative_url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "/assets/img/apple-touch-icon.png" | relative_url }}">
+
   <!-- Cinzel: headers · Lora: body · MedievalSharp: subheaders -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,6 +44,36 @@
     </div>
   </main>
 
+  {% if site.web3forms_access_key and site.web3forms_access_key != "" %}
+  <section class="site-contact" id="contact" aria-labelledby="contact-heading">
+    <div class="site-contact__inner">
+      <h2 class="site-contact__title" id="contact-heading">Contact</h2>
+      <p class="site-contact__lede">
+        Questions, feedback, or bug reports about Bloodmoon Reaver — send a message below.
+      </p>
+      <form class="site-contact__form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="{{ site.web3forms_access_key }}">
+        <input type="hidden" name="subject" value="Bloodmoon Reaver — Contact">
+        <input type="checkbox" name="botcheck" class="site-contact__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="site-contact__field">
+          <label for="contact-name">Name</label>
+          <input id="contact-name" type="text" name="name" required autocomplete="name" placeholder="Your name">
+        </div>
+        <div class="site-contact__field">
+          <label for="contact-email">Email</label>
+          <input id="contact-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+        </div>
+        <div class="site-contact__field">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" required rows="6" placeholder="Write your message…"></textarea>
+        </div>
+        <button class="site-contact__submit" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+  {% endif %}
+
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p class="site-footer__brand">Bloodmoon Reaver</p>
@@ -48,6 +83,10 @@
         <a href="https://github.com/P1nk-flaming0/bloodmoon-reaver/releases">Releases</a>
         <span class="site-footer__sep" aria-hidden="true">·</span>
         <a href="https://github.com/WeiDUorg/weidu">WeiDU</a>
+        {% if site.web3forms_access_key and site.web3forms_access_key != "" %}
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="#contact">Contact</a>
+        {% endif %}
       </p>
       <p class="site-footer__credits">
         Built with
