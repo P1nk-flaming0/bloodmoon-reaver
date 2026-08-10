@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.6] - 2026-08-10
+
+### Fixed
+
+- **Shapeshift: Greater Werewolf (`PF#FWAGW.SPL`):** Corrected the Unidentified Name stringref so install-time legacy TRA migration resolves to `@4` (`Shapeshifts Greater Werewolf`) instead of a hard-coded vanilla BG2EE strref.
+
+---
+
 ## [1.0.5] - 2026-08-10
 
 ### Fixed
