@@ -1,6 +1,6 @@
 BACKUP ~PF#werefighter/backup~
 AUTHOR ~P1nk-flaming0~
-VERSION ~v1.0.6~
+VERSION ~v1.0.7~
 README ~PF#werefighter/README.md~
 AUTO_EVAL_STRINGS
 
@@ -14,8 +14,10 @@ LANGUAGE
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-BEGIN ~Bloodmoon Reaver Kit~
-// REQUIRE_* must sit immediately after BEGIN (before INCLUDE/actions), or WeiDU
+BEGIN @73
+DESIGNATED 100
+LABEL ~PF#-bloodmoon-reaver-kit~
+// REQUIRE_* must sit immediately after BEGIN/flags (before INCLUDE/actions), or WeiDU
 // reports a GLR parse error. EE engines only; classic BG/IWD are not supported.
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @72
 
@@ -636,7 +638,9 @@ END
 // SUBCOMPONENT ~Dynamic Werewolf Portrait Switching~
 // // Intentionally empty -- choosing this component skips the feature entirely.
 
-BEGIN ~Install Dynamic Portrait Switching (Requires custom user portraits)~
+BEGIN @74
+DESIGNATED 200
+LABEL ~PF#-bloodmoon-reaver-dynamic-portrait-switching~
 // SUBCOMPONENT ~Dynamic Werewolf Portrait Switching~
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @72
 
