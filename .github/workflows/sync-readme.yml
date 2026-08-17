@@ -1,0 +1,53 @@
+# Copy README.md from main onto feat/jekyll-theme whenever main is pushed
+# with a README.md change. GitHub Pages / Jekyll lives on that branch.
+
+name: Sync README to Jekyll Branch
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "README.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-readme-jekyll
+  cancel-in-progress: true
+
+jobs:
+  sync-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git Identity
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Sync README.md to feat/jekyll-theme
+        run: |
+          set -euo pipefail
+
+          cp README.md /tmp/README.md
+
+          git fetch origin feat/jekyll-theme
+          git checkout -B feat/jekyll-theme origin/feat/jekyll-theme
+
+          cp /tmp/README.md README.md
+
+          if git diff --quiet -- README.md; then
+            echo "No changes to sync."
+            exit 0
+          fi
+
+          git add README.md
+          git commit -m "chore: auto-sync README.md from main"
+          git push origin HEAD:feat/jekyll-theme
