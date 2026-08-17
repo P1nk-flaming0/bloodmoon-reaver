@@ -1,6 +1,6 @@
 # Bloodmoon Reaver
 
-[![Version](https://img.shields.io/badge/version-v1.0.7-blue.svg)](https://github.com/P1nk-flaming0/bloodmoon-reaver)
+[![Version](https://img.shields.io/badge/version-v1.0.8-blue.svg)](https://github.com/P1nk-flaming0/bloodmoon-reaver)
 [![Engine](https://img.shields.io/badge/engine-BGEE%20%7C%20BG2EE%20%7C%20EET%20%7C%20IWDEE-informational.svg)](#compatibility--prerequisites)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](#license--legal)
 
@@ -62,20 +62,17 @@ A **Fighter** kit for _Baldur's Gate: Enhanced Edition_, _Baldur's Gate II: Enha
 – **Wolf Form:** May shapeshift into a wolf form once per day per 2 levels (begins with 1 use at 1st level). While in wolf form, the warrior may use <span class="werewolf-accent">Howl</span> at will.
 
 > **HOWL:** Usable only in wolf form. When sounded in natural surroundings, the howl may summon nearby wolves to fight alongside the caller for 3 turns.
-> <span class="pffw-gif-container">
-> ![Howl](assets\gif\BaldursGateII-EnhancedEdition-v2.6.6.02026-08-0701-16-46-ezgif.com-video-to-gif-converter-howl-4w.gif)
-> </span>
 
 – **Werewolf Form:** May shapeshift into a werewolf form once per day per 2 levels (first use gained at 4th level). While in werewolf form, the warrior may use <span class="werewolf-accent">Growl</span> at will.
 
-> **GROWL:** Usable only in werewolf form. Enemies within 30 feet must save vs. Spell at +3 or flee in panic. At higher levels, the saving throw bonus is removed. Growl also has an increasing chance to trigger automatically on a critical hit. <span class="pffw-gif-container">![Growl](assets\gif\BaldursGateII-EnhancedEdition-v2.6.6.02026-08-0702-33-06-ezgif.com-video-to-gif-converter-growl.gif)</span>
+> **GROWL:** Usable only in werewolf form. Enemies within 30 feet must save vs. Spell at +3 or flee in panic. At higher levels, the saving throw bonus is removed. Growl also has an increasing chance to trigger automatically on a critical hit.
 
 – At 14th level, Werewolf Form upgrades to **Greater Werewolf Form**.  
 – At 18th level, gains **Shapeshift at Will** (unlimited alternation between natural, wolf, and werewolf forms).
 
 > <span class="werewolf-accent">**BEAST WITHIN:**</span> While mastering control over the curse, the warrior risks losing their humanity during intense combat. Under high stress, there is a chance of going berserk and transforming into an uncontrollable beast, attacking friend or foe alike.  
 > – The risk diminishes as level increases, until full mastery is achieved at 18th level.  
-> – When the frenzy ends, the physical toll forces the warrior back into human form, leaving them briefly unconscious, fatigued, and with reduced morale. <span class="pffw-gif-container">![Berserk](assets/gif/BaldursGateII-EnhancedEdition-v2.6.6.02026-08-0701-32-21-ezgif.com-video-to-gif-converter-berserk.gif)</span>
+> – When the frenzy ends, the physical toll forces the warrior back into human form, leaving them briefly unconscious, fatigued, and with reduced morale.
 
 **DISADVANTAGES:**  
 – Cannot wear any physical armor.
