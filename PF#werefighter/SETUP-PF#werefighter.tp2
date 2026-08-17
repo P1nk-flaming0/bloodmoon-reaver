@@ -1,6 +1,6 @@
 BACKUP ~PF#werefighter/backup~
 AUTHOR ~P1nk-flaming0~
-VERSION ~v1.0.7~
+VERSION ~v1.0.8~
 README ~PF#werefighter/README.md~
 AUTO_EVAL_STRINGS
 
@@ -641,7 +641,10 @@ END
 BEGIN @74
 DESIGNATED 200
 LABEL ~PF#-bloodmoon-reaver-dynamic-portrait-switching~
-// SUBCOMPONENT ~Dynamic Werewolf Portrait Switching~
+// Skipped (no prompt) unless DESIGNATED 100 is installed. Uninstalling
+// 100 also removes 200: WeiDU uninstalls later log entries first, then
+// this REQUIRE_COMPONENT blocks reinstalling 200 without the kit.
+REQUIRE_COMPONENT ~PF#werefighter/SETUP-PF#werefighter.tp2~ ~100~ @75
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @72
 
 DEFINE_PATCH_FUNCTION pf#add_portrait_switch

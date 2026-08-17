@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.8] - 2026-08-18
+
+### Fixed
+
+- Declining or uninstalling the Bloodmoon Reaver kit (`DESIGNATED 100`) no longer leaves Dynamic Portrait Switching (`DESIGNATED 200`) available or installed on its own.
+
+---
+
 ## [1.0.7] - 2026-08-16
 
 ### Changed
