@@ -1,6 +1,6 @@
 BACKUP ~PF#werefighter/backup~
 AUTHOR ~P1nk-flaming0~
-VERSION ~v1.0.8~
+VERSION ~v1.0.9~
 README ~PF#werefighter/README.md~
 AUTO_EVAL_STRINGS
 
@@ -486,6 +486,9 @@ COPY_EXISTING ~PF#FWGWU.SPL~ ~override~
     INT_VAR match_opcode = 326 match_parameter2 = 9107 parameter2 = pf_row_eq_exhausted silent = 1
   END
   LPF ALTER_EFFECT
+    INT_VAR match_opcode = 326 match_parameter2 = 9104 parameter2 = pf_row_ne_werewolf silent = 1
+  END
+  LPF ALTER_EFFECT
     INT_VAR match_opcode = 326 match_parameter2 = 9103 parameter2 = pf_row_check_track silent = 1
   END
   LPF ALTER_EFFECT
@@ -540,6 +543,9 @@ COPY_EXISTING
   ~PF#FWLG0.SPL~ ~override~
   ~PF#FWLW0.SPL~ ~override~
   ~PF#FWWER.SPL~ ~override~
+  LPF ALTER_EFFECT
+    INT_VAR match_opcode = 326 match_parameter2 = 9104 parameter2 = pf_row_ne_werewolf silent = 1
+  END
   LPF ALTER_EFFECT
     INT_VAR match_opcode = 328 match_parameter2 = 9200 parameter2 = pf_state_werewolf silent = 1
   END

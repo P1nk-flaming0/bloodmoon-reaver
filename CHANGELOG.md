@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.9] - 2026-09-17
+
+### Fixed
+
+- **Berserk (`PF#FWPAY.SPL`):** Corrected the opcode139 strrefs to resolve in respective `setup.tra` entries instead of hard-coded vanilla BG2EE strrefs.
+
+### Changed
+
+- Formalized shapeshifting floating message triggers. Message will appear upon 1st transformation to werewolf and 1st subsequent transformation back to natural form.
+
+---
+
 ## [1.0.8] - 2026-08-18
 
 ### Fixed
