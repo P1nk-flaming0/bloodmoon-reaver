@@ -58,7 +58,7 @@ END
 
 // Rewrites a single strref (dword) at `offset` in the file currently being
 // patched, but only if its current value falls inside our legacy dev-tra
-// range [103715,103785]. Live/already-migrated values fall outside this
+// range [103715,103792]. Live/already-migrated values fall outside this
 // range and are left untouched, which is what makes the whole migration
 // naturally idempotent across reinstalls.
 DEFINE_PATCH_FUNCTION pf#fix_strref_at
@@ -66,7 +66,10 @@ INT_VAR
   offset = 0
 BEGIN
   READ_LONG offset pf_old_ref
-  PATCH_IF (pf_old_ref >= 103715) AND (pf_old_ref <= 103785) BEGIN
+    // [103715,103792] is the range of the legacy dev-tra. An extra safety 
+    // check to ensure that the strref is within this range. If it is not,
+    // the strref is left untouched.
+  PATCH_IF (pf_old_ref >= 103715) AND (pf_old_ref <= 103792) BEGIN 
     SET pf_new_idx = pf_old_ref - 103714
     // AT looks up the TRA entry by numeric index; SPRINT gets the real text
     // ("In Distress"), then RESOLVE_STR_REF adds that text to dialog.tlk.
@@ -591,7 +594,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Every custom .spl/.itm/.cre we just deployed to override in Phase 1 is
 // scanned once and any lingering local dev-environment strrefs
-// (setup.tra.bak range 103715-103785) are rewritten to their modern
+// (setup.tra.bak range 103715-103792) are rewritten to their modern
 // setup.tra @token via pf#fix_legacy_strrefs. Safe to rerun: values already
 // migrated fall outside the legacy range and are skipped.
 

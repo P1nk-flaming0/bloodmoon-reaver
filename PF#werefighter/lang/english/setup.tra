@@ -168,3 +168,7 @@ Allowing to be consumed by its feral insticts, the werewolf enters a trance of a
 @73  = ~Bloodmoon Reaver Kit~
 @74  = ~Install Dynamic Portrait Switching (Requires custom user portraits)~
 @75  = ~Dynamic Portrait Switching requires the Bloodmoon Reaver kit to be installed.~
+
+@76  = ~Enrage~
+@77  = ~When the berserk state ends, the character will take 15 damage.~
+@78  = ~The berserk state has ended. The character now loses the extra 15 Hit Points previously gained. If the character is below 15 Hit Points, he or she will be knocked unconscious.~
