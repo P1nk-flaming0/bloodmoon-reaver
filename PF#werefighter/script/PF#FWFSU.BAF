@@ -1,3 +1,42 @@
+/* ====================================================================
+   1. DESPAWN ON REST
+   ==================================================================== */
+   IF
+    PartyRested()
+THEN
+    RESPONSE #100
+        CreateVisualEffectObject("SPGFLSH1",Myself)
+		PlaySound("EFF_M08")
+		DestroySelf()
+END
+
+/* ====================================================================
+   2. DESPAWN IF AREA WAS LEFT AND RE-ENTERED
+   ==================================================================== */
+IF
+    GlobalTimerExpired("PF_AreaKeepAlive","LOCALS")
+THEN
+    RESPONSE #100
+        CreateVisualEffectObject("SPGFLSH1",Myself)
+		PlaySound("EFF_M08")
+		DestroySelf()
+END
+
+/* ====================================================================
+   3. HEARTBEAT TIMER REFRESH
+   Keep updating the timer into the future as long as we are active.
+   ==================================================================== */
+IF
+    !GlobalTimerNotExpired("PF_AreaKeepAlive_Refresh","LOCALS")
+THEN
+    RESPONSE #100
+        SetGlobalTimer("PF_AreaKeepAlive","LOCALS",10)
+        SetGlobalTimer("PF_AreaKeepAlive_Refresh","LOCALS",3)
+        Continue()
+END
+
+/* ==================================================================== */
+
 IF
 	Global("PF_DOHWL","LOCALS",1)
 THEN
@@ -31,15 +70,15 @@ THEN
 		PlaySound("PF#FWHL6")
 	RESPONSE #10
 		SetGlobal("PF_DOHWL","LOCALS",0)
-		Wait(1)
+		Wait(2)
 		PlaySound("PF#FWHL8")
 	RESPONSE #10
 		SetGlobal("PF_DOHWL","LOCALS",0)
-		Wait(1)
+		Wait(2)
 		PlaySound("PF#FWHL1")
 	RESPONSE #10
 		SetGlobal("PF_DOHWL","LOCALS",0)
-		Wait(1)
+		Wait(2)
 		PlaySound("PF#FWHL9")
 END
 

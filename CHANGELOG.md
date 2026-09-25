@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.10] - 2026-09-25
+
+### Changed
+
+- **Howl:** Updated kit and ability descriptions (`setup.tra`) to match current summon count and duration (allies remain until the caller is out of sight).
+- **Wolf summons (`PF#FWFSU.BAF`):** Added un-summoning on rest and when the area is left and re-entered.
+- **Werewolf summons (`PF#FWWSU.CRE`, `PF#FWSWR.EFF`, `PF#FWSWR.SPL`):** Added proper summoning animation.
+
+---
+
 ## [1.0.9] - 2026-09-17
 
 ### Fixed

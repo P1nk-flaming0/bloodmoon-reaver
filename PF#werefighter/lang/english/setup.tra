@@ -17,7 +17,7 @@ PREDATORY SENSES: The werewolf’s heightened instincts grant infravision and an
 
 – May shapeshift into a wolf form once per day per 2 levels (begins with 1 use at 1st level). While in wolf form, the shapeshifter may use Howl at will.
 
-HOWL: A primal call to the wild, usable only in wolf form. When sounded in natural surroundings, the howl may summon nearby wolves to fight alongside the caller. These allies remain for 3 turns or until slain.
+HOWL: A primal call to the wild, usable only in wolf form. When sounded in natural surroundings, the howl may summon nearby wolves to fight alongside the caller.
 
 – May shapeshift into a werewolf form once per day per 2 levels (gains first use at 4th level). While in werewolf form, the shapeshifter may use Growl at will.
 
@@ -153,7 +153,7 @@ Special Abilities:
 – Regenerates 1 HP every 2 sec~
 @67  = ~Shapeshift at Will~
 @68  = ~Howl
-A primal call to the wild, usable only in wolf form. When unleashed in natural surroundings, the howl may summon 1-5 wolves to fight at the caller’s side. These allies remain for 3 turns or until slain.~
+A primal call to the wild, usable only in wolf form. When unleashed in natural surroundings, the howl may summon 1-4 wolves to fight at the caller’s side. These allies remain in the area until the caller is out of sight.~
 @69  = ~Growl
 A fearsome roar available while in werewolf form. Enemies within 30 feet must save vs. Spell at +4 or flee in panic. At higher levels, the growl carries no save bonus.~
 @70  = ~^RFound a wolf summoner!^-~

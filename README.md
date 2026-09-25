@@ -1,6 +1,6 @@
 # Bloodmoon Reaver
 
-[![Version](https://img.shields.io/badge/version-v1.0.9-blue.svg)](https://github.com/P1nk-flaming0/bloodmoon-reaver)
+[![Version](https://img.shields.io/badge/version-v1.0.10-blue.svg)](https://github.com/P1nk-flaming0/bloodmoon-reaver)
 [![Engine](https://img.shields.io/badge/engine-BGEE%20%7C%20BG2EE%20%7C%20EET%20%7C%20IWDEE-informational.svg)](#compatibility--prerequisites)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](#license--legal)
 
@@ -207,6 +207,7 @@ _If you would like to submit a translation, feel free to open a Pull Request or 
 - **Near Infinity** — Jon Olav Hauglid, Astardo, and contributors
 - **Project Infinity** — AL\|EN
 - **Gibberlings Three Community** — Tutorials, documentation, and `fl#add_kit_ee` helpers
+- **The Artisan's Corner** — The Artisan for inspiration & hours of fun
 - **Beamdog** — For maintaining and expanding the Infinity Engine
 
 ---
