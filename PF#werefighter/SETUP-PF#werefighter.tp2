@@ -1,6 +1,6 @@
 BACKUP ~PF#werefighter/backup~
 AUTHOR ~P1nk-flaming0~
-VERSION ~v1.1.0~
+VERSION ~v1.1.1~
 README ~PF#werefighter/README.md~
 AUTO_EVAL_STRINGS
 
@@ -42,82 +42,24 @@ INCLUDE ~PF#werefighter/lib/install_kit.tpa~
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-//  Phase 7 -- Optional Subcomponent: Dynamic Werewolf Portrait Switching
+// Optional: Dynamic Werewolf Portrait Switching
 ///////////////////////////////////////////////////////////////////////////////////////////
-// DEFINE_*_FUNCTION is component-scoped in WeiDU. This helper MUST be defined
-// inside the portrait component below (not in the kit component above).
-
-// BEGIN ~Do not install portrait switching~
-// SUBCOMPONENT ~Dynamic Werewolf Portrait Switching~
-// // Intentionally empty -- choosing this component skips the feature entirely.
+// WeiDU only records uninstall dependencies for REQUIRE_COMPONENT (not for
+// REQUIRE_PREDICATE). With two mutually exclusive kit parents, use one portrait
+// component per kit so uninstalling 100 or 110 also removes portraits.
 
 BEGIN @74
 DESIGNATED 200
 LABEL ~PF#-bloodmoon-reaver-dynamic-portrait-switching~
-// Available when either kit SUBCOMPONENT is installed (100 or 110).
-REQUIRE_PREDICATE (MOD_IS_INSTALLED ~PF#werefighter/SETUP-PF#werefighter.tp2~ ~100~ || MOD_IS_INSTALLED ~PF#werefighter/SETUP-PF#werefighter.tp2~ ~110~) @75
+REQUIRE_COMPONENT ~PF#werefighter/SETUP-PF#werefighter.tp2~ ~100~ @75
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @72
+INCLUDE ~PF#werefighter/lib/install_portraits.tpa~
 
-DEFINE_PATCH_FUNCTION pf#add_portrait_switch
-STR_VAR
-  small = ""
-  large = ""
-BEGIN
-  LPF ADD_SPELL_EFFECT
-    INT_VAR opcode = 107 target = 2 timing = 1 probability1 = 100 parameter2 = 0
-    STR_VAR resource = ~%small%~
-  END
-  LPF ADD_SPELL_EFFECT
-    INT_VAR opcode = 107 target = 2 timing = 1 probability1 = 100 parameter2 = 1
-    STR_VAR resource = ~%large%~
-  END
-END
-
-PRINT ~
-========================================================================
-            OPTIONAL FEATURE: DYNAMIC PORTRAIT SWITCHING
-========================================================================
-This feature allows your character's portrait to change automatically
-when shapeshifting between human, wolf, and werewolf forms.
-
-To use this feature, you MUST provide your own custom portrait files and
-name them exactly as follows in your game's "Portraits" folder:
-
-  - Human/Natural form: pffwn0L.bmp (Large) and pffwn0M.bmp (Medium)
-
-If you do not have these portrait files ready, you can still install this
-component now and place the files in your "Portraits" folder later.
-========================================================================
-~
-
-COPY ~PF#werefighter/portraits~ ~%USER_DIRECTORY%/portraits~
-
-COPY_EXISTING ~PF#FWGWU.SPL~ ~override~
-  LPF pf#add_portrait_switch STR_VAR small=~PFFWB0M~ large=~PFFWB0L~ END
-BUT_ONLY_IF_IT_CHANGES
-
-COPY_EXISTING ~PF#FWLG0.SPL~ ~override~
-  LPF pf#add_portrait_switch STR_VAR small=~PFFWB0M~ large=~PFFWB0L~ END
-BUT_ONLY_IF_IT_CHANGES
-
-COPY_EXISTING ~PF#FWLW0.SPL~ ~override~
-  LPF pf#add_portrait_switch STR_VAR small=~PFFWB0M~ large=~PFFWB0L~ END
-BUT_ONLY_IF_IT_CHANGES
-
-COPY_EXISTING ~PF#FWWER.SPL~ ~override~
-  LPF pf#add_portrait_switch STR_VAR small=~PFFWB0M~ large=~PFFWB0L~ END
-BUT_ONLY_IF_IT_CHANGES
-
-COPY_EXISTING ~PF#FWLWO.SPL~ ~override~
-  LPF pf#add_portrait_switch STR_VAR small=~PFFWW0M~ large=~PFFWW0L~ END
-BUT_ONLY_IF_IT_CHANGES
-
-COPY_EXISTING ~PF#FWWOU.SPL~ ~override~
-  LPF pf#add_portrait_switch STR_VAR small=~PFFWW0M~ large=~PFFWW0L~ END
-BUT_ONLY_IF_IT_CHANGES
-
-COPY_EXISTING ~PF#FWNAT.SPL~ ~override~
-  LPF pf#add_portrait_switch STR_VAR small=~PFFWN0M~ large=~PFFWN0L~ END
-BUT_ONLY_IF_IT_CHANGES
+BEGIN @74
+DESIGNATED 210
+LABEL ~PF#-bloodmoon-reaver-dynamic-portrait-switching-iwdee~
+REQUIRE_COMPONENT ~PF#werefighter/SETUP-PF#werefighter.tp2~ ~110~ @75
+REQUIRE_PREDICATE GAME_IS ~iwdee~ @82
+INCLUDE ~PF#werefighter/lib/install_portraits.tpa~
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////

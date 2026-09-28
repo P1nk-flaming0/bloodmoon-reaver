@@ -1,0 +1,64 @@
+// Shared Dynamic Portrait Switching install body.
+// Included by DESIGNATED 200 (requires kit 100) and 210 (requires kit 110).
+
+DEFINE_PATCH_FUNCTION pf#add_portrait_switch
+STR_VAR
+  small = ""
+  large = ""
+BEGIN
+  LPF ADD_SPELL_EFFECT
+    INT_VAR opcode = 107 target = 2 timing = 1 probability1 = 100 parameter2 = 0
+    STR_VAR resource = ~%small%~
+  END
+  LPF ADD_SPELL_EFFECT
+    INT_VAR opcode = 107 target = 2 timing = 1 probability1 = 100 parameter2 = 1
+    STR_VAR resource = ~%large%~
+  END
+END
+
+PRINT ~
+========================================================================
+            OPTIONAL FEATURE: DYNAMIC PORTRAIT SWITCHING
+========================================================================
+This feature allows your character's portrait to change automatically
+when shapeshifting between human, wolf, and werewolf forms.
+
+To use this feature, you MUST provide your own custom portrait files and
+name them exactly as follows in your game's "Portraits" folder:
+
+  - Human/Natural form: pffwn0L.bmp (Large) and pffwn0M.bmp (Medium)
+
+If you do not have these portrait files ready, you can still install this
+component now and place the files in your "Portraits" folder later.
+========================================================================
+~
+
+COPY ~PF#werefighter/portraits~ ~%USER_DIRECTORY%/portraits~
+
+COPY_EXISTING ~PF#FWGWU.SPL~ ~override~
+  LPF pf#add_portrait_switch STR_VAR small=~PFFWB0M~ large=~PFFWB0L~ END
+BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~PF#FWLG0.SPL~ ~override~
+  LPF pf#add_portrait_switch STR_VAR small=~PFFWB0M~ large=~PFFWB0L~ END
+BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~PF#FWLW0.SPL~ ~override~
+  LPF pf#add_portrait_switch STR_VAR small=~PFFWB0M~ large=~PFFWB0L~ END
+BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~PF#FWWER.SPL~ ~override~
+  LPF pf#add_portrait_switch STR_VAR small=~PFFWB0M~ large=~PFFWB0L~ END
+BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~PF#FWLWO.SPL~ ~override~
+  LPF pf#add_portrait_switch STR_VAR small=~PFFWW0M~ large=~PFFWW0L~ END
+BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~PF#FWWOU.SPL~ ~override~
+  LPF pf#add_portrait_switch STR_VAR small=~PFFWW0M~ large=~PFFWW0L~ END
+BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~PF#FWNAT.SPL~ ~override~
+  LPF pf#add_portrait_switch STR_VAR small=~PFFWN0M~ large=~PFFWN0L~ END
+BUT_ONLY_IF_IT_CHANGES
