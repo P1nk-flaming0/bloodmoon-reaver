@@ -164,7 +164,7 @@ Allowing to be consumed by its feral insticts, the werewolf enters a trance of a
 – While enraged: Immune to charm, hold and fear, maze, imprisonment, stun and sleep.~
 @72  = ~Bloodmoon Reaver requires Baldur's Gate: Enhanced Edition, Baldur's Gate II: Enhanced Edition, Enhanced Edition Trilogy, or Icewind Dale: Enhanced Edition.~
 
-// Component titles
+// Component titles / SUBCOMPONENT group
 @73  = ~Bloodmoon Reaver Kit~
 @74  = ~Install Dynamic Portrait Switching (Requires custom user portraits)~
 @75  = ~Dynamic Portrait Switching requires the Bloodmoon Reaver kit to be installed.~
@@ -172,3 +172,55 @@ Allowing to be consumed by its feral insticts, the werewolf enters a trance of a
 @76  = ~Enrage~
 @77  = ~When the berserk state ends, the character will take 15 damage.~
 @78  = ~The berserk state has ended. The character now loses the extra 15 Hit Points previously gained. If the character is below 15 Hit Points, he or she will be knocked unconscious.~
+// Kit install options (SUBCOMPONENT @73)
+@79  = ~Install Bloodmoon Reaver Kit~
+@80  = ~Install Bloodmoon Reaver Kit with HLAs integrated into levels 20–30 (IWDEE)~
+@81  = ~BLOODMOON REAVER: Born with the "gift" or scarred by a fated encounter, this warrior has been afflicted with lycanthropy. Through discipline and rigorous training, <PRO_HESHE> progressively learns how to master <PRO_HISHER> curse. By honing the predator’s instincts alongside the soldier’s resolve, <PRO_HESHE> becomes apex hunter that blends the tactical mind of a man with the raw, terrifying power of the beast.
+
+Advantages:
+PREDATORY SENSES: The werewolf’s heightened instincts grant infravision and an increasing chance to detect invisible creatures. These senses sharpen as the warrior gains experience, eventually providing immunity to magical blindness.
+
+– May shapeshift into a wolf form once per day per 2 levels (begins with 1 use at 1st level). While in wolf form, the shapeshifter may use Howl at will.
+
+HOWL: A primal call to the wild, usable only in wolf form. When sounded in natural surroundings, the howl may summon nearby wolves to fight alongside the caller.
+
+– May shapeshift into a werewolf form once per day per 2 levels (gains first use at 4th level). While in werewolf form, the shapeshifter may use Growl at will.
+
+GROWL: A fearsome roar usable only in werewolf form. Enemies within 30 feet must save vs. Spell at +3 or flee in panic. At higher levels, the saving throw bonus is removed. Growl has a level-based, increasing chance to trigger automatically on a critical hit.
+
+– At 14th level, the werewolf form is upgraded to a greater werewolf form.
+– At 18th level, the warrior may freely alternate between natural, wolf, and werewolf forms at will.
+– 20th level: May use Feral Rage ability once per day. Gains one use at level 20 and an additional use every 4 levels thereafter.
+
+FERAL RAGE:
+Allowing to be consumed by its feral insticts, the werewolf enters a trance of animalistic rage.
+
+– While enraged: Strength rises by 2, claws hit as a +6 weapon and their damage increases.
+– While enraged: Immune to charm, hold and fear, maze, imprisonment, stun and sleep.
+
+– 21st level: Gains the Thick-Skinned passive ability.
+
+THICK-SKINNED:
+The were-warrior’s body grows unnaturally dense and resistant to harm. Muscles knot, bone thickens, and the skin takes on a near-armored resilience. The character becomes increasingly impervious to physical assault, gaining 5% resistance to crushing, slashing, piercing, and missile damage.
+
+– 22nd level: Gains the Blood Frenzy passive ability.
+
+BLOOD FRENZY:
+When the werewolf claims a kill, a surge of primal fury floods its body. For a short time, the beast moves with unnatural speed, strikes with greater ferocity, and its strength swells with predatory might. The frenzy lasts for 3 rounds after the last kill before fading.
+
+– 24th level: Gains an additional use of Feral Rage.
+– 25th level: Attains the second rank of the Thick-Skinned ability (additional +5% physical damage resistance).
+– 26th level: Gains the Call of the Hunt ability.
+
+CALL OF THE HUNT:
+Through a primal bond with the Beastlord’s realm, the character summons two Nightfang Stalkers – spirit-werewolves of savage strength and unbridled ferocity. These hunters remain for 3 turns or until destroyed.
+
+– 28th level: Gains an additional use of Feral Rage.
+
+BEAST WITHIN: While learning how to practice control over <PRO_HISHER> curse, the warrior runs the risk of losing <PRO_HISHER> humanity when faced with particularly stressful combat conditions. Under such circumstances, there is a chance of <PRO_HESHE> going berserk and transforming into an uncontrollable beast, blindly attacking friend or foe alike.
+– As the warrior grows in experience and mental discipline, the likelihood of losing control steadily diminishes until it is mastered entirely at higher levels.
+– Once the frenzy subsides, the toll on the warrior's body is severe; <PRO_HESHE> is forced back into human form, left briefly unconscious, and suffers from profound physical exhaustion and diminished morale.
+
+Disadvantages:
+– Cannot wear any armor.~
+@82  = ~The HLA-integrated Bloodmoon Reaver kit is only available on Icewind Dale: Enhanced Edition.~

@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.0] - 2026-09-28
+
+### Added
+
+- **IWDEE kit option:** On Icewind Dale: Enhanced Edition, the Bloodmoon Reaver Kit component offers an alternate install that grants kit HLAs through the ability table at levels 20–30 (`pf#cbfwi.2da`), with an updated class description (`@81`).
+
+### Changed
+
+- Project Infinity `Games` metadata now lists BGEE, BG2EE, EET, and IWDEE.
+
+---
+
 ## [1.0.10] - 2026-09-25
 
 ### Changed
