@@ -1,6 +1,6 @@
 # Bloodmoon Reaver
 
-[![Version](https://img.shields.io/badge/version-v1.1.1-blue.svg)](https://github.com/P1nk-flaming0/bloodmoon-reaver)
+[![Version](https://img.shields.io/badge/version-v1.1.2-blue.svg)](https://github.com/P1nk-flaming0/bloodmoon-reaver)
 [![Engine](https://img.shields.io/badge/engine-BGEE%20%7C%20BG2EE%20%7C%20EET%20%7C%20IWDEE-informational.svg)](#compatibility--prerequisites)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](#license--legal)
 
@@ -39,10 +39,11 @@ A **Fighter** kit for _Baldur's Gate: Enhanced Edition_, _Baldur's Gate II: Enha
 
 <div class="table-wrapper" markdown="1">
 
-| Name                                        | Description                                                                                                |
-| :------------------------------------------ | :--------------------------------------------------------------------------------------------------------- |
-| **Bloodmoon Reaver Kit** _(Core)_           | Core kit, class tables, abilities, and spells. On IWDEE, optionally integrates kit HLAs into levels 20–30. |
-| **Dynamic Werewolf Portraits** _(Optional)_ | Swaps character portraits dynamically upon shapeshifting.                                                  |
+| Name                                              | Description                                                                 |
+| :------------------------------------------------ | :-------------------------------------------------------------------------- |
+| **Bloodmoon Reaver Kit** _(Core)_                 | Core kit, class tables, abilities, and spells.                              |
+| **Integrate HLAs into levels 20–30** _(IWDEE)_    | Optional. Grants kit HLAs through the ability table at levels 20–30.        |
+| **Dynamic Werewolf Portraits** _(Optional)_       | Swaps character portraits dynamically upon shapeshifting.                   |
 
 </div>
 
