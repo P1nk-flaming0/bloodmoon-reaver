@@ -1,6 +1,6 @@
 BACKUP ~PF#werefighter/backup~
 AUTHOR ~P1nk-flaming0~
-VERSION ~v1.1.1~
+VERSION ~v1.1.2~
 README ~PF#werefighter/README.md~
 AUTO_EVAL_STRINGS
 
@@ -14,52 +14,33 @@ LANGUAGE
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////////////////////
-// Component group: Bloodmoon Reaver Kit (mutually exclusive via SUBCOMPONENT)
-///////////////////////////////////////////////////////////////////////////////////////////
-
 //------------------------------------------------------------------------------
-// Option 1: Standard kit (all supported EE games)
+// 100 -- Core kit (all supported EE games)
 //------------------------------------------------------------------------------
 BEGIN @79
 DESIGNATED 100
-SUBCOMPONENT @73
 LABEL ~PF#-bloodmoon-reaver-kit~
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @72
-OUTER_SET pf#kit_iwdee_hla = 0
 INCLUDE ~PF#werefighter/lib/install_kit.tpa~
 
 //------------------------------------------------------------------------------
-// Option 2: IWDEE only -- HLAs granted via CLAB at levels 20-30
+// 110 -- Optional IWDEE patch: HLAs via CLAB levels 20-30
 //------------------------------------------------------------------------------
 BEGIN @80
 DESIGNATED 110
-SUBCOMPONENT @73
-LABEL ~PF#-bloodmoon-reaver-kit-iwdee-hla~
+LABEL ~PF#-bloodmoon-reaver-integrate-hlas-iwdee~
+REQUIRE_COMPONENT ~PF#werefighter/SETUP-PF#werefighter.tp2~ ~100~ @83
 REQUIRE_PREDICATE GAME_IS ~iwdee~ @82
-OUTER_SET pf#kit_iwdee_hla = 1
-INCLUDE ~PF#werefighter/lib/install_kit.tpa~
+INCLUDE ~PF#werefighter/lib/install_hla_iwdee.tpa~
 
-
-///////////////////////////////////////////////////////////////////////////////////////////
-// Optional: Dynamic Werewolf Portrait Switching
-///////////////////////////////////////////////////////////////////////////////////////////
-// WeiDU only records uninstall dependencies for REQUIRE_COMPONENT (not for
-// REQUIRE_PREDICATE). With two mutually exclusive kit parents, use one portrait
-// component per kit so uninstalling 100 or 110 also removes portraits.
-
+//------------------------------------------------------------------------------
+// 200 -- Optional Dynamic Portrait Switching
+//------------------------------------------------------------------------------
 BEGIN @74
 DESIGNATED 200
 LABEL ~PF#-bloodmoon-reaver-dynamic-portrait-switching~
 REQUIRE_COMPONENT ~PF#werefighter/SETUP-PF#werefighter.tp2~ ~100~ @75
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @72
-INCLUDE ~PF#werefighter/lib/install_portraits.tpa~
-
-BEGIN @74
-DESIGNATED 210
-LABEL ~PF#-bloodmoon-reaver-dynamic-portrait-switching-iwdee~
-REQUIRE_COMPONENT ~PF#werefighter/SETUP-PF#werefighter.tp2~ ~110~ @75
-REQUIRE_PREDICATE GAME_IS ~iwdee~ @82
 INCLUDE ~PF#werefighter/lib/install_portraits.tpa~
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////

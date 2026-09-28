@@ -204,137 +204,68 @@ COMPILE ~PF#werefighter/script~
 // and fails. Variables in this ADD_KIT slot are also unreliable, so the gear
 // column is a literal: real ToB starting gear on BG2EE/EET, twenty * placeholders
 // elsewhere (same width as a normal fighter column).
-//
-// pf#kit_iwdee_hla (set by the calling SUBCOMPONENT) selects the CLAB and HELP
-// text: standard pf#clbfw + @13, or IWDEE HLA-integrated pf#cbfwi + @81.
 ACTION_IF GAME_IS ~bg2ee eet~ BEGIN
-  ACTION_IF pf#kit_iwdee_hla BEGIN
-    ADD_KIT ~PF#werefighter~
-    /* CLASWEAP.2DA */
-      ~PF#werefighter 1 1 1 1 1 1 1 1~
-    /* WEAPPROF.2DA */
-      ~PF#werefighter 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
-    /* ABCLASRQ.2DA */
-      ~PF#werefighter 9 0 0 0 0 0~
-    /* ABCLSMOD.2DA */
-      ~PF#werefighter 0 0 0 0 0 0~
-    /* ABDCDSRQ.2DA */
-      ~PF#werefighter 17 0 0 0 0 0~
-    /* ABDCSCRQ.2DA */
-      ~PF#werefighter 15 0 0 0 0 0~
-    /* ALIGNMNT.2DA */
-      ~PF#werefighter 0 1 1 0 1 1 0 1 1~
-    /* DUALCLAS.2DA */
-      ~PF#werefighter 0 1 1 1 1 0~
-    /* Ability table (CLAB) -- IWDEE HLA-integrated levels 20-30 */
-      ~PF#werefighter/2da/pf#cbfwi.2da~
-    /* KITTABLE.2DA */
-      ~K_F_H K_F_D K_F_G K_F_E K_F_HE K_F_HL K_F_HO~
-    /* KITLIST.2DA */
-      ~0x10000000 2~
-    /* LUABBR.2DA */
-      ~PF#FW~
-    /* 25STWEAP.2DA */
-      ~LEAT20 * HELM19 BAG27 RING06 RING31 CLCK02 BOOT01 AMUL19 BRAC14 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
-    SAY @12
-    SAY @12
-    SAY @81
-  END ELSE BEGIN
-    ADD_KIT ~PF#werefighter~
-    /* CLASWEAP.2DA */
-      ~PF#werefighter 1 1 1 1 1 1 1 1~
-    /* WEAPPROF.2DA */
-      ~PF#werefighter 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
-    /* ABCLASRQ.2DA */
-      ~PF#werefighter 9 0 0 0 0 0~
-    /* ABCLSMOD.2DA */
-      ~PF#werefighter 0 0 0 0 0 0~
-    /* ABDCDSRQ.2DA */
-      ~PF#werefighter 17 0 0 0 0 0~
-    /* ABDCSCRQ.2DA */
-      ~PF#werefighter 15 0 0 0 0 0~
-    /* ALIGNMNT.2DA */
-      ~PF#werefighter 0 1 1 0 1 1 0 1 1~
-    /* DUALCLAS.2DA */
-      ~PF#werefighter 0 1 1 1 1 0~
-    /* Ability table (CLAB) */
-      ~PF#werefighter/2da/PF#CLBFW.2da~
-    /* KITTABLE.2DA */
-      ~K_F_H K_F_D K_F_G K_F_E K_F_HE K_F_HL K_F_HO~
-    /* KITLIST.2DA */
-      ~0x10000000 2~
-    /* LUABBR.2DA */
-      ~PF#FW~
-    /* 25STWEAP.2DA */
-      ~LEAT20 * HELM19 BAG27 RING06 RING31 CLCK02 BOOT01 AMUL19 BRAC14 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
-    SAY @12
-    SAY @12
-    SAY @13
-  END
+  ADD_KIT ~PF#werefighter~
+  /* CLASWEAP.2DA */
+    ~PF#werefighter 1 1 1 1 1 1 1 1~
+  /* WEAPPROF.2DA */
+    ~PF#werefighter 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  /* ABCLASRQ.2DA */
+    ~PF#werefighter 9 0 0 0 0 0~
+  /* ABCLSMOD.2DA */
+    ~PF#werefighter 0 0 0 0 0 0~
+  /* ABDCDSRQ.2DA */
+    ~PF#werefighter 17 0 0 0 0 0~
+  /* ABDCSCRQ.2DA */
+    ~PF#werefighter 15 0 0 0 0 0~
+  /* ALIGNMNT.2DA */
+    ~PF#werefighter 0 1 1 0 1 1 0 1 1~
+  /* DUALCLAS.2DA */
+    ~PF#werefighter 0 1 1 1 1 0~
+  /* Ability table (CLAB) */
+    ~PF#werefighter/2da/PF#CLBFW.2da~
+  /* KITTABLE.2DA */
+    ~K_F_H K_F_D K_F_G K_F_E K_F_HE K_F_HL K_F_HO~
+  /* KITLIST.2DA */
+    ~0x10000000 2~
+  /* LUABBR.2DA */
+    ~PF#FW~
+  /* 25STWEAP.2DA */
+    ~LEAT20 * HELM19 BAG27 RING06 RING31 CLCK02 BOOT01 AMUL19 BRAC14 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @12
+  SAY @12
+  SAY @13
 END ELSE BEGIN
-  ACTION_IF pf#kit_iwdee_hla BEGIN
-    ADD_KIT ~PF#werefighter~
-    /* CLASWEAP.2DA */
-      ~PF#werefighter 1 1 1 1 1 1 1 1~
-    /* WEAPPROF.2DA */
-      ~PF#werefighter 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
-    /* ABCLASRQ.2DA */
-      ~PF#werefighter 9 0 0 0 0 0~
-    /* ABCLSMOD.2DA */
-      ~PF#werefighter 0 0 0 0 0 0~
-    /* ABDCDSRQ.2DA */
-      ~PF#werefighter 17 0 0 0 0 0~
-    /* ABDCSCRQ.2DA */
-      ~PF#werefighter 15 0 0 0 0 0~
-    /* ALIGNMNT.2DA */
-      ~PF#werefighter 0 1 1 0 1 1 0 1 1~
-    /* DUALCLAS.2DA */
-      ~PF#werefighter 0 1 1 1 1 0~
-    /* Ability table (CLAB) -- IWDEE HLA-integrated levels 20-30 */
-      ~PF#werefighter/2da/pf#cbfwi.2da~
-    /* KITTABLE.2DA */
-      ~K_F_H K_F_D K_F_G K_F_E K_F_HE K_F_HL K_F_HO~
-    /* KITLIST.2DA */
-      ~0x10000000 2~
-    /* LUABBR.2DA */
-      ~PF#FW~
-    /* 25STWEAP.2DA -- unused on BG1EE/IWDEE; blank column matching fighter width */
-      ~* * * * * * * * * * * * * * * * * * * *~
-    SAY @12
-    SAY @12
-    SAY @81
-  END ELSE BEGIN
-    ADD_KIT ~PF#werefighter~
-    /* CLASWEAP.2DA */
-      ~PF#werefighter 1 1 1 1 1 1 1 1~
-    /* WEAPPROF.2DA */
-      ~PF#werefighter 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
-    /* ABCLASRQ.2DA */
-      ~PF#werefighter 9 0 0 0 0 0~
-    /* ABCLSMOD.2DA */
-      ~PF#werefighter 0 0 0 0 0 0~
-    /* ABDCDSRQ.2DA */
-      ~PF#werefighter 17 0 0 0 0 0~
-    /* ABDCSCRQ.2DA */
-      ~PF#werefighter 15 0 0 0 0 0~
-    /* ALIGNMNT.2DA */
-      ~PF#werefighter 0 1 1 0 1 1 0 1 1~
-    /* DUALCLAS.2DA */
-      ~PF#werefighter 0 1 1 1 1 0~
-    /* Ability table (CLAB) */
-      ~PF#werefighter/2da/PF#CLBFW.2da~
-    /* KITTABLE.2DA */
-      ~K_F_H K_F_D K_F_G K_F_E K_F_HE K_F_HL K_F_HO~
-    /* KITLIST.2DA */
-      ~0x10000000 2~
-    /* LUABBR.2DA */
-      ~PF#FW~
-    /* 25STWEAP.2DA -- unused on BG1EE/IWDEE; blank column matching fighter width */
-      ~* * * * * * * * * * * * * * * * * * * *~
-    SAY @12
-    SAY @12
-    SAY @13
-  END
+  ADD_KIT ~PF#werefighter~
+  /* CLASWEAP.2DA */
+    ~PF#werefighter 1 1 1 1 1 1 1 1~
+  /* WEAPPROF.2DA */
+    ~PF#werefighter 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  /* ABCLASRQ.2DA */
+    ~PF#werefighter 9 0 0 0 0 0~
+  /* ABCLSMOD.2DA */
+    ~PF#werefighter 0 0 0 0 0 0~
+  /* ABDCDSRQ.2DA */
+    ~PF#werefighter 17 0 0 0 0 0~
+  /* ABDCSCRQ.2DA */
+    ~PF#werefighter 15 0 0 0 0 0~
+  /* ALIGNMNT.2DA */
+    ~PF#werefighter 0 1 1 0 1 1 0 1 1~
+  /* DUALCLAS.2DA */
+    ~PF#werefighter 0 1 1 1 1 0~
+  /* Ability table (CLAB) */
+    ~PF#werefighter/2da/PF#CLBFW.2da~
+  /* KITTABLE.2DA */
+    ~K_F_H K_F_D K_F_G K_F_E K_F_HE K_F_HL K_F_HO~
+  /* KITLIST.2DA */
+    ~0x10000000 2~
+  /* LUABBR.2DA */
+    ~PF#FW~
+  /* 25STWEAP.2DA -- unused on BG1EE/IWDEE; blank column matching fighter width */
+    ~* * * * * * * * * * * * * * * * * * * *~
+  SAY @12
+  SAY @12
+  SAY @13
 END
 //--------------------------------------------------------------------------
 

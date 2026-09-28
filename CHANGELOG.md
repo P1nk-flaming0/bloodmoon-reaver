@@ -9,11 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.2] - 2026-09-28
+
+### Changed
+
+- Install order is now: core kit (`100`), optional IWDEE “Integrate HLAs into levels 20–30” patch (`110`), optional portraits (`200`). Components `110` and `200` `REQUIRE_COMPONENT` the core kit and uninstall with it.
+- **Breaking for existing IWDEE installs of old `110`:** that component is no longer an alternate full kit; reinstall the core kit, then the HLA patch (and portraits if desired).
+
+### Removed
+
+- Mutually exclusive kit `SUBCOMPONENT`s and the duplicate IWDEE-only portrait component (`210`).
+
+---
+
 ## [1.1.1] - 2026-09-28
 
 ### Fixed
 
-- Dynamic Portrait Switching (`DESIGNATED 200`) gated on the core kit via install-time checks (uninstall cascade completed in `1.1.2`).
+- Dynamic Portrait Switching (`DESIGNATED 200`) gated on the core kit via install-time checks.
 
 ---
 

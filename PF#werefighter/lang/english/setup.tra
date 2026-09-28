@@ -164,7 +164,7 @@ Allowing to be consumed by its feral insticts, the werewolf enters a trance of a
 – While enraged: Immune to charm, hold and fear, maze, imprisonment, stun and sleep.~
 @72  = ~Bloodmoon Reaver requires Baldur's Gate: Enhanced Edition, Baldur's Gate II: Enhanced Edition, Enhanced Edition Trilogy, or Icewind Dale: Enhanced Edition.~
 
-// Component titles / SUBCOMPONENT group
+// Component titles
 @73  = ~Bloodmoon Reaver Kit~
 @74  = ~Install Dynamic Portrait Switching (Requires custom user portraits)~
 @75  = ~Dynamic Portrait Switching requires the Bloodmoon Reaver kit to be installed.~
@@ -172,9 +172,10 @@ Allowing to be consumed by its feral insticts, the werewolf enters a trance of a
 @76  = ~Enrage~
 @77  = ~When the berserk state ends, the character will take 15 damage.~
 @78  = ~The berserk state has ended. The character now loses the extra 15 Hit Points previously gained. If the character is below 15 Hit Points, he or she will be knocked unconscious.~
-// Kit install options (SUBCOMPONENT @73)
+
+// Installer component titles / predicates
 @79  = ~Install Bloodmoon Reaver Kit~
-@80  = ~Install Bloodmoon Reaver Kit with HLAs integrated into levels 20–30 (IWDEE)~
+@80  = ~Integrate HLAs into levels 20–30 (IWDEE)~
 @81  = ~BLOODMOON REAVER: Born with the "gift" or scarred by a fated encounter, this warrior has been afflicted with lycanthropy. Through discipline and rigorous training, <PRO_HESHE> progressively learns how to master <PRO_HISHER> curse. By honing the predator’s instincts alongside the soldier’s resolve, <PRO_HESHE> becomes apex hunter that blends the tactical mind of a man with the raw, terrifying power of the beast.
 
 Advantages:
@@ -223,4 +224,5 @@ BEAST WITHIN: While learning how to practice control over <PRO_HISHER> curse, th
 
 Disadvantages:
 – Cannot wear any armor.~
-@82  = ~The HLA-integrated Bloodmoon Reaver kit is only available on Icewind Dale: Enhanced Edition.~
+@82  = ~Integrating HLAs into levels 20–30 is only available on Icewind Dale: Enhanced Edition.~
+@83  = ~Integrating HLAs into levels 20–30 requires the Bloodmoon Reaver kit to be installed.~
