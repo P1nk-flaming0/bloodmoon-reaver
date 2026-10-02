@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.4] - 2026-10-02
+
+### Fixed
+
+- **Werewolf claws (`PF#FWAT1.ITM`, `PF#FWAT2.ITM`, `PF#FWAT3.ITM`):** Corrected the crushing damage effect so attacks no longer crash the game.
+
+---
+
 ## [1.1.3] - 2026-10-02
 
 ### Changed
