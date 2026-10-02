@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.3] - 2026-10-02
+
+### Changed
+
+- **Blood Frenzy (`PF#FWBF2.SPL`, `PF#FWBF3.SPL`):** Strength bonus reduced to +1; frenzy now also grants fear immunity.
+- **Werewolf claws (`PF#FWAT1.ITM`, `PF#FWAT2.ITM`, `PF#FWAT3.ITM`):** Lower damage (−2) and mixed slashing + crushing damage across forms.
+- **Werewolf form (`PF#FWERE.ITM`):** Constitution set to 15 (SoA baseline).
+- Weapon proficiency capped at Mastery (3 slots) for all weapon classes (`install_kit.tpa`); kit description updated accordingly.
+
+---
+
 ## [1.1.2] - 2026-09-28
 
 ### Changed

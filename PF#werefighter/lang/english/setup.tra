@@ -8,7 +8,7 @@
 @8   = ~Claws&Fangs +1~
 @9   = ~Claws&Fangs +2~
 @10  = ~Claws&Fangs +4~
-@11  = ~Claws&Fangs +6~
+@11  = ~Claws&Fangs +5~
 @12  = ~Bloodmoon Reaver~
 @13  = ~BLOODMOON REAVER: Born with the "gift" or scarred by a fated encounter, this warrior has been afflicted with lycanthropy. Through discipline and rigorous training, <PRO_HESHE> progressively learns how to master <PRO_HISHER> curse. By honing the predator’s instincts alongside the soldier’s resolve, <PRO_HESHE> becomes apex hunter that blends the tactical mind of a man with the raw, terrifying power of the beast.
 
@@ -31,7 +31,8 @@ BEAST WITHIN: While learning how to practice control over <PRO_HISHER> curse, th
 – Once the frenzy subsides, the toll on the warrior's body is severe; <PRO_HESHE> is forced back into human form, left briefly unconscious, and suffers from profound physical exhaustion and diminished morale.
 
 Disadvantages:
-– Cannot wear any armor.~
+– Cannot wear any armor.
+– May not exceed Mastery (three slots) in any weapon class.~
 @14  = ~The beast awakens...~
 @15  = ~The blood cools...~
 @16  = ~Wolf Prowess~
@@ -55,11 +56,11 @@ Saving Throw: None
 
 Through a primal bond with the Beastlord’s realm, the character summons two Nightfang Stalkers – spirit-werewolves of savage strength and unbridled ferocity. These hunters answer the call to spill blood in Malar’s name, striking as +4 creatures, possessing high magic resistance and immunity to mundane weapons. The Stalkers remain for 3 turns or until destroyed.~
 @26  = ~Blood Frenzy
-When the werewolf claims a kill, a surge of primal fury floods its body. For a short time, the beast moves with unnatural speed, strikes with greater ferocity, and its strength swells with predatory might. The frenzy lasts for 3 rounds after the last kill before fading.~
+When the werewolf claims a kill, a surge of primal fury floods its body. For a short time, the beast becomes fearless, moves with unnatural speed, strikes with greater ferocity, and its strength swells with predatory might. The frenzy lasts for 3 rounds after the last kill before fading.~
 @27  = ~Feral Rage
 Allowing to be consumed by its feral insticts, the werewolf enters a trance of animalistic rage.
 
-– While enraged: Strength rises by 2, claws hit as a +6 weapon and their damage increases.
+– While enraged: Strength rises by 2, claws hit as a +5 weapon and their damage increases.
 – While enraged: Immune to charm, hold and fear, maze, imprisonment, stun and sleep.
 
 Can be selected up to 5 times.~
@@ -126,11 +127,11 @@ Special Abilities:
 
 Strength: 19 
 Dexterity: 16
-Constitution: 18
+Constitution: 15
 
 Base Armor Class: 1
 Number of Attacks: 2
-Attack Damage: 2d4 +4 (slashing), strikes as +2 weapon
+Attack Damage: 1d6 (slashing) + 4 (crushing), strikes as +2 weapon
 
 Special Abilities:
 – Magic Resistance: 20%~
@@ -142,7 +143,7 @@ Constitution: 25
 
 Base Armor Class: -6
 Number of Attacks: 3
-Attack Damage: 2d6 +6 (slashing), strikes as +4 weapon
+Attack Damage: 1d10 (slashing) + 6 (crushing), strikes as +4 weapon
 
 Special Abilities:
 – Fire Resistance: 50%
@@ -160,7 +161,7 @@ A fearsome roar available while in werewolf form. Enemies within 30 feet must sa
 @71  = ~Feral Rage
 Allowing to be consumed by its feral insticts, the werewolf enters a trance of animalistic rage.
 
-– While enraged: Strength rises by 2, claws hit as a +6 weapon and their damage increases.
+– While enraged: Strength rises by 2, claws hit as a +5 weapon and their damage increases.
 – While enraged: Immune to charm, hold and fear, maze, imprisonment, stun and sleep.~
 @72  = ~Bloodmoon Reaver requires Baldur's Gate: Enhanced Edition, Baldur's Gate II: Enhanced Edition, Enhanced Edition Trilogy, or Icewind Dale: Enhanced Edition.~
 
@@ -196,7 +197,7 @@ GROWL: A fearsome roar usable only in werewolf form. Enemies within 30 feet must
 FERAL RAGE:
 Allowing to be consumed by its feral insticts, the werewolf enters a trance of animalistic rage.
 
-– While enraged: Strength rises by 2, claws hit as a +6 weapon and their damage increases.
+– While enraged: Strength rises by 2, claws hit as a +5 weapon and their damage increases.
 – While enraged: Immune to charm, hold and fear, maze, imprisonment, stun and sleep.
 
 – 21st level: Gains the Thick-Skinned passive ability.
@@ -207,7 +208,7 @@ The were-warrior’s body grows unnaturally dense and resistant to harm. Muscles
 – 22nd level: Gains the Blood Frenzy passive ability.
 
 BLOOD FRENZY:
-When the werewolf claims a kill, a surge of primal fury floods its body. For a short time, the beast moves with unnatural speed, strikes with greater ferocity, and its strength swells with predatory might. The frenzy lasts for 3 rounds after the last kill before fading.
+When the werewolf claims a kill, a surge of primal fury floods its body. For a short time, the beast becomes fearless, moves with unnatural speed, strikes with greater ferocity, and its strength swells with predatory might. The frenzy lasts for 3 rounds after the last kill before fading.
 
 – 24th level: Gains an additional use of Feral Rage.
 – 25th level: Attains the second rank of the Thick-Skinned ability (additional +5% physical damage resistance).
@@ -223,6 +224,7 @@ BEAST WITHIN: While learning how to practice control over <PRO_HISHER> curse, th
 – Once the frenzy subsides, the toll on the warrior's body is severe; <PRO_HESHE> is forced back into human form, left briefly unconscious, and suffers from profound physical exhaustion and diminished morale.
 
 Disadvantages:
-– Cannot wear any armor.~
+– Cannot wear any armor.
+– May not exceed Mastery (three slots) in any weapon class.~
 @82  = ~Integrating HLAs into levels 20–30 is only available on Icewind Dale: Enhanced Edition.~
 @83  = ~Integrating HLAs into levels 20–30 requires the Bloodmoon Reaver kit to be installed.~

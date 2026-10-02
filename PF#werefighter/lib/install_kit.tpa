@@ -209,7 +209,7 @@ ACTION_IF GAME_IS ~bg2ee eet~ BEGIN
   /* CLASWEAP.2DA */
     ~PF#werefighter 1 1 1 1 1 1 1 1~
   /* WEAPPROF.2DA */
-    ~PF#werefighter 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+    ~PF#werefighter 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
   /* ABCLASRQ.2DA */
     ~PF#werefighter 9 0 0 0 0 0~
   /* ABCLSMOD.2DA */
@@ -240,7 +240,7 @@ END ELSE BEGIN
   /* CLASWEAP.2DA */
     ~PF#werefighter 1 1 1 1 1 1 1 1~
   /* WEAPPROF.2DA */
-    ~PF#werefighter 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+    ~PF#werefighter 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
   /* ABCLASRQ.2DA */
     ~PF#werefighter 9 0 0 0 0 0~
   /* ABCLSMOD.2DA */
