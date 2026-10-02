@@ -1,6 +1,6 @@
 # Bloodmoon Reaver
 
-[![Version](https://img.shields.io/badge/version-v1.1.2-blue.svg)](https://github.com/P1nk-flaming0/bloodmoon-reaver)
+[![Version](https://img.shields.io/badge/version-v1.1.3-blue.svg)](https://github.com/P1nk-flaming0/bloodmoon-reaver)
 [![Engine](https://img.shields.io/badge/engine-BGEE%20%7C%20BG2EE%20%7C%20EET%20%7C%20IWDEE-informational.svg)](#compatibility--prerequisites)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](#license--legal)
 
@@ -96,7 +96,7 @@ A **Fighter** kit for _Baldur's Gate: Enhanced Edition_, _Baldur's Gate II: Enha
 | **Constitution**           |                     —                     |                     18                     |                         25                          |
 | **Base AC**                |                     5                     |                     1                      |                         −6                          |
 | **Attacks / Round** (base) |                     2                     |                     2                      |                          3                          |
-| **Base Damage**            |             1d8+1 (Piercing)              |              2d4+4 (Slashing)              |                  2d6+6 (Slashing)                   |
+| **Base Damage**            |             1d8+1 (Piercing)              |       1d6 (slashing) + 4 (crushing)        |           1d10 (slashing) + 6 (crushing)            |
 | **Weapon Enchantment**     |                    +1                     |                     +2                     |                         +4                          |
 | **Magic Resistance**       |                     —                     |                    20%                     |                         40%                         |
 | **Elemental / Special**    |  Cold 100%, Elec 50%<br>+Movement Speed   |                     —                      | Fire/Cold/Elec/Acid 50%<br>Regenerates 1 HP / 2 sec |
@@ -138,12 +138,12 @@ In addition to standard martial HLAs (_Hardiness_, _Critical Strike_, _Power Att
 
 <div class="table-wrapper" markdown="1">
 
-| Ability              | Max Picks | Effect                                                                                    |
-| :------------------- | :-------: | :---------------------------------------------------------------------------------------- |
-| **Blood Frenzy**     |     1     | On kill: temporary surge in speed, attack power, and strength (~3 round duration).        |
-| **Feral Rage**       |     5     | Grant +2 Strength, +6 claw enchantment, and total immunity to hard crowd control effects. |
-| **Call of the Hunt** |     1     | Summons two spirit-werewolves (**Nightfang Stalkers**) to fight for 3 turns.              |
-| **Thick-Skinned**    |     2     | Passively grants +5% resistance to all physical damage types per selection.               |
+| Ability              | Max Picks | Effect                                                       |
+| :------------------- | :-------: | :----------------------------------------------------------- |
+| **Blood Frenzy**     |     1     | On kill: fear immunity, temporary surge in speed, attack power, and strength (~3 round duration). |
+| **Feral Rage**       |     5     | Grant +2 Strength, +5 claw enchantment, and total immunity to hard crowd control effects. |
+| **Call of the Hunt** |     1     | Summons two spirit-werewolves (**Nightfang Stalkers**) to fight for 3 turns. |
+| **Thick-Skinned**    |     2     | Passively grants +5% resistance to all physical damage types per selection. |
 
 </div>
 
