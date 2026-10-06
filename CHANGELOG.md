@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.5] - 2026-10-06
+
+### Fixed
+
+- **Growl (`PF#FWGRL.SPL`):** Now breaks invisibility as intended.
+- **Predatory Senses (`PF#FWPRD.SPL`):** Ability table (`pf#clbfw.2da`, `pf#cbfwi.2da`) refreshes the level-appropriate version on progression.
+
+---
+
 ## [1.1.4] - 2026-10-02
 
 ### Fixed
